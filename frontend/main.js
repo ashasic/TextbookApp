@@ -1,3 +1,6 @@
+// MAKE CHANGES TO THIS DOCUMNET FOR TEXTBOOK IMPLEMENTATION, use this as a basic/general guide for CRUD operations
+
+
 // When the document content is fully loaded, execute the getExpenses function
 document.addEventListener('DOMContentLoaded', () => {
     getExpenses();
