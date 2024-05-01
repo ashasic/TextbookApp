@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page - UI BookShelf</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
@@ -16,23 +15,24 @@
                 <a href="/login">Login</a>
             </nav>
         </header>
-
-        <section id="loginForm" class="section">
-            <h2>Login</h2>
+        <div class="app">
+            <h1>Book Management</h1>
             <div class="input-group">
-                <input type="text" id="usernameInput" placeholder="Username">
+                <input type="text" id="isbnInput" placeholder="Enter ISBN for Add/Update">
+                <button id="addTextbookBtn">Add/Update Textbook</button>
             </div>
             <div class="input-group">
-                <input type="password" id="passwordInput" placeholder="Password">
+                <input type="text" id="searchInput" placeholder="Title, ISBN, or Author">
+                <button id="searchBtn">Search Textbooks</button>
             </div>
-            <div class="input-group">
-                <button>Login</button>
+            <div class="navigation">
+                <button id="homeBtn" style="display:none;">Back to Home</button>
             </div>
-            <div id="responseMessage" class="response-message"></div>
-        </section>
+            <div id="responseMessage"></div>
+            <div id="textbooksList" class="textbooks"></div>
+        </div>
     </div>
 
     <script src="/static/script.js"></script>
 </body>
 </html>
-
