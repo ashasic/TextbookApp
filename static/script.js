@@ -22,7 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             document.getElementById('responseMessage').textContent = 'Please enter a valid ISBN.';
         }
+        
+        //Hides home button
+        document.getElementById('homeBtn').style.display = 'none';
     });
+
+
     document.getElementById('searchBtn').addEventListener('click', function(event) {
         event.preventDefault();
         const query = document.getElementById('searchInput').value.trim();
@@ -34,6 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     const textbooksList = document.getElementById('textbooksList');
                     textbooksList.innerHTML = '';  // Clear existing content
                     if (data.books.length > 0) {
+
+                        //Display return to home button
+                        document.getElementById('homeBtn').style.display = 'block';
+                        
                         data.books.forEach(book => {
                             const authors = Array.isArray(book.authors) ? book.authors.join(", ") : "No authors listed";
                             const bookElement = document.createElement('div');
