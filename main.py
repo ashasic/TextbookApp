@@ -15,6 +15,9 @@ from textbook import textbook_router
 
 app = FastAPI()
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
 # CORS middleware configuration
 app.add_middleware(
     CORSMiddleware,
@@ -25,9 +28,9 @@ app.add_middleware(
 )
 
 # MongoDB client setup
-client = MongoClient(os.getenv("mongodb+srv://skidane:IowaRocks@textcluster.yepauxz.mongodb.net/"))
-db = client.university_of_iowa_textbooks
-textbooks_collection = db.textbook_data
+client = MongoClient(os.getenv("MONGO_URI"))
+db = client.UIowaBookShelf
+textbooks_collection = db.Textbooks
 
 # Data model for the Textbook entry
 class TextbookEntry(BaseModel):
@@ -38,15 +41,27 @@ class TextbookEntry(BaseModel):
     description: str
     subject: str
 
+class ISBN(BaseModel):
+    isbn: str
+
+# Make HTML file the root route
+@app.get("/")
+async def root():
+    return FileResponse('templates/index.html')
+
 # Route to add or update a textbook entry
 @app.post("/textbooks/")
-async def add_or_update_textbook(isbn: str):
+async def add_or_update_textbook(isbn_data: ISBN):
+    isbn = isbn_data.isbn
+    print(f"Received ISBN: {isbn}")  # Debug print
     book_data = fetch_book_info(isbn)
     if book_data:
-        textbooks_collection.update_one({"isbn": isbn}, {"$set": book_data}, upsert=True)
+        result = textbooks_collection.update_one({"isbn": isbn}, {"$set": book_data}, upsert=True)
+        print(f"MongoDB update result: {result.raw_result}")  # Debug print
         return {"message": "Textbook data added/updated successfully", "data": book_data}
     else:
         raise HTTPException(status_code=404, detail="No textbook found with this ISBN")
+
 
 # Function to fetch book information from Google Books API
 def fetch_book_info(isbn):
