@@ -3,12 +3,14 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 
+from dotenv import load_dotenv
+
 load_dotenv()
 
 # MongoDB connection
-client = MongoClient(os.getenv("mongodb+srv://skidane:IowaRocks@textcluster.yepauxz.mongodb.net/"))
-db = client["UIowaBookShelf"]  # Specify the database name
-collection = db["Students"]    # Specify the collection name
+client = MongoClient(os.getenv("MONGO_URI"))
+db = client.UIowaBookShelf  # Specify the database name
+collection = db.students   # Specify the collection name
 
 # Generate a unique identifier (UUID)
 unique_id = str(uuid.uuid4())
