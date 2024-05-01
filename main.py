@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse
 from starlette.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -48,6 +49,12 @@ class ISBN(BaseModel):
 @app.get("/")
 async def root():
     return FileResponse('templates/index.html')
+
+# Route to get all textbooks
+@app.get("/textbooks/")
+async def get_textbooks():
+    books = list(textbooks_collection.find({}, {'_id': 0}))  
+    return JSONResponse(content={"books": books})
 
 # Route to add or update a textbook entry
 @app.post("/textbooks/")
