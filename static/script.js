@@ -65,7 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('responseMessage').textContent = 'Please enter a search term.';
         }
     });
-    
+
+    document.getElementById('homeBtn').addEventListener('click', function() {
+        window.location.href = '/';
+    });
 
     function loadTextbooks() {
         fetch('http://localhost:8000/textbooks/')

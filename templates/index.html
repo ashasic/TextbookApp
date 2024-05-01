@@ -3,19 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Uiowa BookShelf</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <h1>Uiowa BookShelf</h1>
     <a href="/login"><button>Login</button></a>
-</body>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Textbook Entry</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
+    
     <div class="app">
         <h1>Book Management</h1>
         <div class="input-group">
@@ -28,6 +22,9 @@
         </div>
         <div id="responseMessage"></div>
         <div id="textbooksList" class="textbooks"></div>
+        <div class="navigation">
+            <button id="homeBtn">Back to Home</button>
+        </div>
     </div>
 
     <script src="/static/script.js"></script>
