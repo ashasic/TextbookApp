@@ -8,12 +8,16 @@
 </head>
 <body>
     <div class="app">
-        <h1>Add or Update Textbook</h1>
-        <input type="text" id="isbnInput" placeholder="Enter ISBN">
-        <button id="addTextbookBtn">Add/Update Textbook</button>
+        <h1>Textbook Management System</h1>
+        <div class="input-group">
+            <input type="text" id="isbnInput" placeholder="Enter ISBN for Add/Update">
+            <button id="addTextbookBtn">Add/Update Textbook</button>
+        </div>
+        <div class="input-group">
+            <input type="text" id="searchInput" placeholder="Search by Title, ISBN, or Author">
+            <button id="searchBtn">Search Textbooks</button>
+        </div>
         <div id="responseMessage"></div>
-
-        <!-- Section to display textbooks -->
         <div id="textbooksList" class="textbooks"></div>
     </div>
 

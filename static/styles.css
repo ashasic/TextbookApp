@@ -1,30 +1,27 @@
 body, html {
   height: 100%;
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .app {
-  background: white;
+  width: 95%;
+  max-width: 1200px;
+  margin: 20px auto;
   padding: 20px;
+  background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-input[type="text"] {
+input[type="text"], button {
   padding: 10px;
-  margin-right: 10px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  width: 300px;
+  margin: 5px;
 }
 
 button {
-  padding: 10px 20px;
   background-color: #0056b3;
   color: white;
   border: none;
@@ -36,7 +33,43 @@ button:hover {
   background-color: #003974;
 }
 
-#responseMessage {
+.textbooks {
+  overflow-y: auto;
+  max-height: 80vh;
+  border-top: 1px solid #ccc;
   margin-top: 20px;
 }
 
+.textbook {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.textbook-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.textbook-details {
+  margin-left: 10px;
+}
+
+.textbook img {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+input[type="text"], button {
+  padding: 10px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
