@@ -151,5 +151,10 @@ async def search_textbooks(
     return {"books": books}
 
 
+@app.get("/login")
+async def login():
+    return FileResponse("templates/login.html")
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Login Page</h1>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#forgotPassword">Forgot Password?</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="loginForm" class="section">
+        <h2>Login</h2>
+        <div class="input-group">
+            <input type="text" id="usernameInput" placeholder="Username">
+        </div>
+        <div class="input-group">
+            <input type="password" id="passwordInput" placeholder="Password">
+        </div>
+        <div class="input-group">
+            <button id="loginBtn">Login</button>
+        </div>
+        <div id="responseMessage" class="response-message"></div>
+    </section>
+
+    <section id="forgotPassword" class="section">
+        <h2>Forgot Password?</h2>
+        <p>If you've forgotten your password, please contact support.</p>
+    </section>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

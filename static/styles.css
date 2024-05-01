@@ -73,3 +73,36 @@ input[type="text"], button {
   margin-right: 5px;
   vertical-align: middle;
 }
+
+.header {
+  background-color: #4CAF50;
+}
+
+.header h1 {
+  color: white;
+}
+
+.navbar ul li a {
+  color: white;
+}
+
+#loginForm {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#loginForm button {
+  width: 100%;
+  background-color: #4CAF50;
+}
+
+#loginForm button:hover {
+  background-color: #45a049;
+}
