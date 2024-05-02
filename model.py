@@ -22,3 +22,7 @@ class Review(BaseModel):
     user: str
     review: str
     rating: int
+
+class Register(BaseModel):
+    username: str
+    password: str
