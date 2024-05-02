@@ -92,19 +92,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     const bookElement = document.createElement('div');
                     bookElement.className = 'textbook';
                     bookElement.innerHTML = `
-                        <div class="textbook-info">
-                            <img src="${book.thumbnail || 'path_to_default_image.jpg'}" alt="Cover image of ${book.title}">
-                            <div class="textbook-details">
-                                <h3>${book.title}</h3>
-                                <p>Author(s): ${authors}</p>
-                                <p>ISBN: ${book.isbn}</p>
-                                <p>Published Date: ${book.published_date}</p>
-                                <p>Description: ${book.description}</p>
-                                <p>Subject: ${book.subject}</p>
-                            </div>
+                    <div class="textbook-info">
+                        <img src="${book.thumbnail || 'path_to_default_image.jpg'}" alt="Cover image of ${book.title}">
+                        <div class="textbook-details">
+                            <h3>${book.title}</h3>
+                            <p>Author(s): ${authors}</p>
+                            <p>ISBN: ${book.isbn}</p>
+                            <p>Published Date: ${book.published_date}</p>
+                            <p>Description: ${book.description}</p>
+                            <p>Subject: ${book.subject}</p>
                         </div>
-                        <button onclick="deleteTextbook('${book.isbn}')">Delete</button>
-                    `;
+                    </div>
+                    <button class="delete-btn" onclick="deleteTextbook('${book.isbn}')">Delete</button>
+                `;
                     textbooksList.appendChild(bookElement);
                 });
             })
