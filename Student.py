@@ -1,35 +1,53 @@
-import uuid
+from fastapi import APIRouter, Form, HTTPException, Request
+from fastapi.responses import JSONResponse
+from fastapi.templating import Jinja2Templates
 from pymongo import MongoClient
-from dotenv import load_dotenv
+from pydantic import BaseModel
 import os
+import hashlib
 
 from dotenv import load_dotenv
-
 load_dotenv()
+
+class Register(BaseModel):
+    username: str
+    password: str
 
 # MongoDB connection
 client = MongoClient(os.getenv("MONGO_URI"))
-db = client.UIowaBookShelf  # Specify the database name
-collection = db.students   # Specify the collection name
+db = client.UIowaBookShelf
+students_collection = db.Students
 
-# Generate a unique identifier (UUID)
-unique_id = str(uuid.uuid4())
+router = APIRouter()
+student_router = router
 
-# Example user data with the unique_id as _id
-example_user = {
-    "_id": unique_id,
-    "username": "example_user",
-    "email": "example@example.com",
-    "password": "example_password",
-    "role": "student"  # Assuming all registered users are students
-}
+# Creating an instance of Jinja2Templates
+templates = Jinja2Templates(directory="templates")
 
-print("Unique ID:", unique_id)
-print("Example User Data:", example_user)
+@router.post("/login/")
+async def login(username: str = Form(...), password: str = Form(...)):
+    user = students_collection.find_one({"username": username})
+    if user and user["password"] == hashlib.sha256(password.encode()).hexdigest():
+        return JSONResponse(content={"message": "Login successful"}, status_code=200)
+    else:
+        raise HTTPException(status_code=401, detail="Invalid username or password")
 
-try:
-    # Insert example user into MongoDB
-    collection.insert_one(example_user)
-    print("Example user registered successfully!")
-except Exception as e:
-    print("Error:", e)
+@router.get("/login/")
+async def login_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+from fastapi import Form
+
+@router.post("/register/")
+async def register(username: str = Form(...), password: str = Form(...)):
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()  # Always hash passwords
+    user = {"username": username, "password": hashed_password}
+    db.students.insert_one(user)
+    return {"message": "User registered successfully"}
+
+
+@router.get("/register/")
+async def register_page(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
+#   return FileResponse("templates/register.html")  # Return the HTML file
+
