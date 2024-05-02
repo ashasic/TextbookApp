@@ -55,7 +55,7 @@ button {
   width: auto;
   height: auto;
   background-color: var(--uiowa-gold);
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 16px;
   cursor: pointer;
@@ -122,6 +122,7 @@ button:hover, button:focus {
   transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for color and background */
   background-color: black; /* Add a background color on hover */
   border-radius: 5px; /* Optional: rounded corners for background */
+  transition: background-color 0.3s, box-shadow 0.3s, color, 0.3s
 }
 
 .navbar a:hover, .navbar a:focus {
