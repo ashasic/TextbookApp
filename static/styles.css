@@ -260,8 +260,16 @@ input:focus, textarea:focus {
 }
 
 /* Additional styles for specific input types if needed */
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], select {
   font-size: 16px; /* Specific size for text/password inputs */
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid var(--uiowa-gold);
+  border-radius: 5px;
+  outline: none;
+  background: var(--uiowa-gray);
+  color: #36393f;
+  font-family: 'Nunito', sans-serif;
 }
 
 /* Example of targeting specific input types for different styles */
@@ -275,4 +283,18 @@ input[type="submit"], button {
 button:hover, input[type="submit"]:hover {
   background-color: var(--uiowa-white); /* Invert colors on hover */
   color: var(--uiowa-black);
+}
+
+select:focus {
+  border-color: var(--uiowa-gold);
+  box-shadow: 0 0 8px var(--uiowa-gold); /* Glow effect on focus */
+}
+
+/* If needed, you can also apply specific styles just for the select dropdown */
+select {
+  cursor: pointer; /* Changes the cursor to a pointer to indicate it's a dropdown */
+  appearance: none; /* Optional: removes default system styling on dropdown */
+  background-image: url('path_to_custom_arrow_icon'); /* Optional: sets a custom dropdown arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Positions the background image to the right-center */
 }
