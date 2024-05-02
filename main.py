@@ -160,5 +160,11 @@ async def search_textbooks(
 async def login():
     return FileResponse("templates/login.html")
 
+
+@app.get("/browse")
+async def browse():
+    return FileResponse("templates/browse.html")
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

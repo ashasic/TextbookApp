@@ -1,108 +1,187 @@
+/* Importing Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500&display=swap');
+
+/* Base colors */
+:root {
+    --uiowa-black: #181818;
+    --uiowa-gold: #FFCD00;
+    --uiowa-gray: #7d7e7e;
+    --uiowa-white: #FFFFFF;
+}
+
 body, html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif; /* Using Roboto font */
+    background-color: var(--uiowa-black);
+    color: var(--uiowa-white);
 }
 
 .app {
-  width: 95%;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: auto;
+  text-align: center;
+  align-items: center
 }
 
-input[type="text"], button {
-  padding: 10px;
-  margin: 5px;
+
+input[type="text"], input[type="password"], button {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid var(--uiowa-gold);
+    border-radius: 5px;
+    outline: none;
+    background: var(--uiowa-gray);
+    color: var(--uiowa-white);
+    font-family: 'Roboto', sans-serif; /* Ensuring font consistency */
 }
 
 button {
-  background-color: #0056b3;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: var(--uiowa-gold);
+    color: var(--uiowa-black);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transition for background and shadow */
 }
 
-button:hover {
-  background-color: #003974;
+button:hover, button:focus {
+    background-color: var(--uiowa-white);
+    color: var(--uiowa-black);
+    box-shadow: 0 0 15px var(--uiowa-gold); /* Yellow glow effect on hover */
 }
 
-.textbooks {
-  overflow-y: auto;
-  max-height: 80vh;
-  border-top: 1px solid #ccc;
-  margin-top: 20px;
+.title {
+  font-size: 3rem; /* Increased font size for the title */
+  font-family: 'Oswald', sans-serif; /* More impactful, header-specific font */
+  font-weight: bold; /* Makes the title bolder */
+  color: var(--uiowa-gold);
+  text-transform: uppercase; /* Stylistic choice for titles */
+  padding-left: 260px;
 }
 
+.title2 {
+  font-size: 3rem; /* Increased font size for the title */
+  font-family: 'Oswald', sans-serif; /* More impactful, header-specific font */
+  font-weight: bold; /* Makes the title bolder */
+  color: var(--uiowa-gold);
+  text-transform: uppercase; /* Stylistic choice for titles */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--uiowa-black);
+    color: var(--uiowa-white);
+}
+
+.header img {
+  height: 60px;  /* Fixed height for logo */
+  width: auto;  /* Maintain aspect ratio */
+  vertical-align: middle;  /* Aligns logo vertically with other inline elements */
+}
+
+.navbar a {
+  color: var(--uiowa-gold);
+  margin: 0 20px;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px; /* Padding for better background effect */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for color and background */
+  border-radius: 5px; /* Optional: rounded corners for background */
+}
+
+.navbar a:hover, .navbar a:focus {
+  color: var(--uiowa-white); /* Change text color on hover */
+  background-color: var(--uiowa-gold); /* Add a background color on hover */
+  text-decoration: none; /* Ensure no underline */
+}
+
+.navbar a {
+  font-size: 18px; /* Larger font size for navigation */
+  padding: 10px 15px;
+}
+
+/* Textbook entry layout enhancements */
 .textbook {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: var(--uiowa-white);
+  border-radius: 8px;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Stronger shadow for depth */
+  display: flex;
+  flex-direction: row; /* Adjust depending on your layout preference */
+  align-items: flex-start; /* Align items to start for better structure */
+  gap: 20px; /* Provides space between image and details */
 }
 
 .textbook-info {
   display: flex;
+  display: flexbox;
   align-items: center;
-  margin-bottom: 10px;
-}
-
-.textbook-details {
-  margin-left: 10px;
 }
 
 .textbook img {
-  width: 100px;
+  width: 120px;
   height: auto;
-  margin-right: 10px;
+  border-radius: 4px; /* Slightly rounded corners for the image */
 }
 
-.input-group {
+.textbook-details {
+  flex-grow: 1; /* Allows details to fill the available space */
+}
+
+.textbook-details h3 {
+  font-size: 22px;
+  font-weight: 700; /* Bold for title */
+  color: var(--uiowa-gold);
   margin-bottom: 10px;
 }
 
-input[type="text"], button {
-  padding: 10px;
-  margin-right: 5px;
-  vertical-align: middle;
+.textbook-details p {
+  font-size: 16px;
+  margin: 5px 0;
+  line-height: 1.5; /* Increased line height for better readability */
 }
 
-.header {
-  background-color: #4CAF50;
+.textbook-details .description {
+  font-size: 14px;
+  color: var(--uiowa-white);
+  opacity: 0.9; /* Slightly lighter to differentiate from more important info */
+  margin-bottom: 15px; /* More space before the next section */
 }
 
-.header h1 {
-  color: white;
+.textbook-details .meta {
+  font-weight: 500; /* Medium weight for meta information */
+  color: var(--uiowa-white);
+  opacity: 0.8;
 }
 
-.navbar ul li a {
-  color: white;
+.textbook:hover {
+  background-color: #36393f; /* Darker on hover for focus */
+  border: 1px solid var(--uiowa-gold); /* Highlight entry on hover */
 }
 
-#loginForm {
-  max-width: 400px;
-  margin: 0 auto;
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-#loginForm input[type="text"],
-#loginForm input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+::-webkit-scrollbar-track {
+  background: var(--uiowa-gray);
 }
 
-#loginForm button {
-  width: 100%;
-  background-color: #4CAF50;
+::-webkit-scrollbar-thumb {
+  background-color: var(--uiowa-black);
+  border-radius: 10px;
+  border: 2px solid var(--uiowa-gold);
 }
 
-#loginForm button:hover {
-  background-color: #45a049;
+.multicolor-title {
+  color: var(--uiowa-gold);
+}
+
+.multicolor-title span {
+  color: var(--uiowa-gray); /* Different color for 'BookShelf' */
 }

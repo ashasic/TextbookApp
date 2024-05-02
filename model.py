@@ -16,3 +16,9 @@ class TextbookRequest(BaseModel):
     isbn: str
     title: str
     description: Optional[str] = None
+
+class Review(BaseModel):
+    isbn: str
+    user: str
+    review: str
+    rating: int
