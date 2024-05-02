@@ -92,6 +92,7 @@ button:hover, button:focus {
 }
 
 .navbar a {
+  font-family: 'Nunito', sans-serif;
   color: var(--uiowa-gold);
   margin: 0 20px;
   text-decoration: none;
@@ -103,8 +104,8 @@ button:hover, button:focus {
 
 .navbar a:hover, .navbar a:focus {
   color: var(--uiowa-white); /* Change text color on hover */
-  background-color: var(--uiowa-gold); /* Add a background color on hover */
-  text-decoration: none; /* Ensure no underline */
+  background-color: black; /* Add a background color on hover */
+  box-shadow: 0 0 15px var(--uiowa-gold);
 }
 
 .navbar a {
@@ -169,7 +170,7 @@ button:hover, button:focus {
 
 .textbook:hover {
   background-color: #000000; /* Darker on hover for focus */
-  border: 1px solid var(--uiowa-gold); /* Highlight entry on hover */
+  border: 1px solid var(--uiowa-white); /* Highlight entry on hover */
 }
 
 .delete-btn {
