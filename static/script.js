@@ -156,6 +156,67 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+    window.seeReviews = function(isbn) {
+        // Display options for adding a review
+        const addReviewForm = document.createElement('form');
+        addReviewForm.innerHTML = `
+            <form id="addReviewForm">
+                <input type="text" id="userInput" placeholder="Enter User">
+                <input type="text" id="reviewInput" placeholder="Enter Review">
+                <button type="submit">Add Review</button>
+            </form>
+        `;
+        fetch(`http://localhost:8000/reviews/${isbn}`)
+            .then(response => response.json())
+            .then(data => {
+                const reviewsSection = document.getElementById('reviewsSection');
+                reviewsSection.innerHTML = ''; // Clear existing content
+                reviewsSection.appendChild(addReviewForm);
+                
+                // Attach event listener to add review button
+                addReviewForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const user = document.getElementById('userInput').value.trim();
+                    const review = document.getElementById('reviewInput').value.trim();
+                    
+                    // Add review functionality
+                    // Implement the fetch request to add a review to the backend
+                    
+                    // Clear input fields after adding review
+                    document.getElementById('userInput').value = '';
+                    document.getElementById('reviewInput').value = '';
+                });
+                
+                // Display existing reviews
+                data.reviews.forEach(review => {
+                    const reviewElement = document.createElement('div');
+                    reviewElement.className = 'review';
+                    reviewElement.innerHTML = `
+                        <p>User: ${review.user}</p>
+                        <p>Review: ${review.review}</p>
+                        <button class="deleteReviewBtn" data-isbn="${isbn}" data-user="${review.user}">Delete Review</button>
+                    `;
+                    reviewsSection.appendChild(reviewElement);
+                });
+                
+                // Attach event listener to delete review buttons
+                const deleteReviewBtns = document.querySelectorAll('.deleteReviewBtn');
+                deleteReviewBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const isbn = this.getAttribute('data-isbn');
+                        const user = this.getAttribute('data-user');
+                        
+                        // Delete review functionality
+                        // Implement the fetch request to delete a review from the backend
+                    });
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching reviews:', error);
+                // Handle errors, e.g., display an error message to the user
+            });
+    };
+
     // Load textbooks on page load
     const textbooksList = document.getElementById('textbooksList');
     if (textbooksList) {
