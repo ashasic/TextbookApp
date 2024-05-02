@@ -56,6 +56,10 @@ class TextbookEntry(BaseModel):
 class ISBN(BaseModel):
     isbn: str
 
+class Register(BaseModel):
+    username: str
+    password: str
+
 
 # Make HTML file the root route
 @app.get("/")

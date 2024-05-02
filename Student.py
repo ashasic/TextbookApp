@@ -16,7 +16,7 @@ class Register(BaseModel):
 # MongoDB connection
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client.UIowaBookShelf
-students_collection = db.Students
+students_collection = db.students
 
 router = APIRouter()
 student_router = router
@@ -39,15 +39,17 @@ async def login_page(request: Request):
 from fastapi import Form
 
 @router.post("/register/")
-async def register(username: str = Form(...), password: str = Form(...)):
-    hashed_password = hashlib.sha256(password.encode()).hexdigest()  # Always hash passwords
-    user = {"username": username, "password": hashed_password}
-    db.students.insert_one(user)
-    return {"message": "User registered successfully"}
+async def register(register_data: Register):
+    hashed_password = hashlib.sha256(register_data.password.encode()).hexdigest()  # Always hash passwords
+    user = {"username": register_data.username, "password": hashed_password}
+    result = students_collection.insert_one(user)
+    if result.inserted_id:
+        return {"message": "User registered successfully"}
+    raise HTTPException(status_code=500, detail="Failed to register user")
 
 
 @router.get("/register/")
 async def register_page(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
-#   return FileResponse("templates/register.html")  # Return the HTML file
+    return FileResponse("templates/register.html")  # Return the HTML file
 

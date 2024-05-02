@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>Registration Page</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="registerForm" class="section">
+                <h2>Create New Account</h2>
+                <div class="input-group">
+                    <input type="text" id="registerUsername" placeholder="New Email">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="registerPassword" placeholder="New Password">
+                </div>
+                <div class="input-group">
+                    <button id="registerBtn">Register</button>
+                </div>
+                <div id="registerResponse" class="response-message"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/register.js"></script>
+</body>
+</html>
+
