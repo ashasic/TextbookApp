@@ -17,15 +17,21 @@ class TextbookRequest(BaseModel):
     title: str
     description: Optional[str] = None
 
-class Review(BaseModel):
+
+class ReviewIn(BaseModel):
     isbn: str
     user: str
     review: str
-    rating: int
+
+
+class ReviewOut(ReviewIn):
+    id: str
+
 
 class Register(BaseModel):
     username: str
     password: str
+
 
 class ReservationEntry(BaseModel):
     title: str
