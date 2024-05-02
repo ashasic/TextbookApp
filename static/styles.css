@@ -78,7 +78,8 @@ button:hover, button:focus {
 }
 
 .title2 {
-  font-size: 3rem; /* Increased font size for the title */
+  font-size: 3rem;
+  padding-left: 40px;
   font-family: 'Oswald', sans-serif; /* More impactful, header-specific font */
   font-weight: bold; /* Makes the title bolder */
   color: var(--uiowa-gold);
