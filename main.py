@@ -21,6 +21,9 @@ textbooks_collection = db.Textbooks
 
 from textbook import textbook_router
 
+from Review import review_router
+app.include_router(review_router)
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
