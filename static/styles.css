@@ -59,7 +59,7 @@ button:hover, button:focus {
   font-weight: bold; /* Makes the title bolder */
   color: var(--uiowa-gold);
   text-transform: uppercase; /* Stylistic choice for titles */
-  padding-left: 260px;
+  padding-left: 425px;
 }
 
 .title2 {
@@ -114,6 +114,7 @@ button:hover, button:focus {
 
 /* Textbook entry layout enhancements */
 .textbook {
+  background-color: rgb(46, 46, 46);
   display: flex;
   color: #f1f1f1;
   border-radius: 10px;
@@ -167,7 +168,7 @@ button:hover, button:focus {
 }
 
 .textbook:hover {
-  background-color: #36393f; /* Darker on hover for focus */
+  background-color: #000000; /* Darker on hover for focus */
   border: 1px solid var(--uiowa-gold); /* Highlight entry on hover */
 }
 

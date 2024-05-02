@@ -96,11 +96,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="${book.thumbnail || 'path_to_default_image.jpg'}" alt="Cover image of ${book.title}">
                         <div class="textbook-details">
                             <h3>${book.title}</h3>
-                            <p>Author(s): ${authors}</p>
-                            <p>ISBN: ${book.isbn}</p>
-                            <p>Published Date: ${book.published_date}</p>
-                            <p>Description: ${book.description}</p>
-                            <p>Subject: ${book.subject}</p>
+                            <p><b>Author(s):</b> ${authors}</p>
+                            <p><b>ISBN:</b> ${book.isbn}</p>
+                            <p><b>Published Date:</b> ${book.published_date}</p>
+                            <p><b>Description:</b> ${book.description}</p>
+                            <p><b>Subject:</b> ${book.subject}</p>
                         </div>
                     </div>
                     <button class="delete-btn" onclick="deleteTextbook('${book.isbn}')">Delete</button>

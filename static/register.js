@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (registerBtn) {
         registerBtn.addEventListener('click', function(event) {
             event.preventDefault();
-            const username = document.getElementById('registerUsername').value.trim();
-            const password = document.getElementById('registerPassword').value.trim();
+            const usernameField = document.getElementById('registerUsername');
+            const passwordField = document.getElementById('registerPassword');
+            const username = usernameField.value.trim();
+            const password = passwordField.value.trim();
             if (username && password) {
                 fetch('http://localhost:8000/register/', {
                     method: 'POST',
@@ -22,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .then(data => {
                     document.getElementById('registerResponse').textContent = 'Registration successful!';
+                    usernameField.value = '';
+                    passwordField.value = '';
                 })
                 .catch(error => {
                     console.error('Registration error:', error);
