@@ -9,7 +9,13 @@ from pydantic import BaseModel
 from pymongo import MongoClient
 import os
 import hashlib
+
+#routers
 from Student import student_router
+from Reservation import reservation_router
+from textbook import textbook_router
+from Review import review_router
+
 
 from dotenv import load_dotenv
 
@@ -23,15 +29,14 @@ client = MongoClient(os.getenv("MONGO_URI"))
 db = client.UIowaBookShelf
 textbooks_collection = db.Textbooks
 
-from textbook import textbook_router
-
-from Review import review_router
+app.include_router(reservation_router)
 app.include_router(review_router)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 app.include_router(student_router)
+app.include_router(reservation_router)
 
 # CORS middleware configuration
 app.add_middleware(

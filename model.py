@@ -26,3 +26,12 @@ class Review(BaseModel):
 class Register(BaseModel):
     username: str
     password: str
+
+class ReservationEntry(BaseModel):
+    title: str
+    isbn: str
+    authors: str
+    published_date: str
+    description: str
+    subject: str
+    user: str
