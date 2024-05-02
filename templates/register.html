@@ -27,6 +27,15 @@
                     <input type="password" id="registerPassword" placeholder="New Password">
                 </div>
                 <div class="input-group">
+                    <select id="registerRole">
+                        <option value="regular">Regular User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="input-group" id="adminSecretField" style="display: none;">
+                    <input type="password" id="adminSecretPassword" placeholder="Admin Secret Password">
+                </div>
+                <div class="input-group">
                     <button id="registerBtn">Register</button>
                 </div>
                 <div id="registerResponse" class="response-message"></div>
