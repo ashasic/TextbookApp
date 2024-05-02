@@ -13,16 +13,37 @@
             <h1 class="title multicolor-title">UI<span>BookShelf</span></h1>
             <nav class="navbar">
                 <a href="/">Home</a>
-                <a href="/browse">Browse</a>
-                <a href="/login">Login</a>
-                <a href="/register">Sign Up</a>
+                <a id="browseLink" href="/browse">Browse</a>
+                <a id="loginLink" href="/login">Login</a>
+                <a id="registerLink" href="/register">Sign Up</a>
+                <a id="logoutLink" href="#" style="display:none;">Logout</a>
             </nav>
         </header>
         <main>
             <h2 class="text2">Explore textbooks shared by fellow Hawkeyes</h2>
-            <button class="button-main" onclick="location.href='/browse'">Browse</button>
+            <button class="button-main" id="browseButton">Browse</button>
         </main>
     </div>
-    <script src="/static/script.js"></script>
+    <script src="/static/checkAuth.js"></script>
+    <script>
+        document.getElementById('browseLink').addEventListener('click', function (event) {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                event.preventDefault(); // Prevent the default link behavior
+                alert("Please login first."); // Show a message
+                window.location.href = '/login'; // Redirect to the login page
+            }
+        });
+
+        document.getElementById('browseButton').addEventListener('click', function () {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert("Please login first."); // Show a message
+                window.location.href = '/login'; // Redirect to the login page
+            } else {
+                window.location.href = '/browse'; // Redirect to the browse page
+            }
+        });
+    </script>
 </body>
 </html>

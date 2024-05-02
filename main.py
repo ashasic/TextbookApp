@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pymongo import MongoClient
 import os
+from fastapi_jwt_auth.exceptions import AuthJWTException
 import hashlib
 
 #routers
@@ -31,12 +32,19 @@ textbooks_collection = db.Textbooks
 
 app.include_router(reservation_router)
 app.include_router(review_router)
+app.include_router(student_router)
+
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-app.include_router(student_router)
-app.include_router(reservation_router)
+# Exception handler for JWT errors
+@app.exception_handler(AuthJWTException)
+def authjwt_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.message}
+    )
 
 # CORS middleware configuration
 app.add_middleware(

@@ -1,7 +1,7 @@
 from fastapi import FastAPI, APIRouter, Form, HTTPException, Request, Depends
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
-from fastapi_login import LoginManager
+from fastapi_jwt_auth import AuthJWT
 from pymongo import MongoClient
 from pydantic import BaseModel
 import os
@@ -15,33 +15,39 @@ client = MongoClient(os.getenv("MONGO_URI"))
 db = client.UIowaBookShelf
 students_collection = db.students
 
-# FastAPI and FastAPI Login Manager
+# FastAPI Router
 student_router = APIRouter()
-SECRET_KEY = "IowaRocks"
-manager = LoginManager(SECRET_KEY, token_url="/login")
 
 # Creating an instance of Jinja2Templates
 templates = Jinja2Templates(directory="templates")
 
-# Pydantic model for registration
+# Pydantic models
 class Register(BaseModel):
     username: str
     password: str
-    role: str  # Added a role field
+    role: str
 
-# Load user function for fastapi-login
-@manager.user_loader
-def load_user(username: str):
-    return students_collection.find_one({"username": username})
+class LoginSchema(BaseModel):
+    username: str
+    password: str
+
+class Settings(BaseModel):
+    authjwt_secret_key: str = "IowaRocks"  # Change this to your secret key
+
+# Configuration for JWT tokens
+@AuthJWT.load_config
+def get_config():
+    return Settings()
+
 
 @student_router.post("/login/")
-async def login(username: str = Form(...), password: str = Form(...)):
+async def login(username: str = Form(...), password: str = Form(...), Authorize: AuthJWT = Depends()):
     user = students_collection.find_one({"username": username})
-    if user and user["password"] == hashlib.sha256(password.encode()).hexdigest():
-        token = manager.create_access_token(data={"sub": username})
-        return JSONResponse(content={"message": "Login successful", "token": token}, status_code=200)
-    else:
+    if not user or user["password"] != hashlib.sha256(password.encode()).hexdigest():
         raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    access_token = Authorize.create_access_token(subject=username)
+    return JSONResponse(content={"message": "Login successful", "access_token": access_token}, status_code=200)
 
 @student_router.get("/login/")
 async def login_page(request: Request):

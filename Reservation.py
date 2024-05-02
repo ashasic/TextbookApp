@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from pymongo import MongoClient
+from model import ReservationEntry
 import os
 from dotenv import load_dotenv
 
@@ -13,16 +14,6 @@ reservations_collection = db.Reservations
 
 # Define the API router
 reservation_router = APIRouter()
-
-# Pydantic model for reservation data
-class ReservationEntry(BaseModel):
-    title: str
-    isbn: str
-    authors: str
-    published_date: str
-    description: str
-    subject: str
-    user: str
 
 # Helper function to check existing reservation
 def check_reservation(isbn, user):
