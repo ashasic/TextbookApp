@@ -11,7 +11,7 @@ import os
 from fastapi_jwt_auth.exceptions import AuthJWTException
 import hashlib
 
-#routers
+# routers
 from Student import student_router
 from Reservation import reservation_router
 from textbook import textbook_router
@@ -69,6 +69,7 @@ class TextbookEntry(BaseModel):
 class ISBN(BaseModel):
     isbn: str
 
+
 class Register(BaseModel):
     username: str
     password: str
@@ -100,6 +101,12 @@ async def add_or_update_textbook(textbook_data: dict):
     if not isbn:
         raise HTTPException(status_code=400, detail="ISBN is required")
 
+    # Check if the textbook already exists in the database
+    existing_book = textbooks_collection.find_one({"isbn": isbn})
+    if existing_book:
+        # If the book exists and no new data is given to update, return an error
+        return {"message": "Textbook already added.."}
+
     # Fetch additional book info from an external API
     book_data = fetch_book_info(isbn)
     if not book_data:
@@ -118,7 +125,7 @@ async def add_or_update_textbook(textbook_data: dict):
 
     if result.upserted_id or result.modified_count > 0:
         return {
-            "message": "Textbook data added/updated successfully",
+            "message": "Textbook data added successfully",
             "data": book_data,
         }
     else:
