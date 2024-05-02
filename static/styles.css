@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 /* Base colors */
@@ -208,4 +207,47 @@ button:hover, button:focus {
 
 .multicolor-title span {
   color: var(--uiowa-gray); /* Different color for 'BookShelf' */
+}
+
+/* Styling placeholders with specific fonts and colors */
+input::placeholder, textarea::placeholder {
+  font-family: 'Nunito', sans-serif; /* Set the font family for placeholder */
+  color: #36393f; /* Placeholder text color */
+  font-size: 16px; /* Adjust size to match input text */
+  opacity: 1; /* Full opacity to make it clearly visible */
+}
+
+/* Base styles for inputs to match placeholder styles */
+input, textarea {
+  font-family: 'Nunito', sans-serif; /* Ensure input text uses Nunito */
+  color: var(--uiowa-white); /* Text color */
+  background: var(--uiowa-black); /* Background color */
+  border: 1px solid var(--uiowa-gold); /* Border properties */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding for better text alignment */
+  margin: 5px 0; /* Spacing for aesthetics */
+}
+
+/* Ensure consistent style on focus and while typing */
+input:focus, textarea:focus {
+  border-color: var(--uiowa-gold);
+  box-shadow: 0 0 8px var(--uiowa-gold); /* Glow effect on focus */
+}
+
+/* Additional styles for specific input types if needed */
+input[type="text"], input[type="password"] {
+  font-size: 16px; /* Specific size for text/password inputs */
+}
+
+/* Example of targeting specific input types for different styles */
+input[type="submit"], button {
+  background-color: var(--uiowa-gold);
+  color: var(--uiowa-black);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: var(--uiowa-white); /* Invert colors on hover */
+  color: var(--uiowa-black);
 }
