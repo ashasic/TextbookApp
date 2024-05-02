@@ -1,11 +1,15 @@
 import uvicorn
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, Form, HTTPException, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
+from fastapi.templating import Jinja2Templates
 from starlette.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pymongo import MongoClient
+import os
+import hashlib
+from student import student_router
 
 from dotenv import load_dotenv
 
@@ -22,7 +26,9 @@ textbooks_collection = db.Textbooks
 from textbook import textbook_router
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
+app.include_router(student_router)
 
 # CORS middleware configuration
 app.add_middleware(
@@ -150,11 +156,9 @@ async def search_textbooks(
     )
     return {"books": books}
 
-
 @app.get("/login")
 async def login():
     return FileResponse("templates/login.html")
-
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
