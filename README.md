@@ -17,7 +17,7 @@ Professors will be the driving force in getting this out as they can introduce i
 To make this app we would be using fast API, MongoDB, along with Python, HTML, and CSS MongoDB will be used as a database to store the textbooks along with storing students and admin information to specify roles and user data. For the textbook data, we will be using the Google Books API key.
 
 ## Procedure
-Once you open up our app you will be greeted with a login/sign-up option and from there
+Once you open up our app you will be greeted with a login/sign-up option and from there they can search for their desired textbook and once found, reserve it and contact the user who posted it. 
 
 
 
