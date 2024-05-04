@@ -1,15 +1,11 @@
-from pydantic import BaseModel
-from pymongo import MongoClient
-from dotenv import load_dotenv
-from fastapi import APIRouter, HTTPException, status
-from fastapi.encoders import jsonable_encoder
-from fastapi.responses import JSONResponse
+from fastapi import APIRouter, HTTPException, Depends
+from fastapi_jwt_auth import AuthJWT
 from model import ReviewIn, ReviewOut
+from pymongo import MongoClient
+from bson import ObjectId
+from fastapi_jwt_auth.exceptions import AuthJWTException
+
 import os
-
-from dotenv import load_dotenv
-
-load_dotenv()
 
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client.UIowaBookShelf
@@ -18,51 +14,67 @@ textbookCollection = db.Textbooks
 
 review_router = APIRouter()
 
-
 # Create or update a review
 @review_router.post("/reviews/", response_model=ReviewOut)
-async def add_or_update_review(review: ReviewIn):
+async def add_or_update_review(review: ReviewIn, Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_required()
+        current_user = Authorize.get_jwt_subject()
+    except AuthJWTException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+
     # Validate review data
-    if not review.isbn or not review.user or not review.review:
+    if not review.isbn or not review.review:
         raise HTTPException(status_code=400, detail="Invalid review data")
 
     # Check if the textbook exists
-    if not textbook_collection.find_one({"isbn": review.isbn}):
+    if not textbookCollection.find_one({"isbn": review.isbn}):
         raise HTTPException(status_code=404, detail="Textbook not found")
 
     # Check if the user already has a review for this ISBN
-    existing_review = review_collection.find_one(
-        {"isbn": review.isbn, "user": review.user}
-    )
+    existing_review = reviewCollection.find_one({"isbn": review.isbn, "user": current_user})
 
-    # If the review exists, update it; otherwise, create a new review
+    review_dict = review.dict()
+    review_dict["user"] = current_user  # Set the user as the current user
+
     if existing_review:
-        review_collection.update_one(
-            {"isbn": review.isbn, "user": review.user}, {"$set": review.dict()}
-        )
+        # If the review exists, update it
+        reviewCollection.update_one({"_id": existing_review["_id"]}, {"$set": review_dict})
+        review_id = existing_review["_id"]
         message = "Review updated successfully"
     else:
-        review_id = review_collection.insert_one(review.dict()).inserted_id
+        # Insert new review
+        review_id = reviewCollection.insert_one(review_dict).inserted_id
         message = "Review added successfully"
 
-    return {**review.dict(), "id": str(review_id), "message": message}
+    return {**review_dict, "id": str(review_id), "message": message}
 
 
 # Get reviews for a specific textbook
 @review_router.get("/reviews/{isbn}")
 async def get_reviews(isbn: str):
-    reviews = list(reviewCollection.find({"isbn": isbn}, {"_id": 0}))
-    if not reviews:
-        raise HTTPException(
-            status_code=404, detail="No reviews found for this textbook"
-        )
-    return {"reviews": reviews}
+    reviews = list(reviewCollection.find({"isbn": isbn}))
+    return {"reviews": [{**review, "id": str(review["_id"])} for review in reviews]}
 
 
 # Delete a specific review
-@review_router.delete("/reviews/{isbn}/{user}")
-async def delete_review(isbn: str, user: str):
-    result = review_collection.delete_one({"isbn": isbn, "user": user})
-    if result.deleted_count == 1:
-        return {"message": "Review deleted successfully"}
-    raise HTTPException(status_code=404, detail="Review not found")
+@review_router.delete("/reviews/{id}")
+async def delete_review(id: str, Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_required()
+        current_user = Authorize.get_jwt_subject()
+        claims = Authorize.get_raw_jwt()
+    except AuthJWTException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+
+    # Find the review to be deleted
+    review = reviewCollection.find_one({"_id": ObjectId(id)})
+
+    if review and (current_user == review["user"] or claims.get("role") == "admin"):
+        result = reviewCollection.delete_one({"_id": ObjectId(id)})
+        if result.deleted_count == 1:
+            return {"message": "Review deleted successfully"}
+        else:
+            raise HTTPException(status_code=404, detail="Review not found")
+    else:
+        raise HTTPException(status_code=403, detail="You do not have permission to delete this review")

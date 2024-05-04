@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Form</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Review Form</h1>
+    <form id="reviewForm">
+        <input type="hidden" id="isbn" name="isbn">
+        <label for="review">Review:</label>
+        <textarea id="review" name="review" rows="4" cols="50"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <button onclick="window.location.href='/browse'">Back to Browse</button>
+    <script src="/static/review-form.js"></script>
+</body>
+</html>

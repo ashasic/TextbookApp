@@ -6,11 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             const isbn = document.getElementById('isbnInput').value.trim();
             const responseMessage = document.getElementById('responseMessage');
-            
+            const token = localStorage.getItem('token'); // Get the JWT token from local storage
+
             if (isbn) {
                 fetch('http://localhost:8000/textbooks/', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+                    },
                     body: JSON.stringify({ isbn: isbn })
                 })
                     .then(response => response.json())
@@ -31,11 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 homeBtn.style.display = 'none';
             }
         });
-    }
-    else {
+    } else {
         console.error('Button with ID "addTextbookBtn" not found');
     }
-    
 
     // Search Button
     const searchBtn = document.getElementById('searchBtn');
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                     </div>
                                     <button class="delete-btn" onclick="deleteTextbook('${book.isbn}')">Delete</button>
+                                    <button class="review-btn" onclick="goToReviewPage('${book.isbn}')">Review</button> <!-- Added Review Button -->
                                 `;
                                 textbooksList.appendChild(bookElement);
                             });
@@ -107,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('Received textbooks:', data);  // Log the received data
                 const textbooksList = document.getElementById('textbooksList');
                 textbooksList.innerHTML = '';  // Clear existing content
-                // Continue with forEach loop
                 data.books.forEach(book => {
                     const authors = Array.isArray(book.authors) ? book.authors.join(", ") : "No authors listed";
                     const bookElement = document.createElement('div');
@@ -125,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         </div>
                         <button class="delete-btn" onclick="deleteTextbook('${book.isbn}')">Delete</button>
+                        <button class="review-btn" onclick="goToReviewPage('${book.isbn}')">Review</button> <!-- Review Button Added Here -->
                     `;
                     textbooksList.appendChild(bookElement);
                 });
@@ -136,6 +139,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     textbooksList.textContent = 'Failed to load textbooks.';
                 }
             });
+    }
+
+    // Function to redirect to the review page
+    window.goToReviewPage = function (isbn) {
+        window.location.href = `/reviews.html?isbn=${isbn}`;
     }
 
     // Delete Textbook Function
@@ -154,67 +162,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     responseMessage.textContent = 'Error deleting textbook: ' + error;
                 });
         }
-    };
-
-    window.seeReviews = function(isbn) {
-        // Display options for adding a review
-        const addReviewForm = document.createElement('form');
-        addReviewForm.innerHTML = `
-            <form id="addReviewForm">
-                <input type="text" id="userInput" placeholder="Enter User">
-                <input type="text" id="reviewInput" placeholder="Enter Review">
-                <button type="submit">Add Review</button>
-            </form>
-        `;
-        fetch(`http://localhost:8000/reviews/${isbn}`)
-            .then(response => response.json())
-            .then(data => {
-                const reviewsSection = document.getElementById('reviewsSection');
-                reviewsSection.innerHTML = ''; // Clear existing content
-                reviewsSection.appendChild(addReviewForm);
-                
-                // Attach event listener to add review button
-                addReviewForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    const user = document.getElementById('userInput').value.trim();
-                    const review = document.getElementById('reviewInput').value.trim();
-                    
-                    // Add review functionality
-                    // Implement the fetch request to add a review to the backend
-                    
-                    // Clear input fields after adding review
-                    document.getElementById('userInput').value = '';
-                    document.getElementById('reviewInput').value = '';
-                });
-                
-                // Display existing reviews
-                data.reviews.forEach(review => {
-                    const reviewElement = document.createElement('div');
-                    reviewElement.className = 'review';
-                    reviewElement.innerHTML = `
-                        <p>User: ${review.user}</p>
-                        <p>Review: ${review.review}</p>
-                        <button class="deleteReviewBtn" data-isbn="${isbn}" data-user="${review.user}">Delete Review</button>
-                    `;
-                    reviewsSection.appendChild(reviewElement);
-                });
-                
-                // Attach event listener to delete review buttons
-                const deleteReviewBtns = document.querySelectorAll('.deleteReviewBtn');
-                deleteReviewBtns.forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const isbn = this.getAttribute('data-isbn');
-                        const user = this.getAttribute('data-user');
-                        
-                        // Delete review functionality
-                        // Implement the fetch request to delete a review from the backend
-                    });
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching reviews:', error);
-                // Handle errors, e.g., display an error message to the user
-            });
     };
 
     // Load textbooks on page load
