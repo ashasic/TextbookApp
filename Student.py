@@ -64,6 +64,17 @@ async def login(
         status_code=200,
     )
 
+    # Return user information along with the access token
+    user_data = user(username=user["username"], role=user["role"])
+    return JSONResponse(
+        content={
+            "message": "Login successful",
+            "access_token": access_token,
+            "user": user_data.dict(),
+        },
+        status_code=200,
+    )
+
 
 @student_router.get("/login/")
 async def login_page(request: Request):

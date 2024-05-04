@@ -42,14 +42,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     reviewElement.innerHTML = `
                         <p>User: ${review.user}</p>
                         <p>Review: ${review.review}</p>
-                        <button class="editReviewBtn" data-id="${review.id}">Edit</button>
-                        <button class="deleteReviewBtn" data-id="${review.id}">Delete</button>
+                        <button class="editReviewBtn" data-user="${review.user}">Edit</button>
+                        <button class="deleteReviewBtn" data-user="${review.user}">Delete</button>
                     `;
                     reviewsList.appendChild(reviewElement);
 
                     // Attach event listeners to edit and delete buttons
-                    reviewElement.querySelector('.editReviewBtn').addEventListener('click', () => editReview(review.id));
-                    reviewElement.querySelector('.deleteReviewBtn').addEventListener('click', () => deleteReview(review.id));
+                    reviewElement.querySelector('.editReviewBtn').addEventListener('click', () => editReview(review.user));
+                    reviewElement.querySelector('.deleteReviewBtn').addEventListener('click', () => deleteReview(isbn, review.user));
                 });
             } else {
                 reviewsList.textContent = 'No reviews found.';
@@ -62,14 +62,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Redirect to the review form for editing an existing review
-    function editReview(reviewId) {
-        window.location.href = `/review-form.html?isbn=${isbn}&id=${reviewId}`;
+    function editReview(user) {
+        window.location.href = `/review-form.html?isbn=${isbn}&user=${user}`;
     }
 
     // Delete a specific review
-    function deleteReview(reviewId) {
+    function deleteReview(isbn, user) {
         if (confirm('Are you sure you want to delete this review?')) {
-            fetch(`http://localhost:8000/reviews/${reviewId}`, {
+            fetch(`http://localhost:8000/reviews/${isbn}/${user}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const reviewInput = document.getElementById('review');
     const params = new URLSearchParams(window.location.search);
     const isbn = params.get('isbn');
+    console.log('ISBN:', isbn);
     const token = localStorage.getItem('token'); // JWT token from local storage
 
     if (!isbn) {
@@ -14,31 +15,53 @@ document.addEventListener('DOMContentLoaded', function () {
     // Set the ISBN hidden field value
     isbnInput.value = isbn;
 
-    // Load review for editing, if ID is specified
-    const reviewId = params.get('id');
-    if (reviewId) {
-        fetch(`http://localhost:8000/reviews/${isbn}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+    // Fetch user data from the backend using /login/ endpoint
+    fetch('/login/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            // Add any necessary credentials here
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to load review');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const review = data.reviews.find(r => r._id === reviewId);
-            if (review) {
-                reviewInput.value = review.review;
-            }
-        })
-        .catch(error => {
-            console.error('Error loading review:', error);
-            alert('Failed to load review');
-        });
-    }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch current user data');
+        }
+        return response.json();
+    })
+    .then(userData => {
+        const user = userData.user; // Assuming the user data contains the user object
+        console.log('Current User:', user);
+
+        // Load review for editing, if ID is specified
+        if (user) {
+            fetch(`http://localhost:8000/reviews/${isbn}/${user.username}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load review');
+                }
+                return response.json();
+            })
+            .then(data => {
+                reviewInput.value = data.review;
+            })
+            .catch(error => {
+                console.error('Error loading review:', error);
+                alert('Failed to load review');
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching current user data:', error);
+        // Handle error, such as redirecting to login page
+    });
 
     // Form submission handler
     form.addEventListener('submit', function (event) {
