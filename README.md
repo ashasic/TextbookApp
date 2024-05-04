@@ -1,4 +1,4 @@
-# TextbookApp
+# UIBookShelf
 ### Final Project
 
 College students are spending thousands each year on textbooks they will use for a semester. <br>
