@@ -4,8 +4,22 @@ from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
 import logging
+from logging.handlers import RotatingFileHandler
 
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(module)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
+log_file_path = os.path.join(os.getcwd(), "application.log")
+file_handler = RotatingFileHandler(
+    log_file_path, maxBytes=1024 * 1024 * 5, backupCount=5
+)  # 5 MB per file, max 5 files
+file_handler.setFormatter(
+    logging.Formatter("%(asctime)s - %(levelname)s - %(module)s - %(message)s")
+)
+logger.addHandler(file_handler)
 
 load_dotenv()
 

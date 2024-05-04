@@ -3,9 +3,24 @@ from fastapi_jwt_auth import AuthJWT
 from model import ReviewIn, ReviewOut
 from pymongo import MongoClient
 from fastapi_jwt_auth.exceptions import AuthJWTException
+import os
 import logging
+from logging.handlers import RotatingFileHandler
 
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(module)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
+log_file_path = os.path.join(os.getcwd(), "application.log")
+file_handler = RotatingFileHandler(
+    log_file_path, maxBytes=1024 * 1024 * 5, backupCount=5
+)  # 5 MB per file, max 5 files
+file_handler.setFormatter(
+    logging.Formatter("%(asctime)s - %(levelname)s - %(module)s - %(message)s")
+)
+logger.addHandler(file_handler)
 
 import os
 
@@ -23,8 +38,8 @@ async def add_or_update_review(data: dict, Authorize: AuthJWT = Depends()):
     try:
         Authorize.jwt_required()
         current_user = Authorize.get_jwt_subject()
-        isbn = data.get('isbn')
-        review_text = data.get('review')
+        isbn = data.get("isbn")
+        review_text = data.get("review")
         logger.info(f"Adding or updating review by {current_user} for ISBN: {isbn}")
     except AuthJWTException as e:
         logger.error("JWT authorization failed", exc_info=True)
@@ -44,9 +59,7 @@ async def add_or_update_review(data: dict, Authorize: AuthJWT = Depends()):
     review_dict = {"isbn": isbn, "user": current_user, "review": review_text}
 
     # Check if the user already has a review for this ISBN
-    existing_review = reviewCollection.find_one(
-        {"isbn": isbn, "user": current_user}
-    )
+    existing_review = reviewCollection.find_one({"isbn": isbn, "user": current_user})
 
     if existing_review:
         # If the review exists, update it

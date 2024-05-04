@@ -8,8 +8,22 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 import os
 import hashlib
 import logging
+from logging.handlers import RotatingFileHandler
 
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(module)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
+log_file_path = os.path.join(os.getcwd(), "application.log")
+file_handler = RotatingFileHandler(
+    log_file_path, maxBytes=1024 * 1024 * 5, backupCount=5
+)  # 5 MB per file, max 5 files
+file_handler.setFormatter(
+    logging.Formatter("%(asctime)s - %(levelname)s - %(module)s - %(message)s")
+)
+logger.addHandler(file_handler)
 
 from dotenv import load_dotenv
 
@@ -59,7 +73,10 @@ async def login(
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
     access_token = Authorize.create_access_token(subject=username)
-    return JSONResponse(content={"message": "Login successful", "access_token": access_token}, status_code=200)
+    return JSONResponse(
+        content={"message": "Login successful", "access_token": access_token},
+        status_code=200,
+    )
     logger.info(f"User {username} logged in successfully")
     return JSONResponse(
         content={"message": "Login successful", "access_token": access_token},
@@ -105,6 +122,7 @@ async def register(register_data: Register):
 @student_router.get("/register/")
 async def register_page(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
+
 
 # New Endpoint to Get Current User
 @student_router.get("/user")

@@ -29,3 +29,39 @@
 2024-05-04 13:31:14,861 - INFO - main - Number of textbooks fetched: 13
 2024-05-04 13:31:34,062 - INFO - main - Fetching all textbooks
 2024-05-04 13:31:34,134 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:07:19,586 - INFO - main - Starting application
+2024-05-04 16:07:29,337 - INFO - main - Fetching all textbooks
+2024-05-04 16:07:29,640 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:07:40,116 - INFO - main - Fetching all textbooks
+2024-05-04 16:07:40,185 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:08:52,113 - INFO - main - Fetching all textbooks
+2024-05-04 16:08:52,183 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:09:05,451 - INFO - main - Fetching all textbooks
+2024-05-04 16:09:05,518 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:14:14,684 - INFO - main - Fetching all textbooks
+2024-05-04 16:14:14,761 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:19:18,437 - INFO - main - Fetching all textbooks
+2024-05-04 16:19:18,513 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:19:35,509 - INFO - main - Fetching all textbooks
+2024-05-04 16:19:35,577 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:20:28,937 - INFO - main - Fetching all textbooks
+2024-05-04 16:20:29,006 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:26:35,098 - INFO - main - Starting application
+2024-05-04 16:26:44,721 - INFO - Review - Adding or updating review by talha@ADMIN.com for ISBN: 111970
+2024-05-04 16:26:45,026 - ERROR - Review - Textbook not found for ISBN: 111970
+2024-05-04 16:26:57,431 - INFO - main - Fetching all textbooks
+2024-05-04 16:26:57,698 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:27:06,208 - WARNING - Student - Login attempt failed for username: talha@ADMIN.com
+2024-05-04 16:27:13,602 - INFO - main - Fetching all textbooks
+2024-05-04 16:27:13,659 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:27:23,624 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 16:27:23,665 - INFO - Review - Retrieved 1 reviews for ISBN: 1119703611
+2024-05-04 16:27:26,060 - ERROR - Review - Review not found for ISBN: 1119703611 and user: talha@ADMIN.com
+2024-05-04 16:27:45,050 - INFO - Review - Adding or updating review by talha@ADMIN.com for ISBN: 1119703611
+2024-05-04 16:27:45,172 - INFO - Review - Review added successfully
+2024-05-04 16:27:46,535 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 16:27:46,570 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2024-05-04 16:27:53,552 - INFO - main - Fetching all textbooks
+2024-05-04 16:27:53,611 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 16:28:13,240 - INFO - main - Fetching all textbooks
+2024-05-04 16:28:13,301 - INFO - main - Number of textbooks fetched: 12
