@@ -16,6 +16,29 @@ Professors will be the driving force in getting this out as they can introduce i
 ## What will be used: 
 To make this app we would be using fast API, MongoDB, along with Python, HTML, and CSS MongoDB will be used as a database to store the textbooks along with storing students and admin information to specify roles and user data. For the textbook data, we will be using the Google Books API key.
 
+## The Application:
+
+![Home Page with clean and consistent user interface]()
+*Home Page - clean and consistent user interface*
+
+![Login Page](/screenshots/login_page.png)
+*Login Page*
+
+![Sign Up Page with Admin Option](/screenshots/signup_page.png)
+*Sign Up Page with Admin Option*
+
+![Add Textbook, Search for Textbooks, Reservation Details, Upload and Download ISBN Files](/screenshots/book_page.png)
+*Add Textbook, Search for Textbooks, Reservation Details, Upload and Download ISBN Files*
+
+![Collection of Current Textbooks with Details, Delete and Review Functionality](/screenshots/browse_collection.png)
+*Collection of Current Textbooks with Details, Delete and Review Functionality*
+
+![Review Page - showcasing CRUD functionality](/screenshots/review_page.png)
+*Review Page - showcasing CRUD functionality*
+
+![Mongo Collections: Reviews, Reservations, Textbooks, Students(Users)](/screenshots/mongo_collections.png)
+*Mongo Collections: Reviews, Reservations, Textbooks, Students(Users)*
+
 ## Procedure
 Once you open up our app you will be greeted with a login/sign-up option and from there they can search for their desired textbook and once found, reserve it and contact the user who posted it. <br>
 
@@ -54,7 +77,6 @@ Search textbooks <br>
 Reserve textbooks <br>
 CRUD Reviews for each textbook <br>
 Register as admin or student; Login/out to access textbook data <br>
-Admin privaleged to remove any review, students may only remove/edit their own.
 Download list of all current textbooks in database <br>
 Upload a file containg 1 isbn on each line, all isbns will automatically be uploaded into the database <br>
 Logging Stored on Disk <br>
