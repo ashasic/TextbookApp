@@ -48,7 +48,19 @@ After doing pip install -r requirements.txt you must do 'pip install pydantic==1
 
 All javascript files are in a folder named 'static' and all html files are in a folder named 'templates' <br>
 
-One thing to note is after uploading a file of isbns the program may take a couple seconds to add all the books and refresh the list.
+CURRENT FEATURES: <br>
+Add/Delete textbooks <br>
+Search textbooks <br>
+Reserve textbooks <br>
+CRUD Reviews for each textbook <br>
+Register as admin or student; Login/out to access textbook data <br>
+Download list of all current textbooks in database <br>
+Upload a file containg 1 isbn on each line, all isbns will automatically be uploaded into the database <br>
+Logging Stored on Disk <br>
+
+One thing to note is after uploading a file of isbns the program may take a couple seconds to add all the books and refresh the list. <br>
+
+Logs can be seen in application.log file
 
 
 
