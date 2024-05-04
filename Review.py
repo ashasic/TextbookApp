@@ -4,6 +4,9 @@ from model import ReviewIn, ReviewOut
 from pymongo import MongoClient
 from bson import ObjectId
 from fastapi_jwt_auth.exceptions import AuthJWTException
+import logging
+
+logger = logging.getLogger(__name__)
 
 import os
 
@@ -14,13 +17,16 @@ textbookCollection = db.Textbooks
 
 review_router = APIRouter()
 
+
 # Create or update a review
 @review_router.post("/reviews/", response_model=ReviewOut)
 async def add_or_update_review(review: ReviewIn, Authorize: AuthJWT = Depends()):
     try:
         Authorize.jwt_required()
         current_user = Authorize.get_jwt_subject()
+        logger.info(f"Adding or updating review by {user} for ISBN: {review.isbn}")
     except AuthJWTException as e:
+        logger.error("JWT authorization failed", exc_info=True)
         raise HTTPException(status_code=e.status_code, detail=e.message)
 
     # Validate review data
@@ -32,22 +38,29 @@ async def add_or_update_review(review: ReviewIn, Authorize: AuthJWT = Depends())
         raise HTTPException(status_code=404, detail="Textbook not found")
 
     # Check if the user already has a review for this ISBN
-    existing_review = reviewCollection.find_one({"isbn": review.isbn, "user": current_user})
+    existing_review = reviewCollection.find_one(
+        {"isbn": review.isbn, "user": current_user}
+    )
 
     review_dict = review.dict()
     review_dict["user"] = current_user  # Set the user as the current user
 
     if existing_review:
         # If the review exists, update it
-        reviewCollection.update_one({"_id": existing_review["_id"]}, {"$set": review_dict})
+        reviewCollection.update_one(
+            {"_id": existing_review["_id"]}, {"$set": review_dict}
+        )
         review_id = existing_review["_id"]
         message = "Review updated successfully"
+        logger.info("Review updated successfully")
     else:
         # Insert new review
         review_id = reviewCollection.insert_one(review_dict).inserted_id
         message = "Review added successfully"
+        logger.info("Review added successfully")
 
     return {**review_dict, "id": str(review_id), "message": message}
+
 
 # Get a specific review for a specific user and ISBN
 @review_router.get("/reviews/{isbn}/{user}", response_model=ReviewOut)
@@ -57,12 +70,17 @@ async def get_specific_review(isbn: str, user: str):
         raise HTTPException(status_code=404, detail="Review not found")
     return {**review, "id": str(review["_id"])}
 
+
 # Get reviews for a specific textbook
 @review_router.get("/reviews/{isbn}")
 async def get_reviews(isbn: str):
     reviews = list(reviewCollection.find({"isbn": isbn}))
+    logger.info(f"Retrieved {len(reviews)} reviews for ISBN: {isbn}")
+    return {"reviews": [{**review, "id": str(review["_id"])} for review in reviews]}
+
     formatted_reviews = [{**review, "id": str(review["_id"])} for review in reviews]
     return {"reviews": formatted_reviews}
+
 
 # Delete a specific review
 @review_router.delete("/reviews/{isbn}/{user}")
@@ -84,4 +102,6 @@ async def delete_review(isbn: str, user: str, Authorize: AuthJWT = Depends()):
         else:
             raise HTTPException(status_code=404, detail="Review not found")
     else:
-        raise HTTPException(status_code=403, detail="You do not have permission to delete this review")
+        raise HTTPException(
+            status_code=403, detail="You do not have permission to delete this review"
+        )

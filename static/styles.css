@@ -74,7 +74,7 @@ button:hover, button:focus {
   font-weight: bold; /* Makes the title bolder */
   color: var(--uiowa-gold);
   text-transform: uppercase; /* Stylistic choice for titles */
-  padding-left: 425px;
+  padding-left: 285px;
 }
 
 .title2 {

@@ -17,7 +17,7 @@ Professors will be the driving force in getting this out as they can introduce i
 To make this app we would be using fast API, MongoDB, along with Python, HTML, and CSS MongoDB will be used as a database to store the textbooks along with storing students and admin information to specify roles and user data. For the textbook data, we will be using the Google Books API key.
 
 ## Procedure
-Once you open up our app you will be greeted with a login/sign-up option and from there they can search for their desired textbook and once found, reserve it and contact the user who posted it. 
+Once you open up our app you will be greeted with a login/sign-up option and from there they can search for their desired textbook and once found, reserve it and contact the user who posted it. <br>
 
 To run this code, follow the steps outlined below: <br>
 
@@ -37,11 +37,18 @@ Once done using this code, use 'deactivate' to deactivate the venv <br>
 
 
 This should install all the required dependencies <br>
-Alternatively, you can use 'pip install -r requirements.txt' <br>
+Alternatively, you can use 'pip install -r requirements.txt'. I highly reccomend this<br>
 
 Use 'python -m pip list' to view all the currently installed dependencies <br>
 You can view requirements.txt to see all required dependencies <br>
 
-Use 'pip freeze > requirements.txt' command to create a file with all required dependencies
+Use 'pip freeze > requirements.txt' command to create a file with all required dependencies<br>
+
+After doing pip install -r requirements.txt you must do 'pip install pydantic==1.10.9' to resolve some confilcts in the dependecies<br>
+
+All javascript files are in a folder named 'static' and all html files are in a folder named 'templates' <br>
+
+One thing to note is after uploading a file of isbns the program may take a couple seconds to add all the books and refresh the list.
+
 
 
