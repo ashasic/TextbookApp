@@ -13,11 +13,30 @@ load_dotenv()
 
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client.UIowaBookShelf
-reviewCollection = db.Reviews
-textbookCollection = db.Textbooks
+review_collection = db.Reviews
+textbook_collection = db.Textbooks
 
 review_router = APIRouter()
 
+class ReviewUpdate(BaseModel):
+    review: str  # Example of simplifying the model for updates, adjust as needed
+
+@review_router.put("/reviews/{isbn}/{user}", response_model=ReviewOut)
+async def update_review(isbn: str, user: str, review_update: ReviewUpdate):
+    # Validate if the textbook exists
+    if not textbook_collection.find_one({"isbn": isbn}):
+        raise HTTPException(status_code=404, detail="Textbook not found")
+
+    # Fetch and update the review if it exists
+    existing_review = review_collection.find_one({"isbn": isbn, "user": user})
+    if not existing_review:
+        raise HTTPException(status_code=404, detail="Review not found")
+
+    review_collection.update_one(
+        {"isbn": isbn, "user": user},
+        {"$set": {"review": review_update.review}}
+    )
+    return {"isbn": isbn, "user": user, "review": review_update.review, "message": "Review updated successfully"}
 
 # Create or update a review
 @review_router.post("/reviews/", response_model=ReviewOut)
@@ -51,7 +70,7 @@ async def add_or_update_review(review: ReviewIn):
 # Get reviews for a specific textbook
 @review_router.get("/reviews/{isbn}")
 async def get_reviews(isbn: str):
-    reviews = list(reviewCollection.find({"isbn": isbn}, {"_id": 0}))
+    reviews = list(review_collection.find({"isbn": isbn}, {"_id": 0}))
     if not reviews:
         raise HTTPException(
             status_code=404, detail="No reviews found for this textbook"
