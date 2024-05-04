@@ -27,11 +27,25 @@
                 <input type="text" id="searchInput" placeholder="Title, ISBN, or Author">
                 <button id="searchBtn">Search Textbooks</button>
             </div>
+            <div class="input-group">
+                <input type="text" id="isbnOrTitleInput" placeholder="Enter ISBN or Title">
+                <button id="fetchDetailsBtn">Reservation Details</button>
+            </div>
+            <div class="input-group">
+                <button id="downloadIsbnBtn">Download ISBNs</button>
+                <input type="file" id="uploadIsbnFile" hidden>
+                <button id="uploadIsbnBtn" onclick="document.getElementById('uploadIsbnFile').click();">Upload ISBNs</button>
+            </div>
+            <div class="navigation">
+                <button id="homeBtn" style="display:none;">Back to Home</button>
+            </div>
             <div id="responseMessage"></div>
             <div id="textbooksList" class="textbooks"></div>
         </div>
     </div>
+    <script src="/static/reservation.js"></script>
     <script src="/static/checkAuth.js"></script>
     <script src="/static/script.js"></script>
+    <script src="/static/isbnManager.js"></script>
 </body>
 </html>

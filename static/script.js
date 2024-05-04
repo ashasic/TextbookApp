@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Add Textbook Button
     const addTextbookBtn = document.getElementById('addTextbookBtn');
     if (addTextbookBtn) {
         addTextbookBtn.addEventListener('click', function (event) {
@@ -101,6 +100,29 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = '/';
         });
     }
+
+    document.getElementById('uploadIsbnFile').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+    
+            // Post the file to the server
+            fetch('http://localhost:8000/textbooks/upload-isbns', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Upload successful:', data);
+                // Fetch the updated list of textbooks after upload completes
+                loadTextbooks(); // Assumes this function fetches and updates the textbook list in the DOM
+            })
+            .catch(error => {
+                console.error('Error uploading ISBN file:', error);
+            });
+        }
+    });
 
     // Load Textbooks
     function loadTextbooks() {
