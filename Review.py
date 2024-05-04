@@ -49,17 +49,24 @@ async def add_or_update_review(review: ReviewIn, Authorize: AuthJWT = Depends())
 
     return {**review_dict, "id": str(review_id), "message": message}
 
+# Get a specific review for a specific user and ISBN
+@review_router.get("/reviews/{isbn}/{user}", response_model=ReviewOut)
+async def get_specific_review(isbn: str, user: str):
+    review = reviewCollection.find_one({"isbn": isbn, "user": user})
+    if not review:
+        raise HTTPException(status_code=404, detail="Review not found")
+    return {**review, "id": str(review["_id"])}
 
 # Get reviews for a specific textbook
 @review_router.get("/reviews/{isbn}")
 async def get_reviews(isbn: str):
     reviews = list(reviewCollection.find({"isbn": isbn}))
-    return {"reviews": [{**review, "id": str(review["_id"])} for review in reviews]}
-
+    formatted_reviews = [{**review, "id": str(review["_id"])} for review in reviews]
+    return {"reviews": formatted_reviews}
 
 # Delete a specific review
-@review_router.delete("/reviews/{id}")
-async def delete_review(id: str, Authorize: AuthJWT = Depends()):
+@review_router.delete("/reviews/{isbn}/{user}")
+async def delete_review(isbn: str, user: str, Authorize: AuthJWT = Depends()):
     try:
         Authorize.jwt_required()
         current_user = Authorize.get_jwt_subject()
@@ -68,10 +75,10 @@ async def delete_review(id: str, Authorize: AuthJWT = Depends()):
         raise HTTPException(status_code=e.status_code, detail=e.message)
 
     # Find the review to be deleted
-    review = reviewCollection.find_one({"_id": ObjectId(id)})
+    review = reviewCollection.find_one({"isbn": isbn, "user": user})
 
     if review and (current_user == review["user"] or claims.get("role") == "admin"):
-        result = reviewCollection.delete_one({"_id": ObjectId(id)})
+        result = reviewCollection.delete_one({"_id": review["_id"]})
         if result.deleted_count == 1:
             return {"message": "Review deleted successfully"}
         else:

@@ -78,7 +78,7 @@ async def root():
 async def reviews_page():
     return FileResponse("templates/reviews.html")
 
-@app.get("/review-form")
+@app.get("/review-form.html")
 async def review_form_page():
     return FileResponse("templates/review-form.html")
 
