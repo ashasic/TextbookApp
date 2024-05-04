@@ -53,7 +53,7 @@ Add/Delete textbooks <br>
 Search textbooks <br>
 Reserve textbooks <br>
 CRUD Reviews for each textbook <br>
-Login/out to access textbook data <br>
+Register as admin or student; Login/out to access textbook data <br>
 Download list of all current textbooks in database <br>
 Upload a file containg 1 isbn on each line, all isbns will automatically be uploaded into the database <br>
 Logging Stored on Disk <br>
