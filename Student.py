@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi_jwt_auth import AuthJWT
 from pymongo import MongoClient
 from pydantic import BaseModel
+from fastapi_jwt_auth.exceptions import AuthJWTException
 import os
 import hashlib
 import logging
@@ -104,3 +105,18 @@ async def register(register_data: Register):
 @student_router.get("/register/")
 async def register_page(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
+
+# New Endpoint to Get Current User
+@student_router.get("/user")
+async def get_current_user(Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_required()
+        current_user = Authorize.get_jwt_subject()
+    except AuthJWTException as e:
+        raise HTTPException(status_code=e.status_code, detail=e.message)
+
+    user = students_collection.find_one({"username": current_user})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    return {"username": user["username"], "role": user["role"]}

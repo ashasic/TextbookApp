@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const reviewInput = document.getElementById('review');
     const params = new URLSearchParams(window.location.search);
     const isbn = params.get('isbn');
-    console.log('ISBN:', isbn);
     const token = localStorage.getItem('token'); // JWT token from local storage
 
     if (!isbn) {
@@ -15,16 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Set the ISBN hidden field value
     isbnInput.value = isbn;
 
-    // Fetch user data from the backend using /login/ endpoint
-    fetch('/login/', {
-        method: 'POST',
+    // Fetch the current user data from the /user endpoint
+    fetch('/user', {
         headers: {
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            // Add any necessary credentials here
-        })
+        }
     })
     .then(response => {
         if (!response.ok) {
@@ -33,12 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
     })
     .then(userData => {
-        const user = userData.user; // Assuming the user data contains the user object
+        const user = userData.username; // Extract the username from the response
         console.log('Current User:', user);
 
-        // Load review for editing, if ID is specified
+        // If editing a review, fetch the existing review data
         if (user) {
-            fetch(`http://localhost:8000/reviews/${isbn}/${user.username}`, {
+            fetch(`http://localhost:8000/reviews/${isbn}/${user}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -50,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(data => {
-                reviewInput.value = data.review;
+                reviewInput.value = data.review; // Pre-fill the review input field
             })
             .catch(error => {
                 console.error('Error loading review:', error);
@@ -60,7 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch(error => {
         console.error('Error fetching current user data:', error);
-        // Handle error, such as redirecting to login page
+        alert('Please log in to continue.');
+        window.location.href = '/login.html'; // Redirect to the login page
     });
 
     // Form submission handler
