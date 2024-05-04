@@ -47,10 +47,7 @@ async def login(username: str = Form(...), password: str = Form(...), Authorize:
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
     access_token = Authorize.create_access_token(subject=username)
-
-    # Return user information along with the access token
-    user_data = user(username=user["username"], role=user["role"])
-    return JSONResponse(content={"message": "Login successful", "access_token": access_token, "user": user_data.dict()}, status_code=200)
+    return JSONResponse(content={"message": "Login successful", "access_token": access_token}, status_code=200)
 
 @student_router.get("/login/")
 async def login_page(request: Request):

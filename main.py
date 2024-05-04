@@ -42,12 +42,10 @@ def authjwt_exception_handler(request, exc):
         content={"detail": exc.message}
     )
 
-origins = ["http://localhost:8000", "http://127.0.0.1:8000"]
-
 # CORS middleware configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -73,14 +71,6 @@ class Register(BaseModel):
 @app.get("/")
 async def root():
     return FileResponse("templates/index.html")
-
-@app.get("/reviews.html")
-async def reviews_page():
-    return FileResponse("templates/reviews.html")
-
-@app.get("/review-form.html")
-async def review_form_page():
-    return FileResponse("templates/review-form.html")
 
 # Route to get all textbooks
 @app.get("/textbooks/")
