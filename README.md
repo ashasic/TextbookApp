@@ -18,7 +18,7 @@ To make this app we would be using fast API, MongoDB, along with Python, HTML, a
 
 ## The Application:
 
-![Home Page with clean and consistent user interface]()
+![Home Page with clean and consistent user interface](/screenshots/home_page.png)
 *Home Page - clean and consistent user interface*
 
 ![Login Page](/screenshots/login_page.png)
