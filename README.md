@@ -8,7 +8,7 @@ With no system in place for colleges to facilitate inter-student exchanges of te
 This app will change that. With this app, students can post their used textbooks for free and this way new students can go on here and when they are finished, post it again. With this method, students won't have to buy textbooks.<br>
 
 ## How it works: 
-Students sign up using their University of Iowa email. They then input the ISBN information of the textbook and find a post. Once found they can contact the person and set up an exchange date.
+Students sign up using their email. They then input the ISBN information of the textbook and find a post. Once found they can contact the person and set up an exchange date.
 
 ## Those involved: 
 Professors will be the driving force in getting this out as they can introduce it to their classes for students who need textbooks and can't afford them. Admin users will be moderating posts and verifying the identities of all users via email and other sources. Students can also add comments on whether this textbook is needed.
