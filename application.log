@@ -1,3 +1,31 @@
 2024-05-04 13:01:51,210 - INFO - main - Starting application
 2024-05-04 13:02:05,345 - INFO - main - Fetching all textbooks
 2024-05-04 13:02:05,662 - INFO - main - Number of textbooks fetched: 14
+2024-05-04 13:05:48,110 - INFO - main - Starting application
+2024-05-04 13:05:57,035 - INFO - main - Fetching all textbooks
+2024-05-04 13:05:57,361 - INFO - main - Number of textbooks fetched: 14
+2024-05-04 13:08:20,063 - INFO - main - Starting application
+2024-05-04 13:08:33,650 - INFO - main - Fetching all textbooks
+2024-05-04 13:08:33,930 - INFO - main - Number of textbooks fetched: 14
+2024-05-04 13:10:28,022 - INFO - main - Starting application
+2024-05-04 13:10:35,457 - INFO - main - Fetching all textbooks
+2024-05-04 13:10:35,770 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 13:12:50,433 - INFO - main - Starting application
+2024-05-04 13:12:58,462 - INFO - main - Fetching all textbooks
+2024-05-04 13:12:58,748 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 13:17:55,455 - INFO - main - Starting application
+2024-05-04 13:18:27,204 - INFO - main - Starting application
+2024-05-04 13:18:34,462 - INFO - main - Fetching all textbooks
+2024-05-04 13:18:34,785 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 13:19:04,384 - INFO - main - Fetching all textbooks
+2024-05-04 13:19:04,456 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 13:27:01,328 - INFO - main - Starting application
+2024-05-04 13:27:15,713 - INFO - main - Fetching all textbooks
+2024-05-04 13:27:15,964 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 13:30:04,770 - INFO - main - Starting application
+2024-05-04 13:30:16,758 - INFO - main - Fetching all textbooks
+2024-05-04 13:30:17,064 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 13:31:14,790 - INFO - main - Fetching all textbooks
+2024-05-04 13:31:14,861 - INFO - main - Number of textbooks fetched: 13
+2024-05-04 13:31:34,062 - INFO - main - Fetching all textbooks
+2024-05-04 13:31:34,134 - INFO - main - Number of textbooks fetched: 13

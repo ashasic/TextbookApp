@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Set the ISBN hidden field value
     isbnInput.value = isbn;
 
-    // Fetch the current user data from the /user endpoint
-    fetch('/user', {
+    // Check if the review already exists
+    fetch(`/user`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -27,35 +27,37 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
     })
     .then(userData => {
-        const user = userData.username; // Extract the username from the response
-        console.log('Current User:', user);
+        const user = userData.username;
 
-        // If editing a review, fetch the existing review data
-        if (user) {
-            fetch(`http://localhost:8000/reviews/${isbn}/${user}`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to load review');
-                }
-                return response.json();
-            })
-            .then(data => {
-                reviewInput.value = data.review; // Pre-fill the review input field
-            })
-            .catch(error => {
-                console.error('Error loading review:', error);
-                alert('Failed to load review');
-            });
-        }
+        fetch(`http://localhost:8000/reviews/${isbn}/${user}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (response.status === 404) {
+                console.log('No existing review found, assuming a new review');
+                return null;
+            }
+            if (!response.ok) {
+                throw new Error('Failed to check review status');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data) {
+                reviewInput.value = data.review; // Pre-fill review input
+            }
+        })
+        .catch(error => {
+            console.error('Error checking review status:', error);
+            alert('Error checking review status.');
+        });
     })
     .catch(error => {
         console.error('Error fetching current user data:', error);
         alert('Please log in to continue.');
-        window.location.href = '/login.html'; // Redirect to the login page
+        window.location.href = '/login.html'; // Redirect to login
     });
 
     // Form submission handler
