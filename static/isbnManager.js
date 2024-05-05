@@ -30,7 +30,6 @@ document.getElementById('uploadIsbnFile').addEventListener('change', function(ev
         .then(response => response.json())
         .then(data => {
             console.log('Upload successful:', data);
-            // Optionally refresh the page or list of textbooks here
         })
         .catch(error => console.error('Error uploading ISBN file:', error));
     }

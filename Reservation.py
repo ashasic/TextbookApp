@@ -1,10 +1,11 @@
-from fastapi import APIRouter, HTTPException, Depends
-from pydantic import BaseModel
-from pymongo import MongoClient
 import os
-from dotenv import load_dotenv
 import logging
+from pydantic import BaseModel
+from dotenv import load_dotenv
+from pymongo import MongoClient
+from model import ReservationEntry
 from logging.handlers import RotatingFileHandler
+from fastapi import APIRouter, HTTPException, Depends
 
 
 # Configure logging
@@ -15,32 +16,19 @@ logger = logging.getLogger(__name__)
 log_file_path = os.path.join(os.getcwd(), "application.log")
 file_handler = RotatingFileHandler(
     log_file_path, maxBytes=1024 * 1024 * 5, backupCount=5
-)  # 5 MB per file, max 5 files
+)
 file_handler.setFormatter(
     logging.Formatter("%(asctime)s - %(levelname)s - %(module)s - %(message)s")
 )
 logger.addHandler(file_handler)
 
 load_dotenv()
+reservation_router = APIRouter()
 
 # Establish database connection
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client.UIowaBookShelf
 reservations_collection = db.Reservations
-
-# Define the API router
-reservation_router = APIRouter()
-
-
-# Pydantic model for reservation data
-class ReservationEntry(BaseModel):
-    title: str
-    isbn: str
-    authors: str
-    published_date: str
-    description: str
-    subject: str
-    user: str
 
 
 # Helper function to check existing reservation

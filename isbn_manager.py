@@ -3,6 +3,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from pymongo import MongoClient
 import os
 import requests
+from dotenv import load_dotenv
 import logging
 from logging.handlers import RotatingFileHandler
 
@@ -21,7 +22,7 @@ file_handler.setFormatter(
 )
 logger.addHandler(file_handler)
 
-
+load_dotenv()
 isbn_router = APIRouter()
 
 # Setup MongoDB connection

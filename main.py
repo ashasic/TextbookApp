@@ -21,6 +21,7 @@ from Review import review_router
 from Student import student_router
 from textbook import textbook_router
 from isbn_manager import isbn_router
+from isbn_manager import isbn_router
 from Reservation import reservation_router
 
 # Configure logging
@@ -45,6 +46,7 @@ app.include_router(reservation_router)
 app.include_router(review_router)
 app.include_router(student_router)
 app.include_router(textbook_router)
+app.include_router(isbn_router, prefix="/textbooks")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")

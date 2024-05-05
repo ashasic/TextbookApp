@@ -3,7 +3,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-# Data model for the Textbook entry
+# Data models for the textbook.py
 class TextbookEntry(BaseModel):
     isbn: str
     title: str
@@ -17,11 +17,23 @@ class ISBN(BaseModel):
     isbn: str
 
 
+# Data models for the Student.py
 class Register(BaseModel):
+    username: str
+    password: str
+    role: str
+
+
+class LoginSchema(BaseModel):
     username: str
     password: str
 
 
+class Settings(BaseModel):
+    authjwt_secret_key: str = "IowaRocks"  # Secret key
+
+
+# Data models for the Review.py
 class ReviewIn(BaseModel):
     isbn: str
     user: str
@@ -37,6 +49,7 @@ class Register(BaseModel):
     password: str
 
 
+# Data models for the Reservation.py
 class ReservationEntry(BaseModel):
     title: str
     isbn: str

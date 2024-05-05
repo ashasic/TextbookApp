@@ -514,3 +514,255 @@
 2024-05-04 23:11:15,262 - INFO - textbook - Number of textbooks fetched: 12
 2024-05-04 23:11:37,424 - INFO - textbook - Fetching all textbooks
 2024-05-04 23:11:37,503 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:16:15,181 - INFO - main - Starting application
+2024-05-04 23:16:18,103 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:16:18,407 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:16:26,190 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:16:26,263 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:17:49,559 - INFO - main - Starting application
+2024-05-04 23:17:52,811 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:17:53,124 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:18:00,004 - WARNING - Student - Login attempt failed for username: talha@ADMIN.com
+2024-05-04 23:18:03,180 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:18:03,267 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:18:17,309 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 23:18:17,568 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 23:18:28,740 - INFO - Review - Adding or updating review by talha@ADMIN.com for ISBN: 1119703611
+2024-05-04 23:18:28,867 - INFO - Review - Review updated successfully
+2024-05-04 23:18:29,864 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 23:18:29,899 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 23:24:54,711 - INFO - main - Starting application
+2024-05-04 23:25:02,258 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:25:02,594 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:25:21,436 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:25:21,511 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:29:11,439 - INFO - main - Starting application
+2024-05-04 23:29:16,989 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:29:17,261 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:29:22,388 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:29:22,446 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:33:09,474 - INFO - main - Starting application
+2024-05-04 23:33:14,177 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:33:14,526 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:35:30,928 - INFO - main - Starting application
+2024-05-04 23:35:35,412 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:35:35,737 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:37:17,134 - INFO - main - Starting application
+2024-05-04 23:37:24,678 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:37:24,966 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:37:30,101 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:37:30,165 - INFO - textbook - Number of textbooks fetched: 11
+2024-05-04 23:37:31,003 - INFO - isbn_manager - Downloading all ISBNs
+2024-05-04 23:39:04,071 - INFO - isbn_manager - Processing file upload for ISBNs
+2024-05-04 23:39:04,750 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-60309-502-0
+2024-05-04 23:39:05,417 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-60309-542-6
+2024-05-04 23:39:06,011 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-60309-540-2
+2024-05-04 23:39:06,651 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-60309-537-2
+2024-05-04 23:39:07,273 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-60309-398-9
+2024-05-04 23:39:59,111 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:39:59,207 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:43:38,097 - INFO - main - Starting application
+2024-05-04 23:43:45,613 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:43:45,948 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:43:50,011 - INFO - isbn_manager - Downloading all ISBNs
+2024-05-04 23:45:03,560 - INFO - isbn_manager - Processing file upload for ISBNs
+2024-05-04 23:45:04,199 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-596-52068-7
+2024-05-04 23:45:04,839 - WARNING - isbn_manager - No data found for ISBN 978-0-307-29136-8
+2024-05-04 23:45:05,490 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-4028-9462-6
+2024-05-04 23:45:06,161 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-250-04112-3
+2024-05-04 23:45:06,876 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-545-01022-1
+2024-05-04 23:45:07,485 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-141-03437-4
+2024-05-04 23:45:07,982 - WARNING - isbn_manager - No data found for ISBN 978-0-679-40302-3
+2024-05-04 23:45:08,488 - WARNING - isbn_manager - No data found for ISBN 978-1-936-21303-5
+2024-05-04 23:45:09,014 - WARNING - isbn_manager - No data found for ISBN 978-0-7624-3660-2
+2024-05-04 23:45:09,578 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-8129-7932-9
+2024-05-04 23:45:10,177 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-06-112008-4
+2024-05-04 23:45:10,750 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-7607-8721-8
+2024-05-04 23:45:11,364 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-679-44551-2
+2024-05-04 23:45:11,853 - WARNING - isbn_manager - No data found for ISBN 978-0-545-42455-1
+2024-05-04 23:45:12,481 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-618-61953-9
+2024-05-04 23:46:24,550 - INFO - main - Starting application
+2024-05-04 23:46:29,356 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:46:29,663 - INFO - textbook - Number of textbooks fetched: 26
+2024-05-04 23:46:58,333 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:46:58,422 - INFO - textbook - Number of textbooks fetched: 25
+2024-05-04 23:47:00,722 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:47:00,804 - INFO - textbook - Number of textbooks fetched: 24
+2024-05-04 23:47:04,367 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:47:04,446 - INFO - textbook - Number of textbooks fetched: 23
+2024-05-04 23:47:44,726 - INFO - isbn_manager - Processing file upload for ISBNs
+2024-05-04 23:47:45,618 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-307-45525-7
+2024-05-04 23:47:46,190 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-691-13907-2
+2024-05-04 23:47:46,807 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-4000-9834-5
+2024-05-04 23:47:47,351 - WARNING - isbn_manager - No data found for ISBN 978-1-4496-8936-8
+2024-05-04 23:47:47,899 - WARNING - isbn_manager - No data found for ISBN 978-0-7867-5784-3
+2024-05-04 23:47:48,397 - WARNING - isbn_manager - No data found for ISBN 978-1-59514-249-8
+2024-05-04 23:47:49,044 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-312-19843-4
+2024-05-04 23:47:49,529 - WARNING - isbn_manager - No data found for ISBN 978-0-8129-8901-4
+2024-05-04 23:47:50,177 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-06-443017-3
+2024-05-04 23:47:50,693 - WARNING - isbn_manager - No data found for ISBN 978-1-5011-2432-7
+2024-05-04 23:47:51,177 - WARNING - isbn_manager - No data found for ISBN 978-0-7387-4352-0
+2024-05-04 23:47:51,682 - WARNING - isbn_manager - No data found for ISBN 978-1-78110-069-6
+2024-05-04 23:47:52,224 - WARNING - isbn_manager - No data found for ISBN 978-0-679-40739-7
+2024-05-04 23:47:52,834 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-74114-464-9
+2024-05-04 23:47:53,450 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-14-303841-2
+2024-05-04 23:48:04,739 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:48:04,812 - INFO - textbook - Number of textbooks fetched: 30
+2024-05-04 23:50:39,563 - INFO - main - Starting application
+2024-05-04 23:50:44,047 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:50:44,368 - INFO - textbook - Number of textbooks fetched: 30
+2024-05-04 23:50:49,173 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:50:49,262 - INFO - textbook - Number of textbooks fetched: 29
+2024-05-04 23:50:50,908 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:50:50,999 - INFO - textbook - Number of textbooks fetched: 28
+2024-05-04 23:50:52,434 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:50:52,525 - INFO - textbook - Number of textbooks fetched: 27
+2024-05-04 23:50:54,901 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:50:54,983 - INFO - textbook - Number of textbooks fetched: 26
+2024-05-04 23:50:56,353 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:50:56,431 - INFO - textbook - Number of textbooks fetched: 25
+2024-05-04 23:50:57,727 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:50:57,808 - INFO - textbook - Number of textbooks fetched: 24
+2024-05-04 23:50:59,200 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:50:59,278 - INFO - textbook - Number of textbooks fetched: 23
+2024-05-04 23:51:00,889 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:51:00,973 - INFO - textbook - Number of textbooks fetched: 22
+2024-05-04 23:51:02,382 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:51:02,473 - INFO - textbook - Number of textbooks fetched: 21
+2024-05-04 23:51:03,928 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:51:04,012 - INFO - textbook - Number of textbooks fetched: 20
+2024-05-04 23:51:05,586 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:51:05,674 - INFO - textbook - Number of textbooks fetched: 19
+2024-05-04 23:51:07,155 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:51:07,237 - INFO - textbook - Number of textbooks fetched: 18
+2024-05-04 23:51:08,515 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:51:08,609 - INFO - textbook - Number of textbooks fetched: 17
+2024-05-04 23:51:09,832 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:51:09,905 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:51:11,431 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:51:11,524 - INFO - textbook - Number of textbooks fetched: 15
+2024-05-04 23:51:22,063 - INFO - isbn_manager - Processing file upload for ISBNs
+2024-05-04 23:51:22,959 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-307-45525-7
+2024-05-04 23:51:23,604 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-691-13907-2
+2024-05-04 23:51:24,224 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-4000-9834-5
+2024-05-04 23:51:24,708 - WARNING - isbn_manager - No data found for ISBN 978-1-4496-8936-8
+2024-05-04 23:51:25,169 - WARNING - isbn_manager - No data found for ISBN 978-0-7867-5784-3
+2024-05-04 23:51:25,712 - WARNING - isbn_manager - No data found for ISBN 978-1-59514-249-8
+2024-05-04 23:51:26,310 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-312-19843-4
+2024-05-04 23:51:26,779 - WARNING - isbn_manager - No data found for ISBN 978-0-8129-8901-4
+2024-05-04 23:51:27,425 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-06-443017-3
+2024-05-04 23:51:27,965 - WARNING - isbn_manager - No data found for ISBN 978-1-5011-2432-7
+2024-05-04 23:51:28,498 - WARNING - isbn_manager - No data found for ISBN 978-0-7387-4352-0
+2024-05-04 23:51:29,036 - WARNING - isbn_manager - No data found for ISBN 978-1-78110-069-6
+2024-05-04 23:51:29,569 - WARNING - isbn_manager - No data found for ISBN 978-0-679-40739-7
+2024-05-04 23:51:30,169 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-74114-464-9
+2024-05-04 23:51:30,805 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-14-303841-2
+2024-05-04 23:54:44,831 - INFO - main - Starting application
+2024-05-04 23:54:47,674 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:54:47,946 - INFO - textbook - Number of textbooks fetched: 22
+2024-05-04 23:54:52,010 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:54:52,112 - INFO - textbook - Number of textbooks fetched: 21
+2024-05-04 23:54:53,751 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:54:53,846 - INFO - textbook - Number of textbooks fetched: 20
+2024-05-04 23:54:55,273 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:54:55,339 - INFO - textbook - Number of textbooks fetched: 19
+2024-05-04 23:54:56,673 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:54:56,757 - INFO - textbook - Number of textbooks fetched: 18
+2024-05-04 23:54:59,162 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:54:59,241 - INFO - textbook - Number of textbooks fetched: 17
+2024-05-04 23:55:00,552 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:55:00,625 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:55:03,051 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:55:03,130 - INFO - textbook - Number of textbooks fetched: 15
+2024-05-04 23:55:04,321 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:55:04,415 - INFO - textbook - Number of textbooks fetched: 14
+2024-05-04 23:55:06,675 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:55:06,752 - INFO - textbook - Number of textbooks fetched: 13
+2024-05-04 23:55:07,898 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:55:07,965 - INFO - textbook - Number of textbooks fetched: 12
+2024-05-04 23:55:18,061 - INFO - isbn_manager - Processing file upload for ISBNs
+2024-05-04 23:55:18,966 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-307-45525-7
+2024-05-04 23:55:19,575 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-691-13907-2
+2024-05-04 23:55:20,195 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-4000-9834-5
+2024-05-04 23:55:20,695 - WARNING - isbn_manager - No data found for ISBN 978-1-4496-8936-8
+2024-05-04 23:55:21,198 - WARNING - isbn_manager - No data found for ISBN 978-0-7867-5784-3
+2024-05-04 23:55:21,726 - WARNING - isbn_manager - No data found for ISBN 978-1-59514-249-8
+2024-05-04 23:55:22,344 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-312-19843-4
+2024-05-04 23:55:22,855 - WARNING - isbn_manager - No data found for ISBN 978-0-8129-8901-4
+2024-05-04 23:55:23,418 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-06-443017-3
+2024-05-04 23:55:23,930 - WARNING - isbn_manager - No data found for ISBN 978-1-5011-2432-7
+2024-05-04 23:55:24,428 - WARNING - isbn_manager - No data found for ISBN 978-0-7387-4352-0
+2024-05-04 23:55:24,877 - WARNING - isbn_manager - No data found for ISBN 978-1-78110-069-6
+2024-05-04 23:55:25,353 - WARNING - isbn_manager - No data found for ISBN 978-0-679-40739-7
+2024-05-04 23:55:25,911 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-74114-464-9
+2024-05-04 23:55:26,517 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-14-303841-2
+2024-05-04 23:55:26,522 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:55:26,592 - INFO - textbook - Number of textbooks fetched: 19
+2024-05-04 23:56:00,837 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:56:00,904 - INFO - textbook - Number of textbooks fetched: 19
+2024-05-04 23:56:45,392 - INFO - main - Starting application
+2024-05-04 23:56:54,019 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:56:54,350 - INFO - textbook - Number of textbooks fetched: 19
+2024-05-04 23:56:55,893 - INFO - isbn_manager - Downloading all ISBNs
+2024-05-04 23:57:04,428 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:04,512 - INFO - textbook - Number of textbooks fetched: 18
+2024-05-04 23:57:06,710 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:06,801 - INFO - textbook - Number of textbooks fetched: 17
+2024-05-04 23:57:08,297 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:08,395 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:57:09,867 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:09,958 - INFO - textbook - Number of textbooks fetched: 15
+2024-05-04 23:57:11,622 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:11,704 - INFO - textbook - Number of textbooks fetched: 14
+2024-05-04 23:57:20,532 - INFO - isbn_manager - Processing file upload for ISBNs
+2024-05-04 23:57:21,208 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-307-45525-7
+2024-05-04 23:57:21,873 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-691-13907-2
+2024-05-04 23:57:22,503 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-4000-9834-5
+2024-05-04 23:57:22,995 - WARNING - isbn_manager - No data found for ISBN 978-1-4496-8936-8
+2024-05-04 23:57:23,551 - WARNING - isbn_manager - No data found for ISBN 978-0-7867-5784-3
+2024-05-04 23:57:24,082 - WARNING - isbn_manager - No data found for ISBN 978-1-59514-249-8
+2024-05-04 23:57:24,649 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-312-19843-4
+2024-05-04 23:57:25,134 - WARNING - isbn_manager - No data found for ISBN 978-0-8129-8901-4
+2024-05-04 23:57:25,717 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-06-443017-3
+2024-05-04 23:57:26,194 - WARNING - isbn_manager - No data found for ISBN 978-1-5011-2432-7
+2024-05-04 23:57:26,677 - WARNING - isbn_manager - No data found for ISBN 978-0-7387-4352-0
+2024-05-04 23:57:27,149 - WARNING - isbn_manager - No data found for ISBN 978-1-78110-069-6
+2024-05-04 23:57:27,628 - WARNING - isbn_manager - No data found for ISBN 978-0-679-40739-7
+2024-05-04 23:57:28,202 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-1-74114-464-9
+2024-05-04 23:57:28,783 - INFO - isbn_manager - Updated or inserted textbook with ISBN 978-0-14-303841-2
+2024-05-04 23:57:35,786 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:35,864 - INFO - textbook - Number of textbooks fetched: 19
+2024-05-04 23:57:39,056 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:39,148 - INFO - textbook - Number of textbooks fetched: 18
+2024-05-04 23:57:41,026 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:41,111 - INFO - textbook - Number of textbooks fetched: 17
+2024-05-04 23:57:49,309 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:57:49,404 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:13,653 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:13,731 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:14,150 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:14,229 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:14,529 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:14,605 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:23,473 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:58:23,475 - WARNING - textbook - Request failed
+2024-05-04 23:58:23,479 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:23,562 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:27,355 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:27,437 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:36,868 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:58:36,869 - WARNING - textbook - Request failed
+2024-05-04 23:58:36,875 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:36,966 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:48,795 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:58:48,796 - WARNING - textbook - Request failed
+2024-05-04 23:58:48,799 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:48,885 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:55,390 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:55,467 - INFO - textbook - Number of textbooks fetched: 16
+2024-05-04 23:58:56,664 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:58:56,666 - INFO - textbook - Received textbook data: {'isbn': '978-1-60309-501-3'}
+2024-05-04 23:58:57,282 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:58:57,360 - INFO - textbook - Number of textbooks fetched: 17
+2024-05-04 23:59:01,881 - INFO - Reservation - Attempting to create a reservation
+2024-05-04 23:59:02,192 - INFO - Reservation - Reservation created successfully

@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 from pymongo import MongoClient
 from fastapi_jwt_auth import AuthJWT
+from model import TextbookEntry, ISBN
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse
@@ -13,7 +14,7 @@ from logging.handlers import RotatingFileHandler
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from fastapi import APIRouter, FastAPI, HTTPException, Depends, Query
-from model import TextbookEntry, ISBN
+
 
 # Configure logging
 logging.basicConfig(
@@ -33,6 +34,7 @@ load_dotenv()
 app = FastAPI()
 textbook_router = APIRouter()
 
+# Establish database connection
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client.UIowaBookShelf
 textbooks_collection = db.Textbooks
@@ -41,26 +43,6 @@ textbooks_collection = db.Textbooks
 @app.exception_handler(AuthJWTException)
 def authjwt_exception_handler(request, exc):
     return JSONResponse(status_code=exc.status_code, content={"detail": exc.message})
-
-
-def fetch_book_info(isbn):
-    url = "https://www.googleapis.com/books/v1/volumes"
-    params = {"q": f"isbn:{isbn}", "key": os.getenv("GOOGLE_BOOKS_API_KEY")}
-    response = requests.get(url, params=params)
-    if response.status_code == 200 and response.json()["totalItems"] > 0:
-        item = response.json()["items"][0]["volumeInfo"]
-        return {
-            "isbn": isbn,
-            "title": item.get("title", ""),
-            "authors": item.get("authors", []),
-            "published_date": item.get("publishedDate", ""),
-            "description": item.get("description", ""),
-            "subject": ", ".join(item.get("categories", [])),
-            "thumbnail": item.get("imageLinks", {}).get(
-                "thumbnail", "No cover image available"
-            ),
-        }
-    return None
 
 
 # Function to fetch book information from Google Books API
