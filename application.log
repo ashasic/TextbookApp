@@ -65,3 +65,369 @@
 2024-05-04 16:27:53,611 - INFO - main - Number of textbooks fetched: 13
 2024-05-04 16:28:13,240 - INFO - main - Fetching all textbooks
 2024-05-04 16:28:13,301 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:30:23,688 - INFO - main - Starting application
+2024-05-04 18:31:00,892 - INFO - main - Fetching all textbooks
+2024-05-04 18:31:01,173 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:31:11,913 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-395-8
+2024-05-04 18:31:12,145 - WARNING - Review - No reviews found for ISBN: 978-1-60309-395-8
+2024-05-04 18:31:26,852 - INFO - main - Fetching all textbooks
+2024-05-04 18:31:26,905 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:31:32,843 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:31:32,875 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2024-05-04 18:31:35,344 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:34:36,585 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:34:37,509 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:34:37,852 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:37:31,458 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:37:32,323 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:37:45,484 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:37:49,838 - INFO - main - Fetching all textbooks
+2024-05-04 18:37:49,905 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:37:51,035 - INFO - main - Fetching all textbooks
+2024-05-04 18:37:51,096 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:37:57,658 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-517-4
+2024-05-04 18:37:57,687 - WARNING - Review - No reviews found for ISBN: 978-1-60309-517-4
+2024-05-04 18:38:03,881 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:38:03,910 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2024-05-04 18:38:17,807 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:39:29,747 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:39:30,577 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:39:31,539 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:39:36,419 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:39:37,535 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:40:35,521 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:40:40,178 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:44:58,460 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:46:01,729 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:46:03,461 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:48:44,356 - INFO - main - Fetching all textbooks
+2024-05-04 18:48:44,423 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:48:48,929 - INFO - main - Fetching all textbooks
+2024-05-04 18:48:49,000 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:49:35,868 - INFO - main - Fetching all textbooks
+2024-05-04 18:49:35,926 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:49:58,633 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-511-2
+2024-05-04 18:49:58,669 - WARNING - Review - No reviews found for ISBN: 978-1-60309-511-2
+2024-05-04 18:50:06,187 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:50:06,218 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2024-05-04 18:50:23,434 - INFO - main - Fetching all textbooks
+2024-05-04 18:50:23,498 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:51:05,571 - INFO - main - Fetching all textbooks
+2024-05-04 18:51:05,628 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:51:26,057 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:51:26,093 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2024-05-04 18:51:28,316 - ERROR - Review - Review not found for ISBN: 1119703611 and user: unc@gmail.com
+2024-05-04 18:51:39,125 - INFO - Review - Adding or updating review by unc@gmail.com for ISBN: 1119703611
+2024-05-04 18:51:39,247 - INFO - Review - Review added successfully
+2024-05-04 18:51:40,672 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:51:40,700 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 18:54:01,072 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:54:01,100 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 18:55:52,370 - INFO - Review - Adding or updating review by unc@gmail.com for ISBN: 1119703611
+2024-05-04 18:55:52,482 - INFO - Review - Review updated successfully
+2024-05-04 18:55:53,438 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:55:53,469 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 18:56:18,970 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:56:19,005 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 18:58:08,743 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:58:08,779 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 18:59:12,312 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:59:12,352 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 18:59:26,270 - INFO - main - Fetching all textbooks
+2024-05-04 18:59:26,333 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 18:59:29,100 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 18:59:29,136 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:03:18,291 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:03:18,318 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:03:21,045 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:03:21,075 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:04:01,830 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:04:01,867 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:04:03,260 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:04:03,299 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:04:04,153 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:04:04,185 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:04:05,126 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:04:05,163 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:04:05,870 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:04:05,900 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:05:40,787 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:05:40,825 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:06:16,895 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:06:16,923 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:06:17,825 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:06:17,862 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:06:18,543 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:06:18,580 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:06:18,951 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:06:18,989 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:06:19,463 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:06:19,501 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:06:19,963 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:06:20,005 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:06:50,805 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:06:50,837 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:09:00,516 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:09:00,543 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:09:50,227 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:09:50,256 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:10:25,267 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:10:25,303 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:12:46,318 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:12:46,355 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:12:47,312 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:12:47,364 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:12:47,516 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:12:47,555 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:12:48,157 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:12:48,188 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:12:48,780 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:12:48,810 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:13:05,293 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:13:05,325 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:13:33,358 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:13:33,387 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:13:42,853 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:13:42,883 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:13:43,677 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:13:43,712 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:13:44,610 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:13:44,640 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:13:50,387 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:13:50,418 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:16:35,795 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:16:35,825 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:16:36,905 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:16:36,934 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:16:37,527 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:16:37,555 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:16:38,309 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:16:38,339 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:16:39,191 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:16:39,221 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:16:40,911 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:16:40,942 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:16:41,374 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:16:41,406 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:17:10,875 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:17:10,903 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:17:11,715 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:17:11,745 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:18:22,163 - INFO - main - Fetching all textbooks
+2024-05-04 19:18:22,225 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 19:18:26,832 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:18:26,898 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:18:47,807 - INFO - Review - Adding or updating review by unc@gmail.com for ISBN: 1119703611
+2024-05-04 19:18:47,915 - INFO - Review - Review updated successfully
+2024-05-04 19:18:48,780 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:18:48,820 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:47,139 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:47,167 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:47,933 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:47,963 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:48,475 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:48,504 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:48,817 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:48,850 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:49,300 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:49,330 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:49,816 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:49,844 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:51,846 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:51,875 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:54,000 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:54,030 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:54,639 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:54,668 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:55,398 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:55,426 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:56,280 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:56,308 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:56,784 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:56,815 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:57,311 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:57,339 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:57,839 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:57,868 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:58,624 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:58,654 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:59,208 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:21:59,238 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:21:59,971 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:22:00,000 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:00,087 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:00,117 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:54,460 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:54,488 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:55,194 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:55,223 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:55,573 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:55,603 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:55,973 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:56,003 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:56,379 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:56,407 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:56,678 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:56,708 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:57,012 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:57,040 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:57,406 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:57,434 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:57,783 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:57,813 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:58,278 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:58,306 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:58,736 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:58,763 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:59,176 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:59,206 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:23:59,633 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:23:59,660 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:24:00,016 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:24:00,046 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:24:00,221 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:24:00,250 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:24:00,441 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:24:00,469 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:09,459 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:09,488 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:10,350 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:10,379 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:10,777 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:10,807 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:10,966 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:10,995 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:11,169 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:11,269 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:11,375 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:11,404 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:11,688 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:11,717 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:12,480 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:12,510 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:14,149 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:14,176 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:14,682 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:14,711 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:14,970 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:15,000 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:15,197 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:15,227 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:15,409 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:15,438 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:15,566 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:15,597 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:15,808 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:15,838 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:16,074 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:16,103 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:16,266 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:16,296 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:16,470 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:16,498 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:16,675 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:16,705 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:16,873 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:16,902 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:17,025 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:17,055 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:17,223 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:17,327 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:17,412 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:17,441 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:31,886 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:31,914 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:32,579 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:32,608 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:32,806 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:32,843 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:33,006 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:33,035 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:33,207 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:33,236 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:33,402 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:33,432 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:33,604 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:33,632 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:33,803 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:33,831 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:33,999 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:34,029 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:34,477 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:34,506 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:43,977 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:44,009 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:44,633 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:44,663 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:45,225 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:45,254 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:45,558 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:45,586 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:45,855 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:45,883 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:46,090 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:46,119 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:54,559 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:54,590 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:55,179 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:55,209 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:55,572 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:55,602 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:55,989 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:56,018 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:56,339 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:56,369 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:56,875 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:56,904 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:25:57,641 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:25:57,670 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:27:12,815 - INFO - Review - Adding or updating review by unc@gmail.com for ISBN: 1119703611
+2024-05-04 19:27:12,923 - INFO - Review - Review updated successfully
+2024-05-04 19:27:24,589 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:27:24,618 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:27:58,967 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:27:58,996 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:27:59,697 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:27:59,726 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:30:41,596 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:30:41,636 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:31:47,678 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:31:47,706 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:32:08,711 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:32:08,738 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:33:06,263 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:33:06,294 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:33:06,932 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:33:06,962 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:33:07,434 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:33:07,467 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:33:07,584 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:33:07,613 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:33:08,072 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:33:08,102 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:37:50,326 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:37:50,357 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:37:51,452 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:37:51,484 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:39:11,622 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:39:11,658 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:39:26,504 - INFO - main - Fetching all textbooks
+2024-05-04 19:39:26,565 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 19:39:34,086 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:39:34,115 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:39:43,527 - INFO - Review - Adding or updating review by unc@gmail.com for ISBN: 1119703611
+2024-05-04 19:39:43,634 - INFO - Review - Review updated successfully
+2024-05-04 19:39:44,529 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:39:44,557 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:40:53,325 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:40:53,353 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:44:12,216 - INFO - Review - Adding or updating review by unc@gmail.com for ISBN: 1119703611
+2024-05-04 19:44:12,333 - INFO - Review - Review updated successfully
+2024-05-04 19:44:13,309 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:44:13,340 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:46:31,619 - INFO - main - Fetching all textbooks
+2024-05-04 19:46:31,680 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 19:46:43,026 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:46:43,054 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 19:47:12,092 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 19:47:12,125 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611

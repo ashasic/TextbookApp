@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Page</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
@@ -17,14 +18,31 @@
                 <a id="logoutLink" href="#" style="display:none;">Logout</a>
             </nav>
         </header>
-        <div class="app">
-            <h1 class="text">Reviews</h1>
-            <button id="addReviewBtn">Add Review</button>
-            <button id="backToBrowseBtn">Back to Browse</button>
-            <div id="reviewsList" class="reviews"></div>
+        <div class="main-content">
+            <div class="reviews-container">
+                <h1 class="text">Reviews</h1>
+                <div id="reviewsList" class="reviews">
+                    <!-- Reviews will be dynamically loaded here -->
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button id="addReviewBtn">Add Review</button>
+                <button id="backToBrowseBtn">Back to Browse</button>
+            </div>
         </div>
     </div>
     <script src="/static/checkAuth.js"></script>
     <script src="/static/reviews.js"></script>
+    <script>
+        document.getElementById('addReviewBtn').addEventListener('click', function() {
+            document.getElementById('reviewFormModal').style.display = 'block';
+        });
+
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('reviewFormModal').style.display = 'none';
+        });
+
+      
+    </script>
 </body>
 </html>

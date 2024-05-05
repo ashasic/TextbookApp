@@ -298,3 +298,117 @@ select {
   background-repeat: no-repeat;
   background-position: right 10px center; /* Positions the background image to the right-center */
 }
+
+/* newly added styles for review */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--uiowa-black);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.close {
+  color: var(--uiowa-white);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+textarea {
+  width: calc(100% - 20px);
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--uiowa-gold);
+  background-color: var(--uiowa-gray);
+  color: var(--uiowa-white);
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the start of the container */
+    padding: 20px;
+}
+
+.reviews-container {
+    flex: 3; /* Allows the reviews section to take more space */
+    margin-right: 20px; /* Adds some space between the reviews and the buttons */
+}
+
+.buttons-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adds space between buttons */
+    align-items: flex-start; /* Align buttons to the start of the container */
+}
+
+.review-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid var(--uiowa-gray);
+  margin-bottom: 20px; /* Adds space between review entries */
+}
+
+.review-actions {
+  display: flex;
+  gap: 10px; /* Space between the small buttons */
+}
+
+.small-btn {
+  padding: 5px 10px; /* Smaller padding for smaller buttons */
+  font-size: 0.8rem; /* Smaller font size for button text */
+  background-color: var(--uiowa-gray);
+  color: var(--uiowa-white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.small-btn:hover {
+  background-color: var(--uiowa-gold);
+  color: var(--uiowa-black);
+}
+
