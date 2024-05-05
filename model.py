@@ -1,21 +1,25 @@
-from pydantic import BaseModel
 from datetime import date
 from typing import Optional
+from pydantic import BaseModel
 
 
-# Textbook model for database records
-class Textbook(BaseModel):
-    id: int
+# Data model for the Textbook entry
+class TextbookEntry(BaseModel):
     isbn: str
     title: str
+    authors: list
+    published_date: str
     description: str
+    subject: str
 
 
-# Textbook request model for incoming data
-class TextbookRequest(BaseModel):
+class ISBN(BaseModel):
     isbn: str
-    title: str
-    description: Optional[str] = None
+
+
+class Register(BaseModel):
+    username: str
+    password: str
 
 
 class ReviewIn(BaseModel):

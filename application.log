@@ -431,3 +431,86 @@
 2024-05-04 19:46:43,054 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
 2024-05-04 19:47:12,092 - INFO - Review - Fetching reviews for ISBN: 1119703611
 2024-05-04 19:47:12,125 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 22:27:53,508 - INFO - main - Starting application
+2024-05-04 22:28:09,600 - INFO - main - Fetching all textbooks
+2024-05-04 22:28:09,880 - INFO - main - Number of textbooks fetched: 12
+2024-05-04 22:43:53,628 - INFO - textbook - Starting application
+2024-05-04 22:45:04,394 - INFO - textbook - Starting application
+2024-05-04 22:45:37,804 - INFO - textbook - Starting application
+2024-05-04 22:46:13,281 - INFO - textbook - Starting application
+2024-05-04 22:47:06,977 - INFO - textbook - Starting application
+2024-05-04 22:47:07,189 - INFO - main - Starting application
+2024-05-04 22:52:53,639 - INFO - textbook - Starting application
+2024-05-04 22:52:53,862 - INFO - main - Starting application
+2024-05-04 22:53:59,364 - INFO - textbook - Starting application
+2024-05-04 22:53:59,615 - INFO - main - Starting application
+2024-05-04 22:57:19,355 - INFO - main - Starting application
+2024-05-04 23:01:44,086 - INFO - main - Starting application
+2024-05-04 23:02:31,898 - INFO - main - Starting application
+2024-05-04 23:03:51,185 - INFO - main - Starting application
+2024-05-04 23:08:44,772 - INFO - main - Starting application
+2024-05-04 23:08:50,818 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:08:51,142 - INFO - textbook - Number of textbooks fetched: 0
+2024-05-04 23:09:00,587 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:00,626 - INFO - textbook - Number of textbooks fetched: 0
+2024-05-04 23:09:08,342 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:09:08,343 - INFO - textbook - Received textbook data: {'isbn': '9781402788291'}
+2024-05-04 23:09:09,316 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:09:09,318 - INFO - textbook - Received textbook data: {'isbn': '9781402788291'}
+2024-05-04 23:09:09,359 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:09,403 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:09,406 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:09:09,406 - INFO - textbook - Received textbook data: {'isbn': '9781402788291'}
+2024-05-04 23:09:09,447 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:09,486 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:09,488 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:09,528 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:09,530 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:09:09,531 - INFO - textbook - Received textbook data: {'isbn': '9781402788291'}
+2024-05-04 23:09:09,572 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:09:09,573 - INFO - textbook - Received textbook data: {'isbn': '9781402788291'}
+2024-05-04 23:09:09,622 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:09,662 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:09,664 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:09,704 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:09,706 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:09:09,707 - INFO - textbook - Received textbook data: {'isbn': '9781402788291'}
+2024-05-04 23:09:09,751 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:09,791 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:12,784 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:12,824 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:13,343 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:13,381 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:13,571 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:13,610 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:13,720 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:13,764 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:13,950 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:13,991 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:14,079 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:14,120 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:22,392 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:22,433 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:25,126 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:25,165 - INFO - textbook - Number of textbooks fetched: 1
+2024-05-04 23:09:28,760 - INFO - textbook - Attempting to add or update textbook
+2024-05-04 23:09:28,761 - INFO - textbook - Received textbook data: {'isbn': '1119703611'}
+2024-05-04 23:09:29,619 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:09:29,664 - INFO - textbook - Number of textbooks fetched: 2
+2024-05-04 23:10:20,361 - INFO - main - Starting application
+2024-05-04 23:10:22,886 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:10:23,207 - INFO - textbook - Number of textbooks fetched: 12
+2024-05-04 23:10:27,911 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 23:10:28,196 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 23:10:41,343 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:10:41,438 - INFO - textbook - Number of textbooks fetched: 12
+2024-05-04 23:10:43,218 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 23:10:43,251 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 23:11:01,745 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:11:01,827 - INFO - textbook - Number of textbooks fetched: 12
+2024-05-04 23:11:03,856 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2024-05-04 23:11:03,889 - INFO - Review - Retrieved 3 reviews for ISBN: 1119703611
+2024-05-04 23:11:15,157 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:11:15,262 - INFO - textbook - Number of textbooks fetched: 12
+2024-05-04 23:11:37,424 - INFO - textbook - Fetching all textbooks
+2024-05-04 23:11:37,503 - INFO - textbook - Number of textbooks fetched: 11
