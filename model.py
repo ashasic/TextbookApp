@@ -44,11 +44,6 @@ class ReviewOut(ReviewIn):
     id: str
 
 
-class Register(BaseModel):
-    username: str
-    password: str
-
-
 # Data models for the Reservation.py
 class ReservationEntry(BaseModel):
     title: str

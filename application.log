@@ -766,3 +766,89 @@
 2024-05-04 23:58:57,360 - INFO - textbook - Number of textbooks fetched: 17
 2024-05-04 23:59:01,881 - INFO - Reservation - Attempting to create a reservation
 2024-05-04 23:59:02,192 - INFO - Reservation - Reservation created successfully
+2025-02-25 23:02:06,680 - INFO - main - Starting application
+2025-02-25 23:02:44,395 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:02:44,711 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:02:53,727 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:02:53,803 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:02:55,637 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:02:55,713 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:03:12,179 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2025-02-25 23:03:12,517 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2025-02-25 23:03:21,617 - INFO - Review - Adding or updating review by talha@ADMIN.com for ISBN: 1119703611
+2025-02-25 23:03:21,743 - INFO - Review - Review updated successfully
+2025-02-25 23:03:23,388 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2025-02-25 23:03:23,430 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2025-02-25 23:05:34,727 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:05:34,803 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:05:37,267 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-527-3
+2025-02-25 23:05:37,303 - WARNING - Review - No reviews found for ISBN: 978-1-60309-527-3
+2025-02-25 23:05:41,931 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:05:42,005 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:07:02,810 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:07:02,883 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:07:43,629 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2025-02-25 23:07:43,666 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2025-02-25 23:07:47,202 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:07:47,273 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:07:48,988 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2025-02-25 23:07:49,023 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2025-02-25 23:07:52,985 - INFO - Review - Adding or updating review by talha@ADMIN.com for ISBN: 1119703611
+2025-02-25 23:07:53,096 - INFO - Review - Review updated successfully
+2025-02-25 23:07:54,871 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2025-02-25 23:07:54,913 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2025-02-25 23:08:16,455 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:08:16,532 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:08:19,211 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2025-02-25 23:08:19,247 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2025-02-25 23:08:40,133 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:08:40,205 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:08:42,171 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-527-3
+2025-02-25 23:08:42,206 - WARNING - Review - No reviews found for ISBN: 978-1-60309-527-3
+2025-02-25 23:08:44,637 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-520-4
+2025-02-25 23:08:44,677 - WARNING - Review - No reviews found for ISBN: 978-1-60309-520-4
+2025-02-25 23:08:47,126 - INFO - Review - Fetching reviews for ISBN: 1119703611
+2025-02-25 23:08:47,158 - INFO - Review - Retrieved 2 reviews for ISBN: 1119703611
+2025-02-25 23:08:49,512 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-454-2
+2025-02-25 23:08:49,554 - WARNING - Review - No reviews found for ISBN: 978-1-60309-454-2
+2025-02-25 23:08:54,810 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-502-0
+2025-02-25 23:08:54,848 - WARNING - Review - No reviews found for ISBN: 978-1-60309-502-0
+2025-02-25 23:08:58,519 - INFO - Review - Fetching reviews for ISBN: 978-1-4000-9834-5
+2025-02-25 23:08:58,554 - WARNING - Review - No reviews found for ISBN: 978-1-4000-9834-5
+2025-02-25 23:09:02,464 - INFO - Review - Fetching reviews for ISBN: 978-0-06-443017-3
+2025-02-25 23:09:02,505 - WARNING - Review - No reviews found for ISBN: 978-0-06-443017-3
+2025-02-25 23:09:05,693 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-517-4
+2025-02-25 23:09:05,736 - INFO - Review - Retrieved 1 reviews for ISBN: 978-1-60309-517-4
+2025-02-25 23:09:07,359 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-517-4
+2025-02-25 23:09:07,401 - INFO - Review - Retrieved 1 reviews for ISBN: 978-1-60309-517-4
+2025-02-25 23:09:11,186 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-501-3
+2025-02-25 23:09:11,223 - WARNING - Review - No reviews found for ISBN: 978-1-60309-501-3
+2025-02-25 23:09:14,894 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-520-4
+2025-02-25 23:09:14,929 - WARNING - Review - No reviews found for ISBN: 978-1-60309-520-4
+2025-02-25 23:09:15,845 - ERROR - Review - Review not found for ISBN: 978-1-60309-520-4 and user: talha@ADMIN.com
+2025-02-25 23:09:24,638 - INFO - Review - Adding or updating review by talha@ADMIN.com for ISBN: 978-1-60309-520-4
+2025-02-25 23:09:24,759 - INFO - Review - Review added successfully
+2025-02-25 23:09:25,765 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-520-4
+2025-02-25 23:09:25,798 - INFO - Review - Retrieved 1 reviews for ISBN: 978-1-60309-520-4
+2025-02-25 23:10:08,720 - INFO - Review - Adding or updating review by talha@ADMIN.com for ISBN: 978-1-60309-520-4
+2025-02-25 23:10:08,840 - INFO - Review - Review updated successfully
+2025-02-25 23:10:09,970 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-520-4
+2025-02-25 23:10:10,007 - INFO - Review - Retrieved 1 reviews for ISBN: 978-1-60309-520-4
+2025-02-25 23:10:13,674 - INFO - Review - Review deleted successfully
+2025-02-25 23:10:14,732 - INFO - Review - Fetching reviews for ISBN: 978-1-60309-520-4
+2025-02-25 23:10:14,765 - WARNING - Review - No reviews found for ISBN: 978-1-60309-520-4
+2025-02-25 23:10:18,133 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:10:18,208 - INFO - textbook - Number of textbooks fetched: 17
+2025-02-25 23:10:31,788 - WARNING - Student - Login attempt failed for username: talha
+2025-02-25 23:10:40,752 - WARNING - Student - Login attempt failed for username: talha
+2025-02-25 23:10:49,304 - WARNING - Student - Login attempt failed for username: talha
+2025-02-25 23:10:50,503 - WARNING - Student - Login attempt failed for username: talha
+2025-02-25 23:11:29,019 - WARNING - Student - Login attempt failed for username: talhan
+2025-02-25 23:11:36,411 - WARNING - Student - Login attempt failed for username: talhan
+2025-02-25 23:11:37,366 - WARNING - Student - Login attempt failed for username: talhan
+2025-02-25 23:19:00,126 - INFO - main - Starting application
+2025-02-25 23:22:00,076 - INFO - main - Starting application
+2025-02-25 23:26:32,572 - INFO - main - Starting application
+2025-02-25 23:26:55,600 - INFO - Student - User talhan registered successfully
+2025-02-25 23:27:08,703 - INFO - textbook - Fetching all textbooks
+2025-02-25 23:27:09,018 - INFO - textbook - Number of textbooks fetched: 18
