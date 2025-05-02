@@ -15,4 +15,9 @@ venv
 # IDE
 .vscode/*
 
+# application logs
+*.log
+.log
+logs/
+
 # Others
