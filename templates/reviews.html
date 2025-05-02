@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Page</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <div class="app">
-        <header class="header">
-            <h1 class="title2 multicolor-title">UI<span>BookShelf</span></h1>
-            <nav class="navbar">
-                <a href="/">Home</a>
-                <a href="/browse">Browse</a>
-                <a id="loginLink" href="/login">Login</a>
-                <a id="registerLink" href="/register">Sign Up</a>
-                <a id="logoutLink" href="#" style="display:none;">Logout</a>
-            </nav>
-        </header>
-        <div class="main-content">
-            <div class="reviews-container">
-                <h1 class="text">Reviews</h1>
-                <div id="reviewsList" class="reviews">
-                    <!-- Reviews will be dynamically loaded here -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Review Page</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+    <body>
+        <div class="app">
+            <header class="header">
+                <h1
+                    class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+                <nav class="navbar">
+                    <a href="/">Home</a>
+                    <a href="/browse">Browse</a>
+                    <a id="loginLink" href="/login">Login</a>
+                    <a id="registerLink" href="/register">Sign Up</a>
+                    <a id="logoutLink" href="#" style="display:none;">Logout</a>
+                </nav>
+            </header>
+            <div class="main-content">
+                <div class="reviews-container">
+                    <h1 class="text">Reviews</h1>
+                    <div id="reviewsList" class="reviews">
+                        <!-- Reviews will be dynamically loaded here -->
+                    </div>
+                </div>
+                <div class="buttons-container">
+                    <button id="addReviewBtn">Add Review</button>
+                    <button id="backToBrowseBtn">Back to Browse</button>
                 </div>
             </div>
-            <div class="buttons-container">
-                <button id="addReviewBtn">Add Review</button>
-                <button id="backToBrowseBtn">Back to Browse</button>
-            </div>
         </div>
-    </div>
-    <script src="/static/checkAuth.js"></script>
-    <script src="/static/reviews.js"></script>
-    <script>
+        <script src="/static/js/checkAuth.js"></script>
+        <script src="/static/js/reviews.js"></script>
+        <script>
         document.getElementById('addReviewBtn').addEventListener('click', function() {
             document.getElementById('reviewFormModal').style.display = 'block';
         });
@@ -44,5 +45,5 @@
 
       
     </script>
-</body>
+    </body>
 </html>

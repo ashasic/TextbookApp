@@ -1,55 +1,20 @@
 import os
-import logging
 import requests
-from dotenv import load_dotenv
-from pymongo import MongoClient
-from logging.handlers import RotatingFileHandler
+from utils.db import get_db
+from utils.logger import setup_logger
+from services.book_service import fetch_book_info
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi import APIRouter, File, UploadFile, HTTPException
 
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(module)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
-log_file_path = os.path.join(os.getcwd(), "application.log")
-file_handler = RotatingFileHandler(
-    log_file_path, maxBytes=1024 * 1024 * 5, backupCount=5
-)  # 5 MB per file, max 5 files
-file_handler.setFormatter(
-    logging.Formatter("%(asctime)s - %(levelname)s - %(module)s - %(message)s")
-)
-logger.addHandler(file_handler)
+logger = setup_logger(__name__)
 
-load_dotenv()
+
 isbn_router = APIRouter()
 
-# Setup MongoDB connection
-client = MongoClient(os.getenv("MONGO_URI"))
-db = client.UIowaBookShelf
+
+db = get_db()
 textbooks_collection = db.Textbooks
-
-
-def fetch_book_info(isbn):
-    """Fetches book information from Google Books API"""
-    url = "https://www.googleapis.com/books/v1/volumes"
-    params = {"q": f"isbn:{isbn}", "key": os.getenv("GOOGLE_BOOKS_API_KEY")}
-    response = requests.get(url, params=params)
-    if response.status_code == 200 and response.json()["totalItems"] > 0:
-        item = response.json()["items"][0]["volumeInfo"]
-        return {
-            "isbn": isbn,
-            "title": item.get("title", ""),
-            "authors": item.get("authors", []),
-            "published_date": item.get("publishedDate", ""),
-            "description": item.get("description", ""),
-            "subject": ", ".join(item.get("categories", [])),
-            "thumbnail": item.get("imageLinks", {}).get(
-                "thumbnail", "No cover image available"
-            ),
-        }
-    return None
 
 
 @isbn_router.get("/download-isbns")

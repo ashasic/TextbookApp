@@ -1,36 +1,23 @@
 import os
-import logging
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from fastapi_jwt_auth import AuthJWT
-from model import ReviewIn, ReviewOut
-from logging.handlers import RotatingFileHandler
+from utils.logger import setup_logger
+from utils.db import get_db, get_collection
+from models.model import ReviewIn, ReviewOut
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi_jwt_auth.exceptions import AuthJWTException
 
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(module)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
-log_file_path = os.path.join(os.getcwd(), "application.log")
-file_handler = RotatingFileHandler(
-    log_file_path, maxBytes=1024 * 1024 * 5, backupCount=5
-)
-file_handler.setFormatter(
-    logging.Formatter("%(asctime)s - %(levelname)s - %(module)s - %(message)s")
-)
-logger.addHandler(file_handler)
+logger = setup_logger(__name__)
 
-load_dotenv()
+
 review_router = APIRouter()
 
-# Establish database connection
-client = MongoClient(os.getenv("MONGO_URI"))
-db = client.UIowaBookShelf
-reviewCollection = db.Reviews
+
+db = get_db()
 textbookCollection = db.Textbooks
+reviewCollection = get_collection("Reviews")
 
 
 # Create or update a review

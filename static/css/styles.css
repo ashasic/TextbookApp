@@ -294,7 +294,6 @@ select:focus {
 select {
   cursor: pointer; /* Changes the cursor to a pointer to indicate it's a dropdown */
   appearance: none; /* Optional: removes default system styling on dropdown */
-  background-image: url('path_to_custom_arrow_icon'); /* Optional: sets a custom dropdown arrow */
   background-repeat: no-repeat;
   background-position: right 10px center; /* Positions the background image to the right-center */
 }

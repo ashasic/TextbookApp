@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <div class="app">
-        <header class="header">
-            <h1 class="title2 multicolor-title">UI<span>BookShelf</span></h1>
-            <nav class="navbar">
-                <a href="/">Home</a>
-                <a href="/login">Login</a>
-                <a href="/register">Sign Up</a>
-            </nav>
-        </header>
-        <main>
-            <section id="registerForm" class="section">
-                <h2 class="text">Create New Account</h2>
-                <div class="input-group">
-                    <input type="text" id="registerUsername" placeholder="New Email">
-                </div>
-                <div class="input-group">
-                    <input type="password" id="registerPassword" placeholder="New Password">
-                </div>
-                <div class="input-group">
-                    <select id="registerRole">
-                        <option value="" disabled selected>(Please Select)</option>
-                        <option value="regular">Regular User</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                </div>
-                <div class="input-group" id="adminSecretField" style="display: none;">
-                    <input type="password" id="adminSecretPassword" placeholder="Admin Secret Password">
-                </div>
-                <div class="input-group">
-                    <button id="registerBtn">Register</button>
-                </div>
-                <div id="registerResponse" class="response-message"></div>
-            </section>
-        </main>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration Page</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+    <body>
+        <div class="app">
+            <header class="header">
+                <h1
+                    class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+                <nav class="navbar">
+                    <a href="/">Home</a>
+                    <a href="/login">Login</a>
+                    <a href="/register">Sign Up</a>
+                </nav>
+            </header>
+            <main>
+                <section id="registerForm" class="section">
+                    <h2 class="text">Create New Account</h2>
+                    <div class="input-group">
+                        <input type="text" id="registerUsername"
+                            placeholder="New Email">
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="registerPassword"
+                            placeholder="New Password">
+                    </div>
+                    <div class="input-group">
+                        <select id="registerRole">
+                            <option value disabled selected>(Please
+                                Select)</option>
+                            <option value="regular">Regular User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="input-group" id="adminSecretField"
+                        style="display: none;">
+                        <input type="password" id="adminSecretPassword"
+                            placeholder="Admin Secret Password">
+                    </div>
+                    <div class="input-group">
+                        <button id="registerBtn">Register</button>
+                    </div>
+                    <div id="registerResponse" class="response-message"></div>
+                </section>
+            </main>
+        </div>
 
-    <script src="/static/register.js"></script>
-</body>
+        <script src="/static/js/register.js"></script>
+    </body>
 </html>
-

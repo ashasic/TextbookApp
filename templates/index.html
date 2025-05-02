@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI BookShelf</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <div class="app">
-        <header class="header">
-            <img src="/static/Iowa-Hawkeyes-logo.png" alt="UIowa Logo" style="height: 60px;">
-            <h1 class="title multicolor-title">UI<span>BookShelf</span></h1>
-            <nav class="navbar">
-                <a href="/">Home</a>
-                <a id="browseLink" href="/browse">Browse</a>
-                <a id="loginLink" href="/login">Login</a>
-                <a id="registerLink" href="/register">Sign Up</a>
-                <a id="logoutLink" href="#" style="display:none;">Logout</a>
-            </nav>
-        </header>
-        <main>
-            <h2 class="text2">Explore textbooks shared by fellow Hawkeyes</h2>
-            <button class="button-main" id="browseButton">Browse</button>
-        </main>
-    </div>
-    <script src="/static/checkAuth.js"></script>
-    <script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UI BookShelf</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+    <body>
+        <div class="app">
+            <header class="header">
+                <h1
+                    class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+                <nav class="navbar">
+                    <a href="/">Home</a>
+                    <a id="browseLink" href="/browse">Browse</a>
+                    <a id="loginLink" href="/login">Login</a>
+                    <a id="registerLink" href="/register">Sign Up</a>
+                    <a id="logoutLink" href="#" style="display:none;">Logout</a>
+                </nav>
+            </header>
+            <main>
+                <h2 class="text2">Explore textbooks shared by fellow
+                    Hawkeyes</h2>
+                <button class="button-main" id="browseButton">Browse</button>
+            </main>
+        </div>
+        <script src="/static/js/checkAuth.js"></script>
+        <script>
         document.getElementById('browseLink').addEventListener('click', function (event) {
             const token = localStorage.getItem('token');
             if (!token) {
@@ -45,5 +46,5 @@
             }
         });
     </script>
-</body>
+    </body>
 </html>

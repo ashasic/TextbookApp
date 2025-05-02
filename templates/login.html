@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page - UI BookShelf</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <div class="app">
-        <header class="header">
-            <h1 class="title2 multicolor-title">UI<span>BookShelf</span></h1>
-            <nav class="navbar">
-                <a href="/">Home</a>
-                <a href="/login">Login</a>
-                <a href="/register">Sign Up</a>
-            </nav>
-        </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Page - UI BookShelf</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+    <body>
+        <div class="app">
+            <header class="header">
+                <h1
+                    class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+                <nav class="navbar">
+                    <a href="/">Home</a>
+                    <a href="/login">Login</a>
+                    <a href="/register">Sign Up</a>
+                </nav>
+            </header>
 
-        <section id="loginForm" class="section">
-            <h2 class="text">Login</h2>
-            <form id="loginForm">
-                <div class="input-group">
-                    <input type="text" id="usernameInput" placeholder="Email">
-                </div>
-                <div class="input-group">
-                    <input type="password" id="passwordInput" placeholder="Password">
-                </div>
-                <div class="input-group">
-                    <button>Login</button>
-                </div>
-            </form>
-            <div id="responseMessage" class="response-message"></div>
-        </section>
-    </div>
-    <script src="/static/script.js"></script>
-    <script src="/static/login.js"></script>
-</body>
+            <section id="loginForm" class="section">
+                <h2 class="text">Login</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="text" id="usernameInput"
+                            placeholder="Email">
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="passwordInput"
+                            placeholder="Password">
+                    </div>
+                    <div class="input-group">
+                        <button>Login</button>
+                    </div>
+                </form>
+                <div id="responseMessage" class="response-message"></div>
+            </section>
+        </div>
+        <script src="/static/js/script.js"></script>
+        <script src="/static/js/login.js"></script>
+    </body>
 </html>

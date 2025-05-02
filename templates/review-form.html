@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Form</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Enter Review</h1>
-        <form id="reviewForm" class="form-group">
-            <input type="hidden" id="isbn" name="isbn">
-            <div class="form-group">
-                <label for="review"></label>
-                <textarea id="review" name="review" rows="4" cols="50"></textarea>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-        <button onclick="window.location.href='/browse'">Back to Browse</button>
-    </div>
-    <script src="/static/review-form.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Review Form</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Enter Review</h1>
+            <form id="reviewForm" class="form-group">
+                <input type="hidden" id="isbn" name="isbn">
+                <div class="form-group">
+                    <label for="review"></label>
+                    <textarea id="review" name="review" rows="4"
+                        cols="50"></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <button onclick="window.location.href='/browse'">Back to
+                Browse</button>
+        </div>
+        <script src="/static/js/review-form.js"></script>
+    </body>
 </html>

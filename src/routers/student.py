@@ -1,40 +1,25 @@
 import os
-import logging
 import hashlib
 from pydantic import BaseModel
-from dotenv import load_dotenv
-from pymongo import MongoClient
 from fastapi_jwt_auth import AuthJWT
+from utils.logger import setup_logger
 from fastapi.responses import JSONResponse
+from utils.db import get_db, get_collection
 from fastapi.templating import Jinja2Templates
-from logging.handlers import RotatingFileHandler
-from model import Register, LoginSchema, Settings
+from models.model import Register, LoginSchema, Settings
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from fastapi import FastAPI, APIRouter, Form, HTTPException, Request, Depends
 
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(module)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
-log_file_path = os.path.join(os.getcwd(), "application.log")
-file_handler = RotatingFileHandler(
-    log_file_path, maxBytes=1024 * 1024 * 5, backupCount=5
-)
-file_handler.setFormatter(
-    logging.Formatter("%(asctime)s - %(levelname)s - %(module)s - %(message)s")
-)
-logger.addHandler(file_handler)
+logger = setup_logger(__name__)
 
 
-load_dotenv()
 student_router = APIRouter()
 
-# Establish database connection
-client = MongoClient(os.getenv("MONGO_URI"))
-db = client.UIowaBookShelf
-students_collection = db.students
+
+db = get_db()
+textbooks_collection = db.Textbooks
+students_collection = get_collection("students")
 
 
 # Creating an instance of Jinja2Templates

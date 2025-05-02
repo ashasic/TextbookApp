@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         bookElement.className = 'textbook';
         bookElement.innerHTML = `
             <div class="textbook-info">
-                <img src="${book.thumbnail || 'path_to_default_image.jpg'}" alt="Cover image of ${book.title}">
+                <img src="${book.thumbnail || '/static/images/default_book_cover.jpg'}" alt="Cover image of ${book.title}">
                 <div class="textbook-details">
                     <h3>${book.title}</h3>
                     <p>Author(s): ${authors}</p>
