@@ -12,6 +12,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from fastapi import FastAPI, HTTPException, Depends, Query
+from fastapi.staticfiles import StaticFiles
+import os
 
 
 # routers
@@ -39,9 +41,10 @@ app.include_router(student_router)
 app.include_router(textbook_router)
 app.include_router(isbn_router, prefix="/textbooks")
 
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+static_path = os.path.join(os.path.dirname(__file__), '..', 'static')
+app.mount("/static", StaticFiles(directory=static_path), name="static")
+templates_path = os.path.join(os.path.dirname(__file__), '..', 'templates')
+templates = Jinja2Templates(directory=templates_path)
 
 
 # Exception handler for JWT errors
@@ -66,27 +69,23 @@ app.add_middleware(
 # Make HTML file the root route
 @app.get("/")
 async def root():
-    return FileResponse("templates/index.html")
-
+    return FileResponse(os.path.join(templates_path, "index.html"))
 
 @app.get("/browse")
 async def browse():
-    return FileResponse("templates/browse.html")
-
+    return FileResponse(os.path.join(templates_path, "browse.html"))
 
 @app.get("/login")
 async def login():
-    return FileResponse("templates/login.html")
-
+    return FileResponse(os.path.join(templates_path, "login.html"))
 
 @app.get("/reviews.html")
 async def reviews_page():
-    return FileResponse("templates/reviews.html")
-
+    return FileResponse(os.path.join(templates_path, "reviews.html"))
 
 @app.get("/review-form.html")
 async def review_form_page():
-    return FileResponse("templates/review-form.html")
+    return FileResponse(os.path.join(templates_path, "review-form.html"))
 
 
 if __name__ == "__main__":
