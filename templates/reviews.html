@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Review Page</title>
@@ -12,8 +13,10 @@
                 <h1
                     class="title2 multicolor-title">UI<span>BookShelf</span></h1>
                 <nav class="navbar">
+                    <a onclick="history.back()">Back</a>
                     <a href="/">Home</a>
                     <a href="/browse">Browse</a>
+                    <a id="dashboardLink" href="/dashboard">Dashboard</a>
                     <a id="loginLink" href="/login">Login</a>
                     <a id="registerLink" href="/register">Sign Up</a>
                     <a id="logoutLink" href="#" style="display:none;">Logout</a>
@@ -28,7 +31,7 @@
                 </div>
                 <div class="buttons-container">
                     <button id="addReviewBtn">Add Review</button>
-                    <button id="backToBrowseBtn">Back to Browse</button>
+                    <button onclick="history.back()">Back to Browse</button>
                 </div>
             </div>
         </div>

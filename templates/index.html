@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>UI BookShelf</title>
@@ -12,8 +13,10 @@
                 <h1
                     class="title2 multicolor-title">UI<span>BookShelf</span></h1>
                 <nav class="navbar">
+                    <a id="backLink" href="#" style="display:none;">Back</a>
                     <a href="/">Home</a>
                     <a id="browseLink" href="/browse">Browse</a>
+                    <a id="dashboardLink" href="/dashboard">Dashboard</a>
                     <a id="loginLink" href="/login">Login</a>
                     <a id="registerLink" href="/register">Sign Up</a>
                     <a id="logoutLink" href="#" style="display:none;">Logout</a>
@@ -35,7 +38,14 @@
                 window.location.href = '/login'; // Redirect to the login page
             }
         });
-
+        document.getElementById('dashboardLink').addEventListener('click', function (event) {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                event.preventDefault(); // Prevent the default link behavior
+                alert("Please login first."); // Show a message
+                window.location.href = '/login'; // Redirect to the login page
+            }
+        });
         document.getElementById('browseButton').addEventListener('click', function () {
             const token = localStorage.getItem('token');
             if (!token) {

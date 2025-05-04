@@ -7,11 +7,7 @@ from fastapi import APIRouter, HTTPException, Depends
 
 
 logger = setup_logger(__name__)
-
-
 reservation_router = APIRouter()
-
-
 db = get_db()
 textbooks_collection = db.Textbooks
 reservations_collection = get_collection("Reservations")
