@@ -34,34 +34,28 @@ def get_config():
 
 @student_router.post("/login/")
 async def login(
-    username: str = Form(...), password: str = Form(...), Authorize: AuthJWT = Depends()
+    username: str = Form(...),
+    password: str = Form(...),
+    Authorize: AuthJWT = Depends(),
 ):
+    # look up the user
     user = students_collection.find_one({"username": username})
-    if not user or user["password"] != hashlib.sha256(password.encode()).hexdigest():
-        logger.warning(f"Login attempt failed for username: {username}")
+    hashed = hashlib.sha256(password.encode()).hexdigest()
+
+    if not user or user["password"] != hashed:
+        logger.warning(f"Login failed for {username}")
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
+    # create the JWT
     access_token = Authorize.create_access_token(subject=username)
-    return JSONResponse(
-        content={"message": "Login successful", "access_token": access_token},
-        status_code=200,
-    )
-    logger.info(f"User {username} logged in successfully")
-    return JSONResponse(
-        content={"message": "Login successful", "access_token": access_token},
-        status_code=200,
-    )
+    logger.info(f"User {username} logged in")
 
-    # Return user information along with the access token
-    user_data = user(username=user["username"], role=user["role"])
-    return JSONResponse(
-        content={
-            "message": "Login successful",
-            "access_token": access_token,
-            "user": user_data.dict(),
-        },
-        status_code=200,
-    )
+    # only return JSON-serializable values
+    return {
+        "message": "Login successful",
+        "access_token": access_token,
+    }
+
 
 
 @student_router.get("/login/")
