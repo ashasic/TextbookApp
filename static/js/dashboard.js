@@ -1,5 +1,3 @@
-// static/js/dashboard.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const tradesList = document.getElementById("tradesList");
 
@@ -36,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="review-actions">
             <button class="small-btn editTradeBtn">Edit</button>
             <button class="small-btn deleteTradeBtn">Delete</button>
+            <button class="small-btn messageBtn">Message</button>
           </div>
         `;
 
@@ -72,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
           })
             .then(res => {
               if (!res.ok) throw new Error("Update failed");
-              // update UI
               li.querySelectorAll(".trade-detail")[2].textContent =
                 `Status: ${newStatus}`;
             })
@@ -80,6 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
               console.error(err);
               alert("Could not update trade.");
             });
+        });
+
+        // Message handler
+        li.querySelector(".messageBtn").addEventListener("click", () => {
+          window.location.href =
+            `/dashboard/messages?peer=${encodeURIComponent(t.other_user)}`;
         });
       });
     })

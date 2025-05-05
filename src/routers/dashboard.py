@@ -1,13 +1,13 @@
 from datetime import datetime
 from bson import ObjectId
-
+from fastapi import Body
 from fastapi import APIRouter, Request, Depends, HTTPException
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from fastapi.encoders import jsonable_encoder
 from fastapi.templating import Jinja2Templates
-
+from pydantic import BaseModel
 from utils.db import get_collection
 from utils.logger import setup_logger
 
@@ -147,3 +147,77 @@ async def delete_trade(trade_id: str, Authorize: AuthJWT = Depends()):
         raise HTTPException(status_code=404, detail="Trade not found")
 
     return JSONResponse(content={"message": "Trade deleted"})
+
+
+# ─── Messages Page (HTML) ──────────────────────────────────
+@dashboard_router.get("/dashboard/messages", response_class=HTMLResponse)
+async def messages_page(request: Request):
+    return templates.TemplateResponse("messages.html", {"request": request})
+
+
+# ─── List all other users ─────────────────────────────────
+@dashboard_router.get("/api/users")
+async def list_users(Authorize: AuthJWT = Depends()):
+    Authorize.jwt_required()
+    me = Authorize.get_jwt_subject()
+    col = get_collection("students")
+    raw = col.find({"username": {"$ne": me}}, {"_id": 0, "username": 1})
+    return JSONResponse([u["username"] for u in raw])
+
+
+# ─── Fetch conversation with a peer ────────────────────────
+@dashboard_router.get("/api/messages/{peer}")
+async def get_conversation(peer: str, Authorize: AuthJWT = Depends()):
+    Authorize.jwt_required()
+    me = Authorize.get_jwt_subject()
+    col = get_collection("Messages")
+    # fetch both directions
+    raw = col.find(
+        {
+            "$or": [
+                {"from_user": me, "to_user": peer},
+                {"from_user": peer, "to_user": me},
+            ]
+        }
+    ).sort("timestamp", 1)
+    msgs = []
+    for m in raw:
+        msgs.append(
+            {
+                "id": str(m["_id"]),
+                "from_user": m["from_user"],
+                "to_user": m["to_user"],
+                "content": m["content"],
+                "timestamp": m["timestamp"].isoformat(),
+            }
+        )
+    return JSONResponse(msgs)
+
+
+# ─── Send a new message ────────────────────────────────────
+class NewMessage(BaseModel):
+    to_user: str
+    content: str
+
+
+@dashboard_router.post("/api/messages", status_code=201)
+async def post_message(payload: NewMessage, Authorize: AuthJWT = Depends()):
+    Authorize.jwt_required()
+    me = Authorize.get_jwt_subject()
+    col = get_collection("Messages")
+    doc = {
+        "from_user": me,
+        "to_user": payload.to_user,
+        "content": payload.content,
+        "timestamp": datetime.utcnow(),
+    }
+    result = col.insert_one(doc)
+    return JSONResponse(
+        {
+            "id": str(result.inserted_id),
+            "from_user": me,
+            "to_user": payload.to_user,
+            "content": payload.content,
+            "timestamp": doc["timestamp"].isoformat(),
+        }
+    )
