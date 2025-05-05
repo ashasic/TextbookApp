@@ -1,5 +1,9 @@
-# src/utils/templates.py
+import os
 from fastapi.templating import Jinja2Templates
 
-# point at your templates directory just once
-templates = Jinja2Templates(directory="templates")
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))  # -> TextbookApp
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+
+print("TEMPLATES_DIR:", TEMPLATES_DIR)  # 🧪 Add this line temporarily
+
+templates = Jinja2Templates(directory=TEMPLATES_DIR)

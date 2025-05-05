@@ -14,7 +14,7 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 
 from utils.logger import setup_logger
 from utils.templates import templates
-
+import os
 
 # routers
 from routers.review import review_router
@@ -38,8 +38,8 @@ app.include_router(review_router)
 app.include_router(student_router)
 app.include_router(textbook_router)
 
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
+static_path = os.path.join(os.path.dirname(__file__), '..', 'static')
+app.mount("/static", StaticFiles(directory=static_path), name="static")
 
 
 # Exception handler for JWT errors
@@ -59,7 +59,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # Make HTML file the root route
 @app.get("/", response_class=HTMLResponse)
