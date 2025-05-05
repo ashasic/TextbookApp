@@ -16,8 +16,10 @@
                     <a onclick="history.back()">Back</a>
                     <a href="/">Home</a>
                     <a href="/browse">Browse</a>
-                    <a href="/dashboard">Dashboard</a>
-                    <a id="logoutLink" href="#">Logout</a>
+                    <a id="dashboardLink" href="/dashboard">Dashboard</a>
+                    <a id="loginLink" href="/login">Login</a>
+                    <a id="registerLink" href="/register">Sign Up</a>
+                    <a id="logoutLink" href="#" style="display:none;">Logout</a>
                 </nav>
             </header>
 
@@ -45,6 +47,7 @@
             </main>
         </div>
 
+        <script src="/static/js/checkAuth.js"></script>
         <script src="/static/js/messages.js"></script>
     </body>
 </html>
