@@ -1,29 +1,19 @@
 import os
 import hashlib
-from pydantic import BaseModel
 from fastapi_jwt_auth import AuthJWT
 from utils.logger import setup_logger
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 from utils.db import get_db, get_collection
-from fastapi.templating import Jinja2Templates
 from models.model import Register, LoginSchema, Settings
 from fastapi_jwt_auth.exceptions import AuthJWTException
-from fastapi import FastAPI, APIRouter, Form, HTTPException, Request, Depends
-
-
-logger = setup_logger(__name__)
-
+from fastapi import APIRouter, Form, HTTPException, Request, Depends
+from utils.templates import templates
 
 student_router = APIRouter()
-
-
 db = get_db()
-textbooks_collection = db.Textbooks
 students_collection = get_collection("students")
 
-
-# Creating an instance of Jinja2Templates
-templates = Jinja2Templates(directory="templates")
+logger = setup_logger(__name__)
 
 
 # Configuration for JWT tokens
@@ -33,64 +23,33 @@ def get_config():
 
 
 @student_router.post("/login/")
-async def login(
+async def login_action(
     username: str = Form(...), password: str = Form(...), Authorize: AuthJWT = Depends()
 ):
+    """Process login form and return token."""
     user = students_collection.find_one({"username": username})
-    if not user or user["password"] != hashlib.sha256(password.encode()).hexdigest():
-        logger.warning(f"Login attempt failed for username: {username}")
-        raise HTTPException(status_code=401, detail="Invalid username or password")
-
-    access_token = Authorize.create_access_token(subject=username)
-    return JSONResponse(
-        content={"message": "Login successful", "access_token": access_token},
-        status_code=200,
-    )
-    logger.info(f"User {username} logged in successfully")
-    return JSONResponse(
-        content={"message": "Login successful", "access_token": access_token},
-        status_code=200,
-    )
-
-    # Return user information along with the access token
-    user_data = user(username=user["username"], role=user["role"])
-    return JSONResponse(
-        content={
-            "message": "Login successful",
-            "access_token": access_token,
-            "user": user_data.dict(),
-        },
-        status_code=200,
-    )
-
-
-@student_router.get("/login/")
-async def login_page(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+    hashed = hashlib.sha256(password.encode()).hexdigest()
+    if not user or user["password"] != hashed:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    token = Authorize.create_access_token(subject=username)
+    return JSONResponse(content={"access_token": token}, status_code=200)
 
 
 @student_router.post("/register/")
-async def register(register_data: Register):
+async def register_action(register_data: Register):
+    """Process registration form."""
     if register_data.role not in ["admin", "regular"]:
-        logger.warning("Attempt to register with invalid role")
-        raise HTTPException(status_code=400, detail="Invalid role specified")
-
-    hashed_password = hashlib.sha256(register_data.password.encode()).hexdigest()
-    user = {
+        raise HTTPException(status_code=400, detail="Invalid role")
+    hashed = hashlib.sha256(register_data.password.encode()).hexdigest()
+    doc = {
         "username": register_data.username,
-        "password": hashed_password,
+        "password": hashed,
         "role": register_data.role,
     }
-    result = students_collection.insert_one(user)
-    if result.inserted_id:
-        logger.info(f"User {register_data.username} registered successfully")
-        return {"message": "User registered successfully"}
-    raise HTTPException(status_code=500, detail="Failed to register user")
-
-
-@student_router.get("/register/")
-async def register_page(request: Request):
-    return templates.TemplateResponse("register.html", {"request": request})
+    result = students_collection.insert_one(doc)
+    if not result.inserted_id:
+        raise HTTPException(status_code=500, detail="Registration failed")
+    return JSONResponse(content={"message": "Registered successfully"}, status_code=201)
 
 
 # New Endpoint to Get Current User

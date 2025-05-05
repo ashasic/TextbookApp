@@ -8,11 +8,7 @@ from fastapi import APIRouter, File, UploadFile, HTTPException
 
 
 logger = setup_logger(__name__)
-
-
 isbn_router = APIRouter()
-
-
 db = get_db()
 textbooks_collection = db.Textbooks
 

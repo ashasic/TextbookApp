@@ -10,11 +10,7 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 
 
 logger = setup_logger(__name__)
-
-
 review_router = APIRouter()
-
-
 db = get_db()
 textbookCollection = db.Textbooks
 reviewCollection = get_collection("Reviews")

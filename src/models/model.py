@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
 
@@ -17,7 +17,7 @@ class ISBN(BaseModel):
     isbn: str
 
 
-# Data models for the Student.py
+# Data models for the student.py
 class Register(BaseModel):
     username: str
     password: str
@@ -33,7 +33,7 @@ class Settings(BaseModel):
     authjwt_secret_key: str = "IowaRocks"  # Secret key
 
 
-# Data models for the Review.py
+# Data models for the review.py
 class ReviewIn(BaseModel):
     isbn: str
     user: str
@@ -44,7 +44,7 @@ class ReviewOut(ReviewIn):
     id: str
 
 
-# Data models for the Reservation.py
+# Data models for the reservation.py
 class ReservationEntry(BaseModel):
     title: str
     isbn: str
@@ -53,3 +53,32 @@ class ReservationEntry(BaseModel):
     description: str
     subject: str
     user: str
+
+
+# Data models for dashboard.py
+class Message(BaseModel):
+    id: str
+    from_user: str
+    to_user: str
+    book_isbn: str
+    content: str
+    timestamp: datetime
+
+
+class Payment(BaseModel):
+    id: str
+    from_user: str
+    to_user: str
+    amount: float
+    book_isbn: str
+    timestamp: datetime
+
+
+class Trade(BaseModel):
+    id: str
+    isbn: str
+    other_user: str
+    status: str
+    timestamp: datetime
+    title: str
+    thumbnail: str

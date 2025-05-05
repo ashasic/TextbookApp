@@ -16,12 +16,8 @@ from fastapi import APIRouter, FastAPI, HTTPException, Depends, Query
 
 
 logger = setup_logger(__name__)
-
-
 app = FastAPI()
 textbook_router = APIRouter()
-
-
 db = get_db()
 textbooks_collection = db.Textbooks
 

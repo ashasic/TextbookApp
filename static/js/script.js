@@ -127,7 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         </div>
                         <button class="delete-btn" onclick="deleteTextbook('${book.isbn}')">Delete</button>
-                        <button class="review-btn" onclick="goToReviewPage('${book.isbn}')">Review</button> <!-- Review Button Added Here -->
+                        <button class="trade-btn" onclick="goToReviewPage('${book.isbn}')">Review</button>
+                        <button class="trade-btn" onclick="addTrade('${book.isbn}')">Trade</button>
                     `;
                     textbooksList.appendChild(bookElement);
                 });
