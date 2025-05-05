@@ -35,3 +35,5 @@ async def create_reservation(reservation: ReservationEntry):
         logger.info("Reservation created successfully")
         return {"message": "Reservation successful", "id": str(result.inserted_id)}
     raise HTTPException(status_code=500, detail="Failed to create reservation")
+
+

@@ -1,144 +1,151 @@
 import os
 import requests
-from utils.db import get_db
-from pydantic import BaseModel
-from fastapi_jwt_auth import AuthJWT
-from utils.logger import setup_logger
-from fastapi.responses import JSONResponse
+from utils.db import get_db, get_collection
+from fastapi import FastAPI, APIRouter, Request, HTTPException, Depends, Query
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from starlette.responses import FileResponse
 from fastapi.templating import Jinja2Templates
-from models.model import TextbookEntry, ISBN
-from fastapi.middleware.cors import CORSMiddleware
-from services.book_service import fetch_book_info
+from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
-from fastapi import APIRouter, FastAPI, HTTPException, Depends, Query
-
+from utils.logger import setup_logger
+from services.book_service import fetch_book_info
+from models.model import TextbookEntry, ISBN, Settings
 
 logger = setup_logger(__name__)
+
 app = FastAPI()
+# serve static files (css/js/images) under /static
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# configure JWT
+@AuthJWT.load_config
+def get_config():
+    return Settings()
+
+# common exception handler for AuthJWT errors
+@app.exception_handler(AuthJWTException)
+def authjwt_exception_handler(request: Request, exc: AuthJWTException):
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.message})
+
+# Jinja2 setup
+templates = Jinja2Templates(directory="templates")
+
+# router and DB handles
 textbook_router = APIRouter()
 db = get_db()
 textbooks_collection = db.Textbooks
+trades_collection    = get_collection("Trades")  # for the view/trades feature
 
+# --- REST Endpoints for Textbooks CRUD --- #
 
-@app.exception_handler(AuthJWTException)
-def authjwt_exception_handler(request, exc):
-    return JSONResponse(status_code=exc.status_code, content={"detail": exc.message})
-
-
-async def delete_textbook(isbn: str):
-    result = textbooks_collection.delete_one({"isbn": isbn})
-    if result.deleted_count == 1:
-        return {"message": "Textbook deleted successfully"}
-    else:
-        raise HTTPException(status_code=404, detail="Textbook not found")
-
-
-# Route to get all textbooks
-@textbook_router.get("/textbooks/")
+@textbook_router.get("/textbooks/", tags=["textbooks"])
 async def get_textbooks():
     logger.info("Fetching all textbooks")
     try:
         books = list(textbooks_collection.find({}, {"_id": 0}))
-        logger.info(f"Number of textbooks fetched: {len(books)}")
-        return JSONResponse(content={"books": books})
+        return {"books": books}
     except Exception as e:
-        logger.error(f"Failed to fetch textbooks: {e}")
-        print("Failed to fetch textbooks:", e)
-        raise HTTPException(
-            status_code=500, detail="Failed to fetch textbooks due to an internal error"
-        )
+        logger.error("Failed to fetch textbooks", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal error fetching textbooks")
 
-
-# Route to add or update a textbook entry
-@textbook_router.post("/textbooks/")
+@textbook_router.post("/textbooks/", tags=["textbooks"])
 async def add_or_update_textbook(textbook_data: dict, Authorize: AuthJWT = Depends()):
-    logger.info(f"Attempting to add or update textbook")
-    # Check the current user's username from the JWT token
     try:
         Authorize.jwt_required()
         username = Authorize.get_jwt_subject()
     except AuthJWTException as e:
-        logger.warning(f"Request failed")
         raise HTTPException(status_code=e.status_code, detail=e.message)
 
     isbn = textbook_data.get("isbn")
     if not isbn:
         raise HTTPException(status_code=400, detail="ISBN is required")
-    logger.info(f"Received textbook data: {textbook_data}")
 
-    # Check if the textbook already exists in the database
-    existing_book = textbooks_collection.find_one({"isbn": isbn})
-    if existing_book:
-        # If the book exists and no new data is given to update, return an error
-        return {"message": "Textbook already added.."}
+    existing = textbooks_collection.find_one({"isbn": isbn})
+    if existing:
+        return {"message": "Textbook already added"}
 
-    # Fetch additional book info from an external API
-    book_data = fetch_book_info(isbn)
-    if not book_data:
+    book_info = fetch_book_info(isbn)
+    if not book_info:
         raise HTTPException(status_code=404, detail="No textbook found with this ISBN")
 
-    # Merge the data from the API with any additional data provided in the request
-    book_data.update(textbook_data)
+    # merge and annotate
+    book_info.update(textbook_data)
+    book_info["added_by"] = username
 
-    # Add the username to the textbook data
-    book_data["added_by"] = username
-
-    # Update the MongoDB document
     result = textbooks_collection.update_one(
-        {"isbn": isbn}, {"$set": book_data}, upsert=True
+        {"isbn": isbn},
+        {"$set": book_info},
+        upsert=True
     )
 
     if result.upserted_id or result.modified_count > 0:
-        return {
-            "message": "Textbook data added successfully",
-            "data": book_data,
-        }
-    else:
-        return {"message": "No changes made to the textbook"}
+        return {"message": "Textbook added/updated", "data": book_info}
+    return {"message": "No changes made"}
 
-
-@textbook_router.get("/textbooks/search/")
-async def search_textbooks(
-    query: str = Query(
-        None, title="Search Query", description="Search by ISBN, title, or author"
-    )
-):
-    regex_query = {"$regex": query, "$options": "i"}  # Case-insensitive search
-    books = list(
-        textbooks_collection.find(
-            {
-                "$or": [
-                    {"isbn": regex_query},
-                    {"title": regex_query},
-                    {"authors": regex_query},
-                ]
-            },
-            {"_id": 0},
-        )
-    )
-    return {"books": books}
-    regex_query = {"$regex": query, "$options": "i"}  # Case-insensitive search
-    books = list(
-        textbooks_collection.find(
-            {
-                "$or": [
-                    {"isbn": regex_query},
-                    {"title": regex_query},
-                    {"authors": regex_query},
-                ]
-            },
-            {"_id": 0},
-        )
-    )
+@textbook_router.get("/textbooks/search/", tags=["textbooks"])
+async def search_textbooks(query: str = Query(..., description="Search by ISBN, title, or author")):
+    regex = {"$regex": query, "$options": "i"}
+    books = list(textbooks_collection.find(
+        {"$or": [{"isbn": regex}, {"title": regex}, {"authors": regex}]},
+        {"_id": 0}
+    ))
     return {"books": books}
 
-
-@textbook_router.delete("/textbooks/{isbn}")
+@textbook_router.delete("/textbooks/{isbn}", tags=["textbooks"])
 async def delete_textbook(isbn: str):
     result = textbooks_collection.delete_one({"isbn": isbn})
     if result.deleted_count == 1:
-        return {"message": "Textbook deleted successfully"}
-    else:
+        return {"message": "Deleted successfully"}
+    raise HTTPException(status_code=404, detail="Textbook not found")
+
+# --- HTML Endpoints for detail & view pages --- #
+
+@textbook_router.get(
+    "/textbooks/{isbn}/detail",
+    response_class=HTMLResponse,
+    tags=["textbooks"],
+    summary="Show the textbook detail & listing form"
+)
+async def textbook_detail(request: Request, isbn: str):
+    book = textbooks_collection.find_one({"isbn": isbn}, {"_id": 0})
+    if not book:
         raise HTTPException(status_code=404, detail="Textbook not found")
+    return templates.TemplateResponse(
+        "textbook_detail.html",
+        {"request": request, "book": book},
+    )
+
+@textbook_router.get(
+    "/textbooks/{isbn}/view",
+    response_class=HTMLResponse,
+    tags=["textbooks"],
+    summary="Show the textbook view page"
+)
+async def textbook_view(request: Request, isbn: str):
+    book = textbooks_collection.find_one({"isbn": isbn}, {"_id": 0})
+    if not book:
+        raise HTTPException(status_code=404, detail="Textbook not found")
+
+    # load listing metadata
+    listing = textbooks_collection.find_one(
+        {"isbn": isbn},
+        {"_id": 0, "added_by": 1, "comments": 1, "location": 1, "price": 1, "condition": 1}
+    )
+    return templates.TemplateResponse(
+        "textbook_view.html",
+        {"request": request, "book": book, "listing": listing},
+    )
+
+@textbook_router.get(
+    "/textbooks/{isbn}/trades",
+    response_class=JSONResponse,
+    tags=["textbooks"],
+    summary="Fetch interested traders for a textbook"
+)
+async def get_trades(isbn: str):
+    trades = list(trades_collection.find(
+        {"isbn": isbn},
+        {"_id": 0, "user": 1, "comment": 1}
+    ))
+    return {"trades": trades}
+

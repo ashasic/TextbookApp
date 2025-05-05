@@ -196,21 +196,6 @@ button:hover, button:focus {
   border: 1px solid rgb(165, 165, 165); /* Highlight entry on hover */
 }
 
-.delete-btn {
-  position: absolute;
-  top: 10px; /* Positioned at the top-right corner */
-  right: 10px;
-  padding: 8px 16px;
-  background-color: var(--uiowa-gold);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.delete-btn:hover {
-  background-color: #f44336; /* Red color on hover for importance */
-}
-
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
@@ -674,4 +659,200 @@ textarea {
 .trade-btn:hover {
   background: var(--uiowa-gold);
   color: var(--uiowa-black);
+}
+
+.details-btn {
+  background: #ffc600;
+  border: none;
+  color: #000;
+  padding: 0.5em 1em;
+  margin-left: 0.5em;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.book-title-link {
+  color: #ffc600;
+  text-decoration: none;
+  font-size: 1.25em;
+}
+.book-title-link:hover {
+  text-decoration: underline;
+}
+
+.listing-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.listing-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.listing-header h2 {
+  font-size: 2rem;
+  color: var(--uiowa-white);
+  margin-bottom: 0.25rem;
+}
+.listing-header .subhead {
+  color: var(--uiowa-gray);
+}
+.listing-card {
+  background: #222;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1.5rem;
+}
+.book-info {
+  flex: 1 1 200px;
+  text-align: center;
+}
+.book-info img {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+.book-info h3 {
+  font-size: 1.25rem;
+  color: var(--uiowa-white);
+  margin: 0;
+}
+.listing-form {
+  flex: 2 1 300px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.form-group label {
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+  color: var(--uiowa-white);
+}
+.price-field {
+  display: flex;
+  align-items: center;
+}
+.dollar-sign {
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--uiowa-white);
+}
+.image-preview {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.image-preview .thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .listing-card { flex-direction: column; }
+  .form-actions { flex-direction: column; align-items: stretch; }
+}
+
+/* Browse-page: make the entire .textbook a clickable card */
+.textbook {
+  display: flex;           /* align info + actions side by side */
+  align-items: center;     /* vertical centering */
+  cursor: pointer;         /* pointer on hover */
+}
+
+/* Action-button container: right edge, vertical stack, equal spacing */
+.textbook .actions {
+  margin-left: auto;       /* push to the right */
+  display: flex;
+  flex-direction: column;  /* stack buttons vertically */
+  align-items: flex-end;   /* align buttons to the right edge */
+  gap: 0.75em;             /* even vertical spacing */
+}
+
+/* All action buttons: same width, padding, font, rounded corners */
+.textbook .actions button {
+  width: 120px;            /* fixed, uniform width */
+  padding: 0.6em 0;        /* vertical padding only */
+  font-size: 0.9rem;       /* consistent text size */
+  border-radius: 5px;      /* matching rounded corners */
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Delete = Danger (red) */
+.textbook .actions .delete-btn {
+  background: #f44336;
+}
+.textbook .actions .delete-btn:hover {
+  background: #d32f2f;
+}
+
+/* Review = Info (blue) */
+.textbook .actions .review-btn {
+  background: #2196F3;
+}
+.textbook .actions .review-btn:hover {
+  background: #1976D2;
+}
+
+/* Trade = Success (green) */
+.textbook .actions .trade-btn {
+  background: #4CAF50;
+}
+.textbook .actions .trade-btn:hover {
+  background: #388E3C;
+}
+
+.textbook .actions {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column-reverse;  /* now trade (last in HTML) is on top */
+  align-items: flex-end;
+  gap: 0.75em;
+}
+
+/* Style the dropdown with an inline SVG arrow inside the box */
+.styled-select {
+  /* remove native arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* box styling to match your theme */
+  background-color: #111;
+  color: #eee;
+  border: 1px solid #ffc600;
+  border-radius: 4px;
+  padding: 0.5rem 2rem 0.5rem 0.75rem; /* space on right for the arrow */
+
+  /* embed a small SVG chevron-down */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='none' stroke='%23eee' stroke-width='1' d='M0 1L2 3L4 1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.75rem;
+}
+
+/* On focus, highlight border */
+.styled-select:focus {
+  border-color: #ffc600;
+  box-shadow: 0 0 8px #ffc600;
 }
