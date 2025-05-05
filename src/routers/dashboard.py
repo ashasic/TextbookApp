@@ -79,8 +79,10 @@ async def create_trade(payload: dict, Authorize: AuthJWT = Depends()):
         raise HTTPException(status_code=400, detail="ISBN is required")
 
     col = get_collection("Trades")
-    if col.find_one({"isbn": isbn, "other_user": user}):
-        raise HTTPException(status_code=400, detail="Trade already exists")
+    if col.find_one({"isbn": isbn, "status": "pending"}):
+        raise HTTPException(
+            status_code=400, detail="Someone else is already trading for this book."
+        )
 
     trade_doc = {
         "isbn": isbn,
