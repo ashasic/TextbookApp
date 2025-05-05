@@ -660,3 +660,18 @@ textarea {
   gap: 1.5rem; /* slightly tighter */
   align-self: flex-start; /* align at top */
 }
+
+.trade-btn {
+  margin-left: 0.5rem;
+  border: 1px solid var(--uiowa-gold);
+  background: transparent;
+  color: var(--uiowa-gold);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.trade-btn:hover {
+  background: var(--uiowa-gold);
+  color: var(--uiowa-black);
+}

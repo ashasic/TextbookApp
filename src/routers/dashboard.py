@@ -1,103 +1,147 @@
-from fastapi_jwt_auth import AuthJWT
+from datetime import datetime
+from bson import ObjectId
+
 from fastapi import APIRouter, Request, Depends, HTTPException
 from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi_jwt_auth import AuthJWT
+from fastapi_jwt_auth.exceptions import AuthJWTException
 from fastapi.encoders import jsonable_encoder
-from utils.db import get_collection, get_db
-from models.model import Message, Payment, Trade
-from utils.logger import setup_logger
-from utils.templates import templates
 from fastapi.templating import Jinja2Templates
 
+from utils.db import get_collection
+from utils.logger import setup_logger
+
+dashboard_router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 logger = setup_logger(__name__)
-dashboard_router = APIRouter()
 
 
-# serve the HTML page
+# --- Dashboard page ---
 @dashboard_router.get("/dashboard", response_class=HTMLResponse)
 async def dashboard_page(request: Request):
     return templates.TemplateResponse("dashboard.html", {"request": request})
 
 
-# API endpoints
-@dashboard_router.get("/api/messages")
-async def list_messages():
-    col = get_collection("Messages")
-    raw = list(
-        col.find(
-            {},
-            {
-                "_id": 1,
-                "from_user": 1,
-                "to_user": 1,
-                "book_isbn": 1,
-                "content": 1,
-                "timestamp": 1,
-            },
-        )
-    )
-    msgs = [Message(**{**m, "id": str(m["_id"])}) for m in raw]
-    return JSONResponse(content=jsonable_encoder([m.dict() for m in msgs]))
-
-
-@dashboard_router.get("/api/payments")
-async def list_payments():
-    col = get_collection("Payments")
-    raw = list(
-        col.find(
-            {},
-            {
-                "_id": 1,
-                "from_user": 1,
-                "to_user": 1,
-                "amount": 1,
-                "book_isbn": 1,
-                "timestamp": 1,
-            },
-        )
-    )
-    pays = [Payment(**{**p, "id": str(p["_id"])}) for p in raw]
-    return JSONResponse(content=jsonable_encoder([p.dict() for p in pays]))
-
-
+# --- List trades (GET) ---
 @dashboard_router.get("/api/trades")
 async def list_trades(Authorize: AuthJWT = Depends()):
-    # require login
+    # 1) enforce login
     try:
         Authorize.jwt_required()
-        current_user = Authorize.get_jwt_subject()
-    except Exception as e:
-        raise HTTPException(status_code=401, detail="Not authenticated")
+    except AuthJWTException:
+        raise HTTPException(status_code=401, detail="Not authorized")
 
-    db = get_db()
-    trades_col = db.Trades
-    books_col = db.Textbooks
+    user = Authorize.get_jwt_subject()
+    trades_col = get_collection("Trades")
+    books_col = get_collection("Textbooks")
 
-    raw_trades = list(
-        trades_col.find(
-            {"other_user": current_user},  # only this user’s trades
-            {"_id": 1, "isbn": 1, "status": 1, "timestamp": 1},
-        )
-    )
-
+    raw = list(trades_col.find({"other_user": user}))
     out = []
-    for t in raw_trades:
-        # lookup book metadata
-        book = books_col.find_one({"isbn": t["isbn"]}, {"title": 1, "thumbnail": 1})
-        out.append(
-            Trade(
-                id=str(t["_id"]),
-                isbn=t["isbn"],
-                other_user=current_user,
-                status=t["status"],
-                timestamp=t["timestamp"],
-                title=book.get("title", "Unknown Title") if book else "Unknown Title",
-                thumbnail=(
-                    book.get("thumbnail")
-                    if book
-                    else "/static/images/default_book_cover.png"
-                ),
-            ).dict()
+    for t in raw:
+        # 2) look up the textbook record
+        book = books_col.find_one(
+            {"isbn": t["isbn"]}, {"_id": 0, "title": 1, "thumbnail": 1}
         )
 
-    return JSONResponse(content=jsonable_encoder(out))
+        title = book["title"] if book and book.get("title") else "No Title"
+        thumbnail = (
+            book["thumbnail"]
+            if book and book.get("thumbnail")
+            else "/static/images/default_book_cover.jpg"
+        )
+
+        out.append(
+            {
+                "id": str(t["_id"]),
+                "isbn": t["isbn"],
+                "other_user": t["other_user"],
+                "status": t["status"],
+                "title": title,
+                "thumbnail": thumbnail,
+                "timestamp": t["timestamp"].isoformat(),
+            }
+        )
+
+    return JSONResponse(content=out)
+
+
+# --- Create trade (POST) ---
+@dashboard_router.post("/api/trades")
+async def create_trade(payload: dict, Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_required()
+    except AuthJWTException:
+        raise HTTPException(status_code=401, detail="Not authorized")
+
+    user = Authorize.get_jwt_subject()
+    isbn = payload.get("isbn")
+    if not isbn:
+        raise HTTPException(status_code=400, detail="ISBN is required")
+
+    col = get_collection("Trades")
+    if col.find_one({"isbn": isbn, "other_user": user}):
+        raise HTTPException(status_code=400, detail="Trade already exists")
+
+    trade_doc = {
+        "isbn": isbn,
+        "other_user": user,
+        "status": "pending",
+        "timestamp": datetime.utcnow(),
+        # optional: populate title/thumbnail here if you want
+    }
+    result = col.insert_one(trade_doc)
+
+    response = {
+        "id": str(result.inserted_id),
+        "isbn": isbn,
+        "other_user": user,
+        "status": "pending",
+        "timestamp": trade_doc["timestamp"].isoformat(),
+    }
+    return JSONResponse(status_code=201, content=response)
+
+
+# --- Update trade (PUT) ---
+@dashboard_router.put("/api/trades/{trade_id}")
+async def update_trade(trade_id: str, payload: dict, Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_required()
+    except AuthJWTException:
+        raise HTTPException(status_code=401, detail="Not authorized")
+
+    user = Authorize.get_jwt_subject()
+    col = get_collection("Trades")
+    oid = ObjectId(trade_id)
+
+    trade = col.find_one({"_id": oid, "other_user": user})
+    if not trade:
+        raise HTTPException(status_code=404, detail="Trade not found")
+
+    updates = {}
+    if "status" in payload:
+        updates["status"] = payload["status"]
+
+    if not updates:
+        raise HTTPException(status_code=400, detail="No fields to update")
+
+    col.update_one({"_id": oid}, {"$set": updates})
+    return JSONResponse(content={"message": "Trade updated"})
+
+
+# --- Delete trade (DELETE) ---
+@dashboard_router.delete("/api/trades/{trade_id}")
+async def delete_trade(trade_id: str, Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_required()
+    except AuthJWTException:
+        raise HTTPException(status_code=401, detail="Not authorized")
+
+    user = Authorize.get_jwt_subject()
+    col = get_collection("Trades")
+    oid = ObjectId(trade_id)
+
+    res = col.delete_one({"_id": oid, "other_user": user})
+    if res.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Trade not found")
+
+    return JSONResponse(content={"message": "Trade deleted"})
