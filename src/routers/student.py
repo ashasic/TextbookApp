@@ -23,16 +23,29 @@ def get_config():
 
 
 @student_router.post("/login/")
-async def login_action(
-    username: str = Form(...), password: str = Form(...), Authorize: AuthJWT = Depends()
+async def login(
+    username: str = Form(...),
+    password: str = Form(...),
+    Authorize: AuthJWT = Depends(),
 ):
-    """Process login form and return token."""
+    # look up the user
     user = students_collection.find_one({"username": username})
     hashed = hashlib.sha256(password.encode()).hexdigest()
+
     if not user or user["password"] != hashed:
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-    token = Authorize.create_access_token(subject=username)
-    return JSONResponse(content={"access_token": token}, status_code=200)
+        logger.warning(f"Login failed for {username}")
+        raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    # create the JWT
+    access_token = Authorize.create_access_token(subject=username)
+    logger.info(f"User {username} logged in")
+
+    # only return JSON-serializable values
+    return {
+        "message": "Login successful",
+        "access_token": access_token,
+    }
+
 
 
 @student_router.post("/register/")

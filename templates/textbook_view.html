@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>{{ book.title }} — UI BookShelf</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="multicolor-title">UI<span>BookShelf</span></div>
+      <nav class="navbar">
+        <a onclick="history.back()">Back</a>
+        <a href="/">Home</a>
+        <a href="/browse">Browse</a>
+      </nav>
+    </header>
+
+    <main class="container listing-page">
+      <h2 class="text2" style="text-align:center; margin-bottom:1rem;">
+        {{ book.title }}
+      </h2>
+
+      <div class="listing-card" style="max-width:800px; margin:1rem auto;">
+        <!-- Book Cover -->
+        <div class="book-info" style="flex:1 1 200px; text-align:left;">
+          <img
+            src="{{ book.thumbnail or '/static/images/default_book_cover.jpg' }}"
+            alt="Cover of {{ book.title }}"
+          />
+        </div>
+
+        <!-- Details & Listing Info -->
+        <div class="textbook-details" style="flex:2 1 400px; text-align:left;">
+          <h3>{{ book.title }}</h3>
+          <p><strong>Authors:</strong> {{ book.authors|join(", ") }}</p>
+          <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+          <p><strong>Published:</strong> {{ book.published_date }}</p>
+          <p><strong>Description:</strong> {{ book.description }}</p>
+          <p><strong>Subject:</strong> {{ book.subject }}</p>
+
+          <hr/>
+
+          <h4>Listed By:</h4>
+          <p><strong>User:</strong> {{ listing.added_by }}</p>
+          <p><strong>Comments:</strong> {{ listing.comments }}</p>
+          <p><strong>Location:</strong> {{ listing.location }}</p>
+          <p><strong>Condition:</strong> {{ listing.condition }}</p>
+          <p><strong>Price:</strong> ${{ listing.price }}</p>
+        </div>
+      </div>
+
+      <!-- Bottom action buttons -->
+      <div style="text-align:center; margin-top:2rem; display:flex; justify-content:center; gap:1rem;">
+        <!-- New Listing (green) -->
+        <button
+          onclick="window.location.href='/textbooks/{{ book.isbn }}/detail'"
+          style="background:#4CAF50; color:#fff; border:none; padding:0.75em 1.5em; border-radius:5px; cursor:pointer;"
+        >
+          + New Listing
+        </button>
+
+        <!-- Message Traders (primary) -->
+        <button id="messageTraders" class="btn primary">
+          Message Traders
+        </button>
+      </div>
+
+      <div id="tradersPanel" class="trades-panel" style="display:none; margin:auto; max-width:600px; padding:1rem;">
+        <span id="closePanel" class="close">&times;</span>
+        <h3 class="panel-header">Interested Traders</h3>
+        <ul class="trades-list"></ul>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const isbn = "{{ book.isbn }}";
+    const panel = document.getElementById("tradersPanel");
+    const list  = panel.querySelector(".trades-list");
+
+    document.getElementById("messageTraders").onclick = async () => {
+      const resp = await fetch(`/textbooks/${encodeURIComponent(isbn)}/trades`);
+      const { trades } = await resp.json();
+      list.innerHTML = "";
+      trades.forEach(t => {
+        const li = document.createElement("li");
+        li.className = "trade-item";
+        li.innerHTML = `
+          <img src="/static/images/user_icon.png" class="trade-icon" />
+          <div class="trade-text">
+            <p class="trade-detail"><strong>${t.user}</strong></p>
+            <p class="trade-detail">${t.comment}</p>
+          </div>`;
+        list.appendChild(li);
+      });
+      panel.style.display = "block";
+    };
+
+    document.getElementById("closePanel").onclick = () => {
+      panel.style.display = "none";
+    };
+  </script>
+</body>
+</html>
