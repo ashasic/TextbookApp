@@ -155,16 +155,6 @@ async def messages_page(request: Request):
     return templates.TemplateResponse("messages.html", {"request": request})
 
 
-# ─── List all other users ─────────────────────────────────
-@dashboard_router.get("/api/users")
-async def list_users(Authorize: AuthJWT = Depends()):
-    Authorize.jwt_required()
-    me = Authorize.get_jwt_subject()
-    col = get_collection("students")
-    raw = col.find({"username": {"$ne": me}}, {"_id": 0, "username": 1})
-    return JSONResponse([u["username"] for u in raw])
-
-
 # ─── Fetch conversation with a peer ────────────────────────
 @dashboard_router.get("/api/messages/{peer}")
 async def get_conversation(peer: str, Authorize: AuthJWT = Depends()):

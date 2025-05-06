@@ -25,6 +25,7 @@ from routers.isbn_manager import isbn_router
 from routers.dashboard import dashboard_router
 from routers.reservation import reservation_router
 from routers.messages import messages_router
+from routers.users import users_router
 
 logger = setup_logger(__name__)
 logger.info("Starting application")
@@ -39,6 +40,7 @@ app.include_router(review_router)
 app.include_router(student_router)
 app.include_router(textbook_router)
 app.include_router(messages_router)
+app.include_router(users_router)
 
 static_path = os.path.join(os.path.dirname(__file__), "..", "static")
 app.mount("/static", StaticFiles(directory=static_path), name="static")
