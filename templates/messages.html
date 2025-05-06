@@ -1,33 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/static/favicon.ico" />
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1.0" />
         <title>Messages — UI BookShelf</title>
         <link rel="stylesheet" href="/static/css/styles.css" />
     </head>
     <body>
         <div class="app">
             <header class="header">
-                <h1
-                    class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+                <h1 class="title2 multicolor-title">
+                    UI<span>BookShelf</span>
+                </h1>
                 <nav class="navbar">
                     <a onclick="history.back()">Back</a>
                     <a href="/">Home</a>
                     <a href="/browse">Browse</a>
-                    <a id="dashboardLink" href="/dashboard">Dashboard</a>
+                    <a href="/dashboard">Dashboard</a>
                     <a id="loginLink" href="/login">Login</a>
                     <a id="registerLink" href="/register">Sign Up</a>
                     <a id="logoutLink" href="#" style="display:none;">Logout</a>
                 </nav>
             </header>
 
-            <main class="container">
-                <h2 class="text2">Messages</h2>
+            <main class="messages-container">
+                <!-- Left pane: contacts -->
+                <section class="contacts-panel panel">
+                    <h1 class="panel-header">All Users</h1>
+                    <ul id="contactsList" class="contacts-list"></ul>
+                </section>
+
+                <!-- Right pane: chat -->
+                <section class="chat-panel panel">
+                    <div class="chat-header">
+                        <img
+                            id="chatWithAvatar"
+                            class="profile-icon"
+                            src="/static/images/default_profile_picture.jpg"
+                            alt="Avatar" />
+                        <span id="chatWithName" class="chat-with-name">
+                            Select a user
+                        </span>
+                        <button id="payNowBtn" class="small-btn"
+                            style="display:none">
+                            Pay Now →
+                        </button>
+                    </div>
+                    <ul id="chatList" class="chat-list"></ul>
+                    <div class="chat-input-group">
+                        <input
+                            id="messageInput"
+                            type="text"
+                            placeholder="Type a message…" />
+                        <button id="sendMsgBtn"
+                            class="small-btn">Send →</button>
+                    </div>
+                </section>
             </main>
         </div>
 
         <script src="/static/js/checkAuth.js"></script>
+        <script src="/static/js/messages.js"></script>
     </body>
 </html>
