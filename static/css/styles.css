@@ -487,14 +487,6 @@ textarea {
   background: var(--uiowa-black);
 }
 
-.panel-header {
-  display: inline-block;
-  font-size: 2.5rem;
-  font-family: "Oswald", sans-serif;
-  color: var(--uiowa-gold);
-  margin-bottom: 1rem;
-}
-
 /* list reset */
 .trades-list {
   list-style: none;
@@ -625,7 +617,7 @@ textarea {
   top: -0.8rem;
   background: var(--uiowa-black);
   padding: 0 0.5rem;
-  font-family: "Oswald", sans-serif;
+  font-family: "Segoe UI";
   font-size: 1.5rem;
   color: var(--uiowa-gold);
   margin-bottom: 1rem;
@@ -694,7 +686,7 @@ textarea {
 }
 .contacts-panel,
 .chat-panel {
-  border: 2px solid var(--uiowa-gold);
+  border: 2px solid rgb(187, 184, 184);
   border-radius: 12px;
   background: var(--uiowa-black);
   padding: 1.5rem;
@@ -769,7 +761,7 @@ textarea {
 .chat-with-name {
   flex: 1;
   font-size: 1.5rem;
-  font-family: "Oswald", sans-serif;
+  font-family: "Segoe UI";
   color: var(--uiowa-gold);
 }
 .small-btn {
