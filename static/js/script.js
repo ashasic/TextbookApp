@@ -64,20 +64,20 @@ document.addEventListener('DOMContentLoaded', function () {
                                 const bookElement = document.createElement('div');
                                 bookElement.className = 'textbook';
                                 bookElement.innerHTML = `
-                                    <div class="textbook-info">
-                                        <img src="${book.thumbnail || '/static/images/default_book_cover.jpg'}" alt="Cover image of ${book.title}">
-                                        <div class="textbook-details">
-                                            <h3>${book.title}</h3>
-                                            <p>Author(s): ${authors}</p>
-                                            <p>ISBN: ${book.isbn}</p>
-                                            <p>Published Date: ${book.published_date}</p>
-                                            <p>Description: ${book.description}</p>
-                                            <p>Subject: ${book.subject}</p>
-                                        </div>
-                                    </div>
+                                    … your existing HTML …
                                     <button class="delete-btn" onclick="deleteTextbook('${book.isbn}')">Delete</button>
-                                    <button class="review-btn" onclick="goToReviewPage('${book.isbn}')">Review</button> <!-- Added Review Button -->
+                                    <button class="review-btn" onclick="goToReviewPage('${book.isbn}')">Review</button>
                                 `;
+                                // 1) Create a Details button:
+                                const detailsBtn = document.createElement('button');
+                                detailsBtn.textContent = 'New Listing +';
+                                detailsBtn.className = 'details-btn';
+                                detailsBtn.addEventListener('click', () => {
+                                  window.location.href = `/textbooks/${encodeURIComponent(book.isbn)}/detail`;
+                                });
+                                // 2) Append it:
+                                bookElement.appendChild(detailsBtn);
+                            
                                 textbooksList.appendChild(bookElement);
                             });
                         } else {
@@ -105,42 +105,65 @@ document.addEventListener('DOMContentLoaded', function () {
     // Load Textbooks
     function loadTextbooks() {
         fetch('http://localhost:8000/textbooks/')
-            .then(response => response.json())
-            .then(data => {
-                console.log('Received textbooks:', data);  // Log the received data
-                const textbooksList = document.getElementById('textbooksList');
-                textbooksList.innerHTML = '';  // Clear existing content
-                data.books.forEach(book => {
-                    const authors = Array.isArray(book.authors) ? book.authors.join(", ") : "No authors listed";
-                    const bookElement = document.createElement('div');
-                    bookElement.className = 'textbook';
-                    bookElement.innerHTML = `
-                        <div class="textbook-info">
-                            <img src="${book.thumbnail || '/static/images/default_book_cover.jpg'}" alt="Cover image of ${book.title}">
-                            <div class="textbook-details">
-                                <h3>${book.title}</h3>
-                                <p><b>Author(s):</b> ${authors}</p>
-                                <p><b>ISBN:</b> ${book.isbn}</p>
-                                <p><b>Published Date:</b> ${book.published_date}</p>
-                                <p><b>Description:</b> ${book.description}</p>
-                                <p><b>Subject:</b> ${book.subject}</p>
-                            </div>
-                        </div>
-                        <button class="delete-btn" onclick="deleteTextbook('${book.isbn}')">Delete</button>
-                        <button class="trade-btn" onclick="goToReviewPage('${book.isbn}')">Review</button>
-                        <button class="trade-btn" onclick="addTrade('${book.isbn}')">Trade</button>
-                    `;
-                    textbooksList.appendChild(bookElement);
-                });
-            })
-            .catch(error => {
-                console.error('Error loading textbooks:', error);
-                const textbooksList = document.getElementById('textbooksList');
-                if (textbooksList) {
-                    textbooksList.textContent = 'Failed to load textbooks.';
-                }
+          .then(res => res.json())
+          .then(data => {
+            const textbooksList = document.getElementById('textbooksList');
+            textbooksList.innerHTML = '';
+      
+            data.books.forEach(book => {
+              const authors = Array.isArray(book.authors)
+                ? book.authors.join(', ')
+                : 'No authors listed';
+      
+              // build the card
+              const bookElement = document.createElement('div');
+              bookElement.className = 'textbook';
+              bookElement.innerHTML = `
+                <div class="textbook-info">
+                  <img
+                    src="${book.thumbnail || '/static/images/default_book_cover.jpg'}"
+                    alt="Cover of ${book.title}"
+                  >
+                  <div class="textbook-details">
+                    <h3>${book.title}</h3>
+                    <p><b>Authors:</b> ${authors}</p>
+                    <p><b>ISBN:</b> ${book.isbn}</p>
+                    <p><b>Published:</b> ${book.published_date}</p>
+                  </div>
+                </div>
+                <div class="actions">
+                  <button class="delete-btn" onclick="deleteTextbook('${book.isbn}')">
+                    Delete
+                  </button>
+                  <button class="review-btn" onclick="goToReviewPage('${book.isbn}')">
+                    Review
+                  </button>
+                  <button class="trade-btn" onclick="addTrade('${book.isbn}')">
+                    Trade
+                  </button>
+                </div>
+              `;
+      
+              // 1) entire card click → view page
+              bookElement.addEventListener('click', () => {
+                window.location.href = `/textbooks/${encodeURIComponent(book.isbn)}/view`;
+              });
+      
+              // 2) prevent the inner buttons from triggering the card click
+              bookElement.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('click', e => e.stopPropagation());
+              });
+      
+              textbooksList.appendChild(bookElement);
             });
-    }
+          })
+          .catch(err => {
+            console.error('Error loading textbooks:', err);
+            document.getElementById('textbooksList').textContent =
+              'Failed to load textbooks.';
+          });
+      }
+
 
     // Function to redirect to the review page
     window.goToReviewPage = function (isbn) {
