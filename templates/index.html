@@ -6,6 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UI BookShelf</title>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        .card-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem 1rem;
+        }
+
+        .feature-card {
+            background-color: #2c2c2c;
+            border-left: 4px solid var(--uiowa-gold);
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 280px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover {
+            background-color: #3a3a3a;
+            transform: translateY(-3px);
+        }
+
+        .feature-card h3 {
+            color: var(--uiowa-gold);
+            font-family: "Oswald", sans-serif;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: var(--uiowa-white);
+            font-size: 0.95rem;
+            font-family: "Nunito", sans-serif;
+        }
+    </style>
 </head>
 <body>
     <div class="app">
@@ -23,10 +62,20 @@
         <main>
             <h2 class="text2">Welcome to UI BookShelf</h2>
             <p class="text">Easily discover, list, and trade textbooks with other UI students.</p>
-            <div class="button-row">
-                <button class="button-main">Search by ISBN</button>
-                <button class="button-main">List a Textbook</button>
-                <button class="button-main">Check Dashboard</button>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h3>Search by ISBN</h3>
+                    <p>Find textbooks quickly by searching for ISBN or title. Get instant results from other students' listings.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>List a Textbook</h3>
+                    <p>Got a book to share? List it in seconds and help another student save big.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Check Dashboard</h3>
+                    <p>Manage your listings, reservations, messages, and more — all in one place.</p>
+                </div>
             </div>
         </main>
     </div>
