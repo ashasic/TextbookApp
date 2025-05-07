@@ -781,11 +781,11 @@ textarea {
 }
 
 .details-btn {
-  background: #ffc600;
+  margin-left:auto;
+  background: #292828;
   border: none;
   color: #000;
   padding: 0.5em 1em;
-  margin-left: 0.5em;
   cursor: pointer;
   border-radius: 4px;
 }
@@ -919,30 +919,37 @@ textarea {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
+  margin-left:auto;
 }
 
 /* Delete = Danger (red) */
 .textbook .actions .delete-btn {
   background: #f44336;
+  margin-left:auto;
 }
 .textbook .actions .delete-btn:hover {
   background: #d32f2f;
+  margin-left:auto;
 }
 
 /* Review = Info (blue) */
 .textbook .actions .review-btn {
   background: #2196f3;
+  margin-left:auto;
 }
 .textbook .actions .review-btn:hover {
   background: #1976d2;
+  margin-left:auto;
 }
 
 /* Trade = Success (green) */
 .textbook .actions .trade-btn {
   background: #4caf50;
+  margin-left:auto;
 }
 .textbook .actions .trade-btn:hover {
   background: #388e3c;
+  margin-left:auto;
 }
 
 .textbook .actions {

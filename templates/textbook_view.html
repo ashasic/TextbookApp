@@ -1,106 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>{{ book.title }} — UI BookShelf</title>
-  <link rel="stylesheet" href="/static/css/styles.css" />
+  <link rel="stylesheet" href="/static/css/styles.css"/>
+  <style>
+    :root {
+      --bg-dark: #181818;
+      --panel-bg: #222;
+      --text-light: #ccc;
+      --gold: #FFCD00;
+      --green: #4CAF50;
+      --btn-width: 160px;
+    }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--bg-dark);
+    }
+    .multicolor-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.75rem;
+      color: var(--gold);
+    }
+    .multicolor-title span { color: var(--text-light); }
+    .navbar a {
+      color: var(--gold);
+      margin-left: 1rem;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .navbar a:hover { text-decoration: underline; }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .page-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-light);
+    }
+
+    .main-content {
+      display: flex;
+      gap: 2rem;
+    }
+    .left-pane { flex: 4; }
+    .right-pane { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+    /* LEFT CARD */
+    .left-pane .listing-card {
+      background: var(--panel-bg);
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .book-info img {
+      width: 240px;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    .book-details {
+      width: 100%;
+    }
+    .book-details h3 {
+      font-size: 1.75rem;
+      margin: 0 0 1rem;
+      color: var(--gold);
+      text-align: center;
+    }
+    .book-details p {
+      margin: 0.3rem 0;
+      line-height: 1.4;
+    }
+    .book-description {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+
+    .btn {
+      width: var(--btn-width);
+      padding: 0.75em;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: background 0.2s;
+    }
+    .btn.success {
+      background: var(#ffcd00);
+      color: #000000;
+    }
+    .btn.success:hover { background: #ffcd00; }
+    .btn.trade {
+      background: var(#ffcd00);
+      color: #000000;
+    }
+    .btn.trade:hover { background: #ffcd00; }
+
+    /* RIGHT PANEL */
+    .trades-panel {
+      background: var(--panel-bg);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 1rem;
+      flex: 1;
+      width: 100%;
+      overflow-y: auto;
+    }
+    .trades-panel h3 {
+      margin-top: 0;
+      text-align: center;
+      color: var(--gold);
+    }
+    .trade-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--text-light);
+    }
+    .trade-details {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .trade-text {
+      display: flex;
+      flex-direction: column;
+      color: var(--text-light);
+    }
+    .trade-text p {
+      margin: 0;
+    }
+    .trade-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
-  <div class="app">
-    <header class="header">
-      <div class="multicolor-title">UI<span>BookShelf</span></div>
-      <nav class="navbar">
-        <a onclick="history.back()">Back</a>
-        <a href="/">Home</a>
-        <a href="/browse">Browse</a>
-      </nav>
-    </header>
+  <header class="header">
+    <div class="multicolor-title">UI<span>BookShelf</span></div>
+    <nav class="navbar">
+      <a onclick="history.back()">Back</a>
+      <a href="/">Home</a>
+      <a href="/browse">Browse</a>
+    </nav>
+  </header>
 
-    <main class="container listing-page">
-      <h2 class="text2" style="text-align:center; margin-bottom:1rem;">
-        {{ book.title }}
-      </h2>
+  <main>
+    <div class="page-title">{{ book.title }}</div>
 
-      <div class="listing-card" style="max-width:800px; margin:1rem auto;">
-        <!-- Book Cover -->
-        <div class="book-info" style="flex:1 1 200px; text-align:left;">
-          <img
-            src="{{ book.thumbnail or '/static/images/default_book_cover.jpg' }}"
-            alt="Cover of {{ book.title }}"
-          />
-        </div>
+    <div class="main-content">
+      <!-- LEFT: Book details -->
+      <div class="left-pane">
+        <div class="listing-card">
+          <div class="book-info">
+            <img
+              src="{{ book.thumbnail or '/static/images/default_book_cover.jpg' }}"
+              alt="Cover of {{ book.title }}"/>
+          </div>
+          <div class="book-details">
+            <h3>{{ book.title }}</h3>
+            <p><strong>Authors:</strong> {{ book.authors|join(", ") }}</p>
+            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+            <p><strong>Published:</strong> {{ book.published_date }}</p>
 
-        <!-- Details & Listing Info -->
-        <div class="textbook-details" style="flex:2 1 400px; text-align:left;">
-          <h3>{{ book.title }}</h3>
-          <p><strong>Authors:</strong> {{ book.authors|join(", ") }}</p>
-          <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-          <p><strong>Published:</strong> {{ book.published_date }}</p>
-          <p><strong>Description:</strong> {{ book.description }}</p>
-          <p><strong>Subject:</strong> {{ book.subject }}</p>
-
-          <hr/>
-
-          <h4>Listed By:</h4>
-          <p><strong>User:</strong> {{ listing.added_by }}</p>
-          <p><strong>Comments:</strong> {{ listing.comments }}</p>
-          <p><strong>Location:</strong> {{ listing.location }}</p>
-          <p><strong>Condition:</strong> {{ listing.condition }}</p>
-          <p><strong>Price:</strong> ${{ listing.price }}</p>
+            <div class="book-description">
+              {{ book.description }}
+            </div>
+            <!-- removed old listing info under description -->
+          </div>
         </div>
       </div>
 
-      <!-- Bottom action buttons -->
-      <div style="text-align:center; margin-top:2rem; display:flex; justify-content:center; gap:1rem;">
-        <!-- New Listing (green) -->
-        <button
-          onclick="window.location.href='/textbooks/{{ book.isbn }}/detail'"
-          style="background:#4CAF50; color:#fff; border:none; padding:0.75em 1.5em; border-radius:5px; cursor:pointer;"
-        >
+      <!-- RIGHT: New Listing + All Listings -->
+      <div class="right-pane">
+        <button class="btn success"
+                onclick="window.location.href='/textbooks/{{ book.isbn }}/detail'">
           + New Listing
         </button>
+        <!-- <button id="messageTraders" class="btn primary">Message Traders</button> -->
 
-        <!-- Message Traders (primary) -->
-        <button id="messageTraders" class="btn primary">
-          Message Traders
-        </button>
+        <div class="trades-panel">
+          <h3>All Listings</h3>
+          <ul class="trades-list"></ul>
+        </div>
       </div>
-
-      <div id="tradersPanel" class="trades-panel" style="display:none; margin:auto; max-width:600px; padding:1rem;">
-        <span id="closePanel" class="close">&times;</span>
-        <h3 class="panel-header">Interested Traders</h3>
-        <ul class="trades-list"></ul>
-      </div>
-    </main>
-  </div>
+    </div>
+  </main>
 
   <script>
-    const isbn = "{{ book.isbn }}";
-    const panel = document.getElementById("tradersPanel");
-    const list  = panel.querySelector(".trades-list");
+    document.addEventListener("DOMContentLoaded", async function() {
+      const isbn = "{{ book.isbn }}";
+      const resp = await fetch("/textbooks/" + encodeURIComponent(isbn) + "/trades");
+      const data = await resp.json();
+      const trades = data.trades || [];
+      const list = document.querySelector(".trades-list");
 
-    document.getElementById("messageTraders").onclick = async () => {
-      const resp = await fetch(`/textbooks/${encodeURIComponent(isbn)}/trades`);
-      const { trades } = await resp.json();
-      list.innerHTML = "";
-      trades.forEach(t => {
+      trades.forEach(function(t) {
         const li = document.createElement("li");
         li.className = "trade-item";
-        li.innerHTML = `
-          <img src="/static/images/user_icon.png" class="trade-icon" />
-          <div class="trade-text">
-            <p class="trade-detail"><strong>${t.user}</strong></p>
-            <p class="trade-detail">${t.comment}</p>
-          </div>`;
+
+        // trader details + condition + price
+        const details = document.createElement("div");
+        details.className = "trade-details";
+        details.innerHTML =
+          '<img src="/static/images/user_icon.png" class="trade-icon"/>' +
+          '<div class="trade-text">' +
+            '<p><strong>' + t.user + '</strong></p>' +
+            '<p><strong>Condition:</strong> ' + t.condition + '</p>' +
+            '<p><strong>Price:</strong> $' + t.price + '</p>' +
+          '</div>';
+
+        // trade button
+        const btn = document.createElement("button");
+        btn.className = "btn trade";
+        btn.textContent = "Trade";
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          alert("Initiate trade with " + t.user);
+        });
+
+        li.appendChild(details);
+        li.appendChild(btn);
         list.appendChild(li);
       });
-      panel.style.display = "block";
-    };
 
-    document.getElementById("closePanel").onclick = () => {
-      panel.style.display = "none";
-    };
+      // messageTraders now commented out
+      // document.getElementById("messageTraders")?.addEventListener("click", function() {
+      //   alert("Open group chat with all interested traders…");
+      // });
+    });
   </script>
 </body>
 </html>

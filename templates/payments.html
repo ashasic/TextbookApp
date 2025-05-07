@@ -1,1 +1,150 @@
-                                                                                                                                                                           
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Payments — UI BookShelf</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <style>
+      :root {
+        --bg-dark: #181818;
+        --panel-bg: #222;
+        --text-light: #ccc;
+        --gold: #FFCD00;
+        --btn-gap: 1rem;
+      }
+      body {
+        margin:0;
+        font-family:'Inter',sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-light);
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: var(--bg-dark);
+      }
+      .multicolor-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.75rem;
+        color: var(--gold);
+      }
+      .multicolor-title span { color: var(--text-light); }
+      .navbar a {
+        margin-left: 1rem;
+        text-decoration: none;
+        color: var(--gold);
+      }
+      .navbar a:hover { text-decoration: underline; }
+      main {
+        max-width: 800px;
+        margin: 2rem auto;
+        background: var(--panel-bg);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      }
+      .payment-header {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .payment-body {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+      }
+      .book-image {
+        flex: 1;
+        text-align: center;
+      }
+      .book-image img {
+        width: 160px;
+        border-radius: 4px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      }
+      .book-info {
+        flex: 2;
+      }
+      .book-info > div {
+        margin-bottom: 0.75rem;
+      }
+      .sep {
+        border-top: 1px dashed var(--text-light);
+        margin: 1rem 0;
+      }
+      .payment-due {
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+      }
+      .payment-footer {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;    
+        align-items: center;       
+        gap: 0.1rem;               
+      }
+      .payment-footer span {
+        font-weight: bold;
+        font-size: 1.5rem;         
+        color: var(--text-light);
+      }
+      .payment-footer img {
+        height: 120px;             
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="multicolor-title">UI<span>BookShelf</span></div>
+      <nav class="navbar">
+        <a onclick="history.back()">Back</a>
+        <a href="/">Home</a>
+        <a href="/browse">Browse</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="payment-header">Payment to {{ username }}</div>
+      <div class="payment-body">
+        <div class="book-image">
+          <img
+            src="{{ book.thumbnail or '/static/images/default_book_cover.jpg' }}"
+            alt="Cover of {{ book.title }}"
+          />
+        </div>
+        <div class="book-info">
+          <div><strong>Book Details</strong></div>
+          <div><strong>Title:</strong> {{ book.title }}</div>
+          <div><strong>ISBN:</strong> {{ book.isbn }}</div>
+          <div class="sep"></div>
+          <div><strong>Location Arranged:</strong></div>
+          <div>{{ location }}</div>
+          <div class="sep"></div>
+          <div><strong>Payment Due:</strong></div>
+          <div class="payment-due">${{ amount }}</div>
+        </div>
+      </div>
+
+      <div class="payment-footer">
+        <span>Pay with</span>
+        <!-- your PNGs here -->
+        <img id="paypalBtn" src="/static/images/paypal.png" alt="Pay with PayPal" />
+      </div>
+    </main>
+
+    <script>
+      // Wire up your actual payment flows here:
+      document.getElementById('paypalBtn').addEventListener('click', () => {
+        // e.g. window.location.href = '/payments/{{ username }}/{{ book.isbn }}/paypal';
+        alert('Launch PayPal flow…');
+      });
+      /* document.getElementById('venmoBtn').addEventListener('click', () => {
+        // e.g. window.location.href = 'venmo://…';
+        alert('Launch Venmo flow…');
+      }); */
+    </script>
+  </body>
+</html>

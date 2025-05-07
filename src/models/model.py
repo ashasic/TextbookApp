@@ -1,6 +1,15 @@
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import Optional
+from pydantic import BaseModel, Field
+
+from datetime import datetime
+from typing import List, Optional
 from pydantic import BaseModel
+
+
+class Settings(BaseModel):
+    authjwt_secret_key: str = "IowaRocks"
+    authjwt_access_token_expires: timedelta = Field(default_factory=lambda: timedelta(hours=24))
 
 
 # Data models for the textbook.py
@@ -82,3 +91,11 @@ class Trade(BaseModel):
     timestamp: datetime
     title: str
     thumbnail: str
+
+class ListingEntry(BaseModel):
+    isbn: str
+    condition: str
+    price: float
+    images: List[str] = Field(default_factory=list)
+    user: str
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))

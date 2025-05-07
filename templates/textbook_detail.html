@@ -32,6 +32,12 @@
           class="listing-form"
           enctype="multipart/form-data"
         >
+          <!-- Error / response message -->
+          <div id="responseMessage" class="error-message"></div>
+
+          <!-- Hidden ISBN field -->
+          <input type="hidden" name="isbn" value="{{ book.isbn }}" />
+
           <!-- Condition -->
           <div class="form-group">
             <label for="condition">Condition</label>
@@ -96,27 +102,36 @@
         });
       });
 
-      // Form submission
-      document
-        .getElementById("listingForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const form = e.target;
-          const data = new FormData(form);
-          const resp = await fetch(`/api/listings/`, {
-            method: "POST",
-            body: data,
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          });
-          const json = await resp.json();
-          if (resp.ok) {
-            alert("Listing saved!");
-          } else {
-            alert(json.detail || "Error saving listing");
-          }
+      // Form submission with in-page error display
+      document.getElementById("listingForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const respMsg = document.getElementById("responseMessage");
+        respMsg.textContent = "";
+
+        const form = e.target;
+        const data = new FormData(form);
+        const resp = await fetch(`/api/listings/`, {
+          method: "POST",
+          body: data,
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
         });
+        const json = await resp.json();
+        if (!resp.ok) {
+          console.error('Validation errors:', json);
+          if (Array.isArray(json.detail)) {
+            respMsg.textContent = json.detail
+              .map(err => `${err.loc.slice(1).join('.')}: ${err.msg}`)
+              .join('\n');
+          } else {
+            respMsg.textContent = json.detail || "Error saving listing.";
+          }
+          return;
+        }
+
+        alert("Listing saved!");
+      });
     </script>
   </body>
 </html>

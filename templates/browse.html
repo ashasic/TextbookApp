@@ -9,8 +9,7 @@
     <body>
         <div class="app">
             <header class="header">
-                <h1
-                    class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+                <h1 class="title2 multicolor-title">UI<span>BookShelf</span></h1>
                 <nav class="navbar">
                     <a onclick="history.back()">Back</a>
                     <a href="/">Home</a>
@@ -21,38 +20,43 @@
                     <a id="logoutLink" href="#" style="display:none;">Logout</a>
                 </nav>
             </header>
-            <div class="app">
-                <h1 class="text">Book Management</h1>
-                <div class="input-group">
-                    <input type="text" id="isbnInput"
-                        placeholder="Enter ISBN to Add">
-                    <button id="addTextbookBtn">Add Textbook</button>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="searchInput"
-                        placeholder="Title, ISBN, or Author">
-                    <button id="searchBtn">Search Textbooks</button>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="isbnOrTitleInput"
-                        placeholder="Enter ISBN or Title">
-                    <button id="fetchDetailsBtn">Reservation Details</button>
-                </div>
-                <div class="input-group">
-                    <button id="downloadIsbnBtn">Download ISBNs</button>
-                    <input type="file" id="uploadIsbnFile" hidden>
-                    <button id="uploadIsbnBtn"
-                        onclick="document.getElementById('uploadIsbnFile').click();">Upload
-                        ISBNs</button>
-                </div>
-                <div class="navigation">
-                    <button id="homeBtn" style="display:none;">Back to
-                        Home</button>
-                </div>
-                <div id="responseMessage"></div>
-                <div id="textbooksList" class="textbooks"></div>
-            </div>
         </div>
+
+        <div class="app">
+            <!-- Page header for Browse -->
+            <h1 class="text" style="margin-top: 2rem; margin-bottom: 1rem; color:--uiowa-gold;">Browse Textbooks</h1>
+
+            <div class="input-group">
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Title, ISBN, or Author"
+                  class="search-input"
+                >
+                <button id="searchBtn">Search Textbooks</button>
+                <button
+                  id="filterBtn"
+                  style="
+                    background: var(--uiowa-gray);
+                    color: var(--uiowa-white);
+                    border: 1px solid var(--uiowa-gray);
+                    margin-left: 0.5rem;
+                    padding: 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                >
+                    Filter by...
+                </button>
+            </div>
+
+            <div class="navigation">
+                <button id="homeBtn" style="display:none;">Back to Home</button>
+            </div>
+            <div id="responseMessage"></div>
+            <div id="textbooksList" class="textbooks"></div>
+        </div>
+
         <script src="/static/js/reservation.js"></script>
         <script src="/static/js/checkAuth.js"></script>
         <script src="/static/js/script.js"></script>
