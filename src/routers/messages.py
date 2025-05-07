@@ -8,9 +8,9 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 from utils.db import get_collection
 from utils.logger import setup_logger
 from fastapi.templating import Jinja2Templates
+from utils.templates import templates
 
 logger = setup_logger(__name__)
-templates = Jinja2Templates(directory="templates")
 messages_router = APIRouter()
 
 

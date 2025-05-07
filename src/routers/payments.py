@@ -2,10 +2,10 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, JSONResponse
 from utils.db import get_db
+from utils.templates import templates
 
 # Mount all routes under /payments
 payment_router = APIRouter(prefix="/payments", tags=["payments"])
-templates = Jinja2Templates(directory="templates")
 
 db = get_db()
 textbooks = db.Textbooks

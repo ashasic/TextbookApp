@@ -10,8 +10,7 @@
     <body>
         <div class="app">
             <header class="header">
-                <h1
-                    class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+                <h1 class="title2 multicolor-title">UI<span>BookShelf</span></h1>
                 <nav class="navbar">
                     <a id="backLink" href="#" style="display:none;">Back</a>
                     <a href="/">Home</a>
@@ -23,9 +22,9 @@
                 </nav>
             </header>
             <main>
-                <h2 class="text2">Explore textbooks shared by fellow
-                    Hawkeyes</h2>
+                <h2 class="text2">Explore textbooks shared by fellow Hawkeyes</h2>
                 <button class="button-main" id="browseButton">Browse</button>
+                <button class="button-main" id="tradesButton">Ongoing Trades</button>
             </main>
         </div>
         <script src="/static/js/checkAuth.js"></script>
@@ -33,28 +32,40 @@
         document.getElementById('browseLink').addEventListener('click', function (event) {
             const token = localStorage.getItem('token');
             if (!token) {
-                event.preventDefault(); // Prevent the default link behavior
-                alert("Please login first."); // Show a message
-                window.location.href = '/login'; // Redirect to the login page
+                event.preventDefault();
+                alert("Please login first.");
+                window.location.href = '/login';
             }
         });
+
         document.getElementById('dashboardLink').addEventListener('click', function (event) {
             const token = localStorage.getItem('token');
             if (!token) {
-                event.preventDefault(); // Prevent the default link behavior
-                alert("Please login first."); // Show a message
-                window.location.href = '/login'; // Redirect to the login page
+                event.preventDefault();
+                alert("Please login first.");
+                window.location.href = '/login';
             }
         });
+
         document.getElementById('browseButton').addEventListener('click', function () {
             const token = localStorage.getItem('token');
             if (!token) {
-                alert("Please login first."); // Show a message
-                window.location.href = '/login'; // Redirect to the login page
+                alert("Please login first.");
+                window.location.href = '/login';
             } else {
-                window.location.href = '/browse'; // Redirect to the browse page
+                window.location.href = '/browse';
             }
         });
-    </script>
+
+        document.getElementById('tradesButton').addEventListener('click', function () {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert("Please login first.");
+                window.location.href = '/login';
+            } else {
+                window.location.href = '/dashboard';
+            }
+        });
+        </script>
     </body>
 </html>

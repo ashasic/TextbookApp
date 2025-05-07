@@ -10,12 +10,11 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 from utils.logger import setup_logger
 from services.book_service import fetch_book_info
 from models.model import TextbookEntry, ISBN, Settings
+from utils.templates import templates
 
 logger = setup_logger(__name__)
 
 app = FastAPI()
-# serve static files (css/js/images) under /static
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # configure JWT
 @AuthJWT.load_config
@@ -26,9 +25,6 @@ def get_config():
 @app.exception_handler(AuthJWTException)
 def authjwt_exception_handler(request: Request, exc: AuthJWTException):
     return JSONResponse(status_code=exc.status_code, content={"detail": exc.message})
-
-# Jinja2 setup
-templates = Jinja2Templates(directory="templates")
 
 # router and DB handles
 textbook_router = APIRouter()

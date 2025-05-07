@@ -9,10 +9,10 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from utils.db import get_collection
+from utils.templates import templates
 from utils.logger import setup_logger
 
 dashboard_router = APIRouter()
-templates = Jinja2Templates(directory="templates")
 logger = setup_logger(__name__)
 
 

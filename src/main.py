@@ -50,7 +50,8 @@ app.include_router(messages_router)
 app.include_router(users_router)
 
 
-static_path = os.path.join(os.path.dirname(__file__), "..", "static")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+static_path = os.path.join(BASE_DIR, "static")
 app.mount("/static", StaticFiles(directory=static_path), name="static")
 
 
