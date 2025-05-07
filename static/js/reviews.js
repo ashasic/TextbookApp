@@ -3,24 +3,30 @@ document.addEventListener('DOMContentLoaded', function () {
     const backToBrowseBtn = document.getElementById('backToBrowseBtn');
     const reviewsList = document.getElementById('reviewsList');
     const isbn = new URLSearchParams(window.location.search).get('isbn');
-    const token = localStorage.getItem('token'); // Fetch the token from local storage
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const isAdmin = user.role === 'admin';
+    const currentUser = user.username;
 
     if (!isbn) {
         alert('ISBN not specified');
         return;
     }
 
-    // Redirect to the review form with the ISBN as a query parameter
+    if (!token) {
+        alert("You must be logged in to view or leave reviews.");
+        window.location.href = '/login';
+        return;
+    }
+
     addReviewBtn.addEventListener('click', function () {
         window.location.href = `/review-form.html?isbn=${isbn}`;
     });
 
-    // Go back to the browse page
     backToBrowseBtn.addEventListener('click', function () {
-        window.location.href = '/browse.html';
+        window.location.href = '/browse';
     });
 
-    // Load reviews for a specific textbook
     function loadReviews() {
         fetch(`http://localhost:8000/reviews/${isbn}`, {
             headers: {
@@ -37,19 +43,26 @@ document.addEventListener('DOMContentLoaded', function () {
             reviewsList.innerHTML = '';
             if (data.reviews && data.reviews.length) {
                 data.reviews.forEach(review => {
+                    const canEdit = isAdmin || review.user === currentUser;
+
                     const reviewElement = document.createElement('div');
-                    reviewElement.className = 'review';
+                    reviewElement.className = 'review-entry';
                     reviewElement.innerHTML = `
-                        <p>User: ${review.user}</p>
-                        <p>Review: ${review.review}</p>
-                        <button class="editReviewBtn" data-user="${review.user}">Edit</button>
-                        <button class="deleteReviewBtn" data-user="${review.user}">Delete</button>
+                        <p><strong>${review.user}</strong></p>
+                        <p class="review-meta">${review.review}</p>
+                        ${canEdit ? `
+                        <div class="review-actions">
+                            <button class="editReviewBtn" data-user="${review.user}">Edit</button>
+                            <button class="deleteReviewBtn" data-user="${review.user}">Delete</button>
+                        </div>
+                        ` : ''}
                     `;
                     reviewsList.appendChild(reviewElement);
 
-                    // Attach event listeners to edit and delete buttons
-                    reviewElement.querySelector('.editReviewBtn').addEventListener('click', () => editReview(review.user));
-                    reviewElement.querySelector('.deleteReviewBtn').addEventListener('click', () => deleteReview(isbn, review.user));
+                    if (canEdit) {
+                        reviewElement.querySelector('.editReviewBtn').addEventListener('click', () => editReview(review.user));
+                        reviewElement.querySelector('.deleteReviewBtn').addEventListener('click', () => deleteReview(isbn, review.user));
+                    }
                 });
             } else {
                 reviewsList.textContent = 'No reviews found.';
@@ -61,12 +74,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Redirect to the review form for editing an existing review
     function editReview(user) {
         window.location.href = `/review-form.html?isbn=${isbn}&user=${user}`;
     }
 
-    // Delete a specific review
     function deleteReview(isbn, user) {
         if (confirm('Are you sure you want to delete this review?')) {
             fetch(`http://localhost:8000/reviews/${isbn}/${user}`, {
@@ -83,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(data => {
                 alert(data.message);
-                loadReviews(); // Reload the reviews after deletion
+                loadReviews();
             })
             .catch(error => {
                 console.error('Error deleting review:', error);
@@ -92,5 +103,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    loadReviews(); // Initial load of reviews
+    loadReviews();
 });

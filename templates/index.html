@@ -1,73 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>UI BookShelf</title>
-        <link rel="stylesheet" href="/static/css/styles.css">
-    </head>
-    <body>
-        <div class="app">
-            <header class="header">
-                <h1 class="title2 multicolor-title">UI<span>BookShelf</span></h1>
-                <nav class="navbar">
-                    <a id="backLink" href="#" style="display:none;">Back</a>
-                    <a href="/">Home</a>
-                    <a id="browseLink" href="/browse">Browse</a>
-                    <a id="dashboardLink" href="/dashboard">Dashboard</a>
-                    <a id="loginLink" href="/login">Login</a>
-                    <a id="registerLink" href="/register">Sign Up</a>
-                    <a id="logoutLink" href="#" style="display:none;">Logout</a>
-                </nav>
-            </header>
-            <main>
-                <h2 class="text2">Explore textbooks shared by fellow Hawkeyes!</h2>
-                <div class="button-row">
-                  <button class="button-main" id="tradesButton">Ongoing Trades</button>
-                  <button class="button-main" id="browseButton">Browse</button>
-                </div>
-            </main>
-        </div>
-        <script src="/static/js/checkAuth.js"></script>
-        <script>
-        document.getElementById('browseLink').addEventListener('click', function (event) {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                event.preventDefault();
-                alert("Please login first.");
-                window.location.href = '/login';
-            }
-        });
+<head>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI BookShelf</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1 class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+            <nav class="navbar">
+                <a href="/" id="homeLink">Home</a>
+                <a href="/browse" id="browseLink">Browse</a>
+                <a href="/dashboard" id="dashboardLink">Dashboard</a>
+                <a href="/login" id="loginLink">Login</a>
+                <a href="/register" id="registerLink">Sign Up</a>
+                <a href="#" id="logoutLink" style="display:none;">Logout</a>
+            </nav>
+        </header>
+        <main>
+            <h2 class="text2">Welcome to UI BookShelf</h2>
+            <p class="text">Easily discover, list, and trade textbooks with other UI students.</p>
+            <div class="button-row">
+                <button class="button-main">Search by ISBN</button>
+                <button class="button-main">List a Textbook</button>
+                <button class="button-main">Check Dashboard</button>
+            </div>
+        </main>
+    </div>
+    <script>
+        const token = localStorage.getItem('token');
 
-        document.getElementById('dashboardLink').addEventListener('click', function (event) {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                event.preventDefault();
-                alert("Please login first.");
-                window.location.href = '/login';
-            }
-        });
+        const loginLink = document.getElementById('loginLink');
+        const registerLink = document.getElementById('registerLink');
+        const logoutLink = document.getElementById('logoutLink');
+        const browseLink = document.getElementById('browseLink');
+        const dashboardLink = document.getElementById('dashboardLink');
 
-        document.getElementById('browseButton').addEventListener('click', function () {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                alert("Please login first.");
-                window.location.href = '/login';
-            } else {
-                window.location.href = '/browse';
-            }
-        });
+        if (token) {
+            loginLink.style.display = "none";
+            registerLink.style.display = "none";
+            logoutLink.style.display = "inline-block";
+        } else {
+            logoutLink.style.display = "none";
+            browseLink.style.display = "none";
+            dashboardLink.style.display = "none";
+        }
 
-        document.getElementById('tradesButton').addEventListener('click', function () {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                alert("Please login first.");
-                window.location.href = '/login';
-            } else {
-                window.location.href = '/dashboard';
-            }
+        logoutLink.addEventListener("click", function () {
+            localStorage.removeItem("token");
+            window.location.href = "/login";
         });
-        </script>
-    </body>
+    </script>
+</body>
 </html>

@@ -1,52 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Review Page</title>
-        <link rel="stylesheet" href="/static/css/styles.css">
-    </head>
-    <body>
-        <div class="app">
-            <header class="header">
-                <h1
-                    class="title2 multicolor-title">UI<span>BookShelf</span></h1>
-                <nav class="navbar">
-                    <a onclick="history.back()">Back</a>
-                    <a href="/">Home</a>
-                    <a href="/browse">Browse</a>
-                    <a id="dashboardLink" href="/dashboard">Dashboard</a>
-                    <a id="loginLink" href="/login">Login</a>
-                    <a id="registerLink" href="/register">Sign Up</a>
-                    <a id="logoutLink" href="#" style="display:none;">Logout</a>
-                </nav>
-            </header>
-            <div class="main-content">
-                <div class="reviews-container">
-                    <h1 class="text">Reviews</h1>
-                    <div id="reviewsList" class="reviews">
-                        <!-- Reviews will be dynamically loaded here -->
-                    </div>
-                </div>
-                <div class="buttons-container">
-                    <button id="addReviewBtn">Add Review</button>
-                    <button onclick="history.back()">Back to Browse</button>
-                </div>
-            </div>
-        </div>
-        <script src="/static/js/checkAuth.js"></script>
-        <script src="/static/js/reviews.js"></script>
-        <script>
-        document.getElementById('addReviewBtn').addEventListener('click', function() {
-            document.getElementById('reviewFormModal').style.display = 'block';
-        });
+<head>
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    .review-entry {
+      background-color: #1e1e1e;
+      border-left: 4px solid var(--uiowa-gold);
+      padding: 1.2rem 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
 
-        document.querySelector('.close').addEventListener('click', function() {
-            document.getElementById('reviewFormModal').style.display = 'none';
-        });
+    .review-entry:hover {
+      background-color: #2c2c2c;
+    }
 
-      
-    </script>
-    </body>
+    .review-entry p {
+      margin: 0.25rem 0;
+      font-size: 1rem;
+      font-family: "Nunito", sans-serif;
+    }
+
+    .review-meta {
+      font-size: 0.9rem;
+      color: var(--uiowa-gray);
+    }
+
+    .review-user {
+      font-weight: bold;
+      color: var(--uiowa-gold);
+    }
+
+    .review-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .review-actions button {
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      background-color: var(--uiowa-gray);
+      color: var(--uiowa-white);
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .review-actions button:hover {
+      background-color: var(--uiowa-gold);
+      color: var(--uiowa-black);
+    }
+
+    .reviews-container {
+      max-width: 700px;
+      margin: auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .buttons-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .buttons-container .button-main {
+      margin: 0.5rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1 class="title2 multicolor-title">UI<span>BookShelf</span></h1>
+      <nav class="navbar">
+        <a onclick="history.back()">Back</a>
+        <a href="/">Home</a>
+        <a href="/browse">Browse</a>
+        <a id="dashboardLink" href="/dashboard">Dashboard</a>
+        <a id="loginLink" href="/login">Login</a>
+        <a id="registerLink" href="/register">Sign Up</a>
+        <a id="logoutLink" href="#" style="display:none;">Logout</a>
+      </nav>
+    </header>
+
+    <div class="reviews-container">
+      <h1 class="text text-center">Reviews</h1>
+      <div id="reviewsList" class="reviews">
+        <!-- Dynamically loaded reviews go here -->
+      </div>
+
+      <div class="buttons-container">
+        <button id="addReviewBtn" class="button-main">Add Review</button>
+        <button id="backToBrowseBtn" class="button-main">Back to Browse</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/checkAuth.js"></script>
+  <script src="/static/js/reviews.js"></script>
+</body>
 </html>

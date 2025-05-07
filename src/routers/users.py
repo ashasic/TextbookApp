@@ -17,3 +17,16 @@ async def list_users(Authorize: AuthJWT = Depends()):
     col = get_collection("students")
     docs = col.find({"username": {"$ne": me}}, {"_id": 0, "username": 1})
     return JSONResponse(content=[d["username"] for d in docs])
+
+@users_router.get("/user")
+def get_current_user(Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_required()
+    except AuthJWTException:
+        raise HTTPException(status_code=401, detail="Missing or invalid token")
+
+    username = Authorize.get_jwt_subject()
+    claims = Authorize.get_raw_jwt()
+    role = claims.get("role", "regular")  # fallback to regular if not set
+
+    return {"username": username, "role": role}
