@@ -780,7 +780,6 @@ textarea {
   color: var(--uiowa-black);
 }
 
-
 .details-btn {
   background: #ffc600;
   border: none;
@@ -885,32 +884,37 @@ textarea {
 
 /* Responsive */
 @media (max-width: 600px) {
-  .listing-card { flex-direction: column; }
-  .form-actions { flex-direction: column; align-items: stretch; }
+  .listing-card {
+    flex-direction: column;
+  }
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 /* Browse-page: make the entire .textbook a clickable card */
 .textbook {
-  display: flex;           /* align info + actions side by side */
-  align-items: center;     /* vertical centering */
-  cursor: pointer;         /* pointer on hover */
+  display: flex; /* align info + actions side by side */
+  align-items: center; /* vertical centering */
+  cursor: pointer; /* pointer on hover */
 }
 
 /* Action-button container: right edge, vertical stack, equal spacing */
 .textbook .actions {
-  margin-left: auto;       /* push to the right */
+  margin-left: auto; /* push to the right */
   display: flex;
-  flex-direction: column;  /* stack buttons vertically */
-  align-items: flex-end;   /* align buttons to the right edge */
-  gap: 0.75em;             /* even vertical spacing */
+  flex-direction: column; /* stack buttons vertically */
+  align-items: flex-end; /* align buttons to the right edge */
+  gap: 0.75em; /* even vertical spacing */
 }
 
 /* All action buttons: same width, padding, font, rounded corners */
 .textbook .actions button {
-  width: 120px;            /* fixed, uniform width */
-  padding: 0.6em 0;        /* vertical padding only */
-  font-size: 0.9rem;       /* consistent text size */
-  border-radius: 5px;      /* matching rounded corners */
+  width: 120px; /* fixed, uniform width */
+  padding: 0.6em 0; /* vertical padding only */
+  font-size: 0.9rem; /* consistent text size */
+  border-radius: 5px; /* matching rounded corners */
   border: none;
   color: #fff;
   cursor: pointer;
@@ -927,24 +931,24 @@ textarea {
 
 /* Review = Info (blue) */
 .textbook .actions .review-btn {
-  background: #2196F3;
+  background: #2196f3;
 }
 .textbook .actions .review-btn:hover {
-  background: #1976D2;
+  background: #1976d2;
 }
 
 /* Trade = Success (green) */
 .textbook .actions .trade-btn {
-  background: #4CAF50;
+  background: #4caf50;
 }
 .textbook .actions .trade-btn:hover {
-  background: #388E3C;
+  background: #388e3c;
 }
 
 .textbook .actions {
   margin-left: auto;
   display: flex;
-  flex-direction: column-reverse;  /* now trade (last in HTML) is on top */
+  flex-direction: column-reverse; /* now trade (last in HTML) is on top */
   align-items: flex-end;
   gap: 0.75em;
 }
@@ -964,8 +968,7 @@ textarea {
   padding: 0.5rem 2rem 0.5rem 0.75rem; /* space on right for the arrow */
 
   /* embed a small SVG chevron-down */
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='none' stroke='%23eee' stroke-width='1' d='M0 1L2 3L4 1'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='none' stroke='%23eee' stroke-width='1' d='M0 1L2 3L4 1'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 0.75rem;
@@ -975,7 +978,7 @@ textarea {
 .styled-select:focus {
   border-color: #ffc600;
   box-shadow: 0 0 8px #ffc600;
-
+}
 /* Chat bubbles */
 .bubble {
   display: inline-block; /* shrink to fit */
@@ -1023,5 +1026,4 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
 }
