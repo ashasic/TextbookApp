@@ -56,7 +56,7 @@ button {
   transition: background-color 0.3s, box-shadow 0.3s; /* Transition for background and shadow */
 }
 
-.button-main {
+/* .button-main {
   font-family: "Nunito";
   font-size: 60px;
   padding: 20px 50px;
@@ -67,6 +67,22 @@ button {
   border: none;
   border-radius: 16px;
   cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s, color, 0.3s;
+} */
+
+.button-main {
+  font-family: "Nunito";
+  font-size: 60px;
+  padding: 12px 24px;
+  background-color: var(--uiowa-gold);
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 200px;
+  text-align: center;
   transition: background-color 0.3s, box-shadow 0.3s, color, 0.3s;
 }
 
@@ -1026,4 +1042,12 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
 }
